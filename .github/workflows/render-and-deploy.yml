@@ -1,0 +1,86 @@
+name: Render and Deploy Quarto Paper
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    outputs:
+      has-artifacts: ${{ steps.check-outputs.outputs.has-artifacts }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Install Quarto extensions
+        run: quarto add kapsner/authors-block --no-prompt
+
+      - name: Render Quarto project
+        run: quarto render manuscript/paper.qmd
+
+      - name: Check for outputs
+        id: check-outputs
+        run: |
+          if [ -f "manuscript/paper.html" ] || [ -f "manuscript/paper.pdf" ]; then
+            echo "has-artifacts=true" >> $GITHUB_OUTPUT
+          else
+            echo "has-artifacts=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Copy artifacts to _site for GitHub Pages
+        run: |
+          mkdir -p _site
+          cp manuscript/paper.html _site/index.html 2>/dev/null || true
+          cp manuscript/paper.pdf _site/paper.pdf 2>/dev/null || true
+          cp -r manuscript/*_files _site/ 2>/dev/null || true
+
+      - name: Upload artifacts
+        if: steps.check-outputs.outputs.has-artifacts == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: quarto-outputs-${{ github.sha }}
+          path: |
+            manuscript/paper.html
+            manuscript/paper.pdf
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Setup Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && needs.render.outputs.has-artifacts == 'true'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: render
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

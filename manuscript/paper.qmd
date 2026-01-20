@@ -1,0 +1,128 @@
+---
+title: "A Guide to Accounting for Reporting Delays in State, Local, and Territorial Public Health Surveillance Data"
+authors:
+  - name: "Sam Abbott"
+    affiliations:
+      - ref: lshtm
+    email: "sam.abbott@lshtm.ac.uk"
+    orcid: "0000-0001-8057-8037"
+    attributes:
+      corresponding: true
+
+affiliations:
+  - id: lshtm
+    name: "Centre for Mathematical Modelling of Infectious Diseases, London School of Hygiene & Tropical Medicine, United Kingdom"
+date: today
+bibliography: references.bib
+filters:
+  - authors-block
+abstract: |
+  @placeholder
+---
+
+# Introduction
+
+<!-- Section lead: -->
+<!-- Section support: -->
+
+State, local, and territorial surveillance systems play a central role in
+public health decision making.
+However, inherent delays between disease occurrence and reporting create
+challenges for real-time analysis.
+These delays affect the timeliness and accuracy of public health response.
+
+This guide provides practical guidance for data collectors and modellers
+working with reporting delays.
+
+# Challenges in real-time use of surveillance data
+
+<!-- Section lead: -->
+<!-- Section support: -->
+
+## Reporting delays
+
+## Data revisions beyond reporting delays
+
+## Site-specific variations
+
+## Other data quality issues
+
+# Opportunities from modelling
+
+<!-- Section lead: -->
+<!-- Section support: -->
+
+
+## Methods for correcting delayed data
+
+### Data requirements
+
+### Methods
+
+## Handling site drop-in and drop-out
+
+### Data requirements
+
+### Methods
+
+## Managing data revisions beyond reporting delays
+
+### Data requirements
+
+### Methods
+
+## Managing other data quality issues
+
+### Data requirements
+
+### Methods
+
+# Choosing a modelling method
+
+<!-- Section lead: -->
+<!-- Section support: -->
+
+## Decision tree for method selection
+
+## Implementation considerations
+
+## Validating and evaluating a model
+
+# Communicating and visualising results
+
+<!-- Section lead: -->
+<!-- Section support: -->
+
+## Presenting uncertainty to decision makers
+
+## Public-facing output considerations
+
+## Common pitfalls
+
+# How-to case studies
+
+<!-- Section lead: -->
+<!-- Section support: -->
+
+## Case study: Syndromic surveillance
+
+## Case study: To be determined
+
+## Pointers to tools and resources
+
+# Discussion
+
+<!-- Section lead: -->
+<!-- Section support: -->
+
+<!-- Summary -->
+
+<!-- Strengths and weaknesses -->
+
+<!-- Related literature -->
+
+<!-- Future work -->
+
+<!-- Conclusions -->
+
+# References

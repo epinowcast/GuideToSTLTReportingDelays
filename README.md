@@ -1,11 +1,19 @@
-# A Guide to Accounting for Reporting Delays in State, Local, and Territorial Public Health Surveillance Data
+# A guide to accounting for reporting delays in state, local, and territorial public health surveillance data
 
-A practical guide for epidemiologists, public health practitioners, and
-modellers working with delayed surveillance data.
-
-## Abstract
-
-@placeholder
+State, local, and territorial surveillance systems are essential for public
+health decision making, but inherent delays between disease occurrence and
+reporting create challenges for real-time analysis.
+Other issues such as data revisions, site drop-in and drop-out, and data
+quality problems can also manifest as apparent delays in aggregate data.
+This guide provides practical guidance for epidemiologists, public health
+practitioners, and modellers working with reporting delays and related
+challenges in surveillance data.
+We describe challenges in real-time use of surveillance data, opportunities from
+modelling approaches, guidance on choosing appropriate methods, considerations
+for communicating results, and practical case studies with implementation
+resources.
+We also highlight gaps where new modelling methods could address unmet needs in
+public health practice.
 
 ## Links
 

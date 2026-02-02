@@ -17,9 +17,9 @@ public health practice.
 
 ## Links
 
-📖 **[Read the paper](TBD)** (PDF)
+📖 **[Read the paper](https://www.epinowcast.org/GuideToSTLTReportingDelays/paper.pdf)** (PDF)
 
-🌐 **[Read the paper](TBD)** (HTML)
+🌐 **[Read the paper](https://www.epinowcast.org/GuideToSTLTReportingDelays/)** (HTML)
 
 🌐 **[Guidance website](TBD)** (interactive decision tree and guidance)
 
@@ -51,8 +51,8 @@ public health practice.
 ## Repository structure
 
 - `manuscript/` - Content plan and drafts
-- `user-submitted-snippets/` - Code snippets and notebooks from users (future)
-- `guidance-website/` - Guidance website content (future)
+- `user-submitted-snippets/` - Code snippets and notebooks from users
+- `guidance-website/` - Guidance website content
 - `meeting/` - Meeting planning and feedback
 - `resources/` - Reference materials and archived plans
 

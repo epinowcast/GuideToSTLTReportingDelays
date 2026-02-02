@@ -19,6 +19,9 @@ affiliations:
   - id: lshtm
     name: "Centre for Mathematical Modelling of Infectious Diseases, London School of Hygiene & Tropical Medicine, United Kingdom"
 date: today
+format:
+  html: default
+  pdf: default
 bibliography: references.bib
 filters:
   - authors-block
@@ -69,6 +72,8 @@ We describe the challenges that arise when using surveillance data in real
 time, review modelling approaches that can address these challenges, and
 provide guidance on choosing and implementing appropriate methods.
 We also highlight gaps where new methods could address unmet needs in practice.
+This guide is accompanied by an interactive website with a decision tree for
+method selection and a community code repository with implementation examples.
 
 # Challenges in real-time use of surveillance data
 
@@ -189,6 +194,8 @@ challenges described in the previous section.
 
 - Defining report and reference dates
 - Event date hierarchy (NYC mpox example)
+- Ability to assess data revision history
+- Volume of data available
 
 ### Methods
 
@@ -200,18 +207,8 @@ challenges described in the previous section.
 
 ### Implementation
 
-- Analysing delay distributions
-- Choosing maximum delay and training window
-- Volume of data available
-- Representativeness
-- What historic data is most informative?
-- Considerations for emergencies vs chronic delays
-- Determining variables needed, strata of interest
-- Ability to assess data revision history
 - Technical adjustments to capture data revision history
 - Aggregating data by report/reference date
-- Software/infrastructure requirements
-- Failure modes
 - Considerations for stratified nowcasts
 
 ## Managing data revisions beyond reporting delays {#sec-data-revisions}
@@ -276,15 +273,23 @@ selection, referring back to the decision tree where relevant.
 **Section lead:** TBD
 **Section support:** TBD
 
+- Analysing delay distributions
+- Choosing maximum delay and training window
+- Representativeness
+- What historic data is most informative?
+- Determining variables needed, strata of interest
+
 ## Implementation considerations
 
 **Section lead:** TBD
 **Section support:** TBD
 
-- General considerations
+- Considerations for emergencies vs chronic delays
+- Software/infrastructure requirements
+- Failure modes
 - Maintaining systems over time
-- Tradeoff between flexibility and model complexity.
-- Model specific (link back to discussion of modelling opportunities implementation section for each)
+- Tradeoff between flexibility and model complexity
+- Model specific (link back to modelling opportunities implementation section)
 
 ## Validating and evaluating a model
 
@@ -356,6 +361,11 @@ The following case studies illustrate how these steps apply in practice.
 **Section lead:** TBD
 **Section support:** TBD
 
+- Interactive website with decision tree for method selection
+- Community code repository with implementation snippets
+- Links to software packages and documentation
+- Example datasets for testing and learning
+
 # Discussion
 
 **Section lead:** Sam Abbott
@@ -407,6 +417,8 @@ Statistical methods exist that can adjust for these issues, improving
 situational awareness and supporting evidence-based responses.
 We hope this guide helps practitioners identify when such methods may be useful
 and provides a starting point for implementation.
+The companion website and code repository provide additional resources for those
+implementing these methods.
 We also hope this guide highlights gaps where new methods could address unmet
 needs, encouraging further methodological development in this area.
 

@@ -28,6 +28,7 @@ jobs:
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
+          version: "1.8.24"
           tinytex: true
 
       - name: Install Quarto extensions

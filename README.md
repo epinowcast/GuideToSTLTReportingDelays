@@ -28,6 +28,11 @@ public health practice.
 💻 **[Source Code](https://github.com/epinowcast/GuideToSTLTReportingDelays)**
 (GitHub)
 
+## Input
+
+- Session at next Insight Net meeting (see `meeting/README.md`)
+  - **Lead:** Laura Jones, Sam Abbott
+
 ## Output plan
 
 ### Primary output
@@ -37,17 +42,11 @@ public health practice.
 ### Secondary outputs
 
 - Website version of content (coordination centre to support)
+  - **Lead:** TBD
+  - **Support:** TBD
 - Code repository/wiki for implementation snippets
-
-### Dissemination
-
-Session at next Insight Net meeting:
-
-1. Introduction to challenges (talk)
-2. Challenges discussion with group
-3. Introduction to modelling opportunities (talk)
-4. Modelling opportunities discussion
-5. Decision tree and method selection (presentation + discussion)
+  - **Lead:** TBD
+  - **Support:** TBD
 
 ## Repository structure
 

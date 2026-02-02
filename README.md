@@ -5,7 +5,17 @@ modellers working with delayed surveillance data.
 
 ## Abstract
 
-@placeholder
+State, local, and territorial surveillance systems are essential for public
+health decision making, but inherent delays between disease occurrence and
+reporting create challenges for real-time analysis.
+This guide provides practical guidance for epidemiologists, public health
+practitioners, and modellers working with reporting delays in surveillance data.
+We describe challenges in real-time use of surveillance data, opportunities from
+modelling approaches, guidance on choosing appropriate methods, considerations
+for communicating results, and practical case studies with implementation
+resources.
+We also highlight gaps where new modelling methods could address unmet needs in
+public health practice.
 
 ## Links
 

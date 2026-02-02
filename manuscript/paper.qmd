@@ -1,6 +1,10 @@
 ---
 title: "A Guide to Accounting for Reporting Delays in State, Local, and Territorial Public Health Surveillance Data"
 authors:
+  - name: "Laura Jones"
+    affiliations:
+      - ref: mdph
+    orcid: "0009-0005-9214-0661"
   - name: "Sam Abbott"
     affiliations:
       - ref: lshtm
@@ -10,6 +14,8 @@ authors:
       corresponding: true
 
 affiliations:
+  - id: mdph
+    name: "Massachusetts Department of Public Health, Boston, MA, USA"
   - id: lshtm
     name: "Centre for Mathematical Modelling of Infectious Diseases, London School of Hygiene & Tropical Medicine, United Kingdom"
 date: today
@@ -17,61 +23,132 @@ bibliography: references.bib
 filters:
   - authors-block
 abstract: |
-  @placeholder
+  State, local, and territorial surveillance systems are essential for public
+  health decision making, but inherent delays between disease occurrence and
+  reporting create challenges for real-time analysis.
+  This guide provides practical guidance for epidemiologists, public health
+  practitioners, and modellers working with reporting delays in surveillance
+  data.
+  We describe challenges in real-time use of surveillance data, opportunities
+  from modelling approaches, guidance on choosing appropriate methods,
+  considerations for communicating results, and practical case studies with
+  implementation resources.
+  We also highlight gaps where new modelling methods could address unmet needs
+  in public health practice.
 ---
 
 # Introduction
 
-<!-- Section lead: -->
-<!-- Section support: -->
+**Section lead:** Sam Abbott
+**Section support:** TBD
 
 State, local, and territorial surveillance systems play a central role in
-public health decision making.
-However, inherent delays between disease occurrence and reporting create
-challenges for real-time analysis.
-These delays affect the timeliness and accuracy of public health response.
+public health decision making in the United States.
+Similarly, sub-national jurisdictions in other countries also play a signficant role in public health decision making.
+However, several challenges complicate the use of surveillance data in real time. 
+Reporting delays arise from lab confirmation requirements, differences between electronic and manual reporting, and weekend and holiday effects. 
+Data revisions occur as duplicates are removed, cases are reclassified, and dates are corrected. 
+Site-specific variations in reporting capabilities and intermittent reporting from some facilities create additional uncertainty. 
+Other data quality issues such as missing or incorrect dates and incompatible formats can further limit the utility of recent data.
 
-This guide provides practical guidance for data collectors and modellers
-working with reporting delays.
+Common approaches to handling these challenges include pruning recent data or using incomplete data with caveats. However, statistical methods exist that can adjust for these issues by learning from historical patterns.
+Addressing these challenges can improve situational awareness of true disease
+trends, supports decision making (such as timing of public health
+interventions), and can improve forecasting of disease trends and resource needs (i.e. hospitalisations).
+
+In this guide, we provide practical guidance for public health practitioners
+and modellers planning to account for reporting delays and other data quality issues in their analyses.
+We describe the challenges that arise when using surveillance data in real
+time, review modelling approaches that can address these challenges, and
+provide guidance on choosing and implementing appropriate methods.
+We also highlight gaps where new methods could address unmet needs in practice.
 
 # Challenges in real-time use of surveillance data
 
-<!-- Section lead: -->
-<!-- Section support: -->
+**Section overview lead:** TBD
+**Section overview support:** TBD
 
 ## Reporting delays
 
+**Section lead:** TBD
+**Section support:** TBD
+
+
 ## Data revisions beyond reporting delays
 
-## Site-specific variations
+**Section lead:** TBD
+**Section support:** TBD
+
+
+## Surveillance site drop-in and drop-out {#sec-site-variations}
+
+**Section lead:** TBD
+**Section support:** TBD
+
 
 ## Other data quality issues
 
+**Section lead:** TBD
+**Section support:** TBD
+
+
 # Opportunities from modelling
 
-<!-- Section lead: -->
-<!-- Section support: -->
+**Section overview lead:** TBD
+**Section overview support:** TBD
 
+@tbl-challenges summarises the challenges described in the previous section.
+@tbl-methods provides an overview of modelling approaches that can address them.
 
-## Methods for correcting delayed data
+| Challenge | Description | Examples |
+|-----------|-------------|----------|
+| Reporting delays | Time between event and report | Lab confirmation, manual entry |
+| Data revisions | Changes to previously reported data | Duplicate removal, reclassification |
+| Site drop-in/out | Facilities joining or leaving | New sites, closures, intermittent reporting |
+| Other data quality | Additional data issues | Missing dates, format incompatibilities |
+
+: Summary of challenges in real-time surveillance data {#tbl-challenges}
+
+| Challenge | Modelling approach | Data requirements |
+|-----------|-------------------|-------------------|
+| Reporting delays | @placeholder | @placeholder |
+| Data revisions | @placeholder | @placeholder |
+| Site drop-in/out | @placeholder | @placeholder |
+| Other data quality | @placeholder | @placeholder |
+
+: Modelling approaches for addressing surveillance data challenges {#tbl-methods}
+
+## Correcting delayed data {#sec-reporting-delays}
+
+**Section lead:** TBD
+**Section support:** TBD
 
 ### Data requirements
 
 ### Methods
 
-## Handling site drop-in and drop-out
+## Managing data revisions beyond reporting delays {#sec-data-revisions}
+
+**Section lead:** TBD
+**Section support:** TBD
 
 ### Data requirements
 
 ### Methods
 
-## Managing data revisions beyond reporting delays
+## Handling site drop-in and drop-out {#sec-site-variations}
+
+**Section lead:** TBD
+**Section support:** TBD
 
 ### Data requirements
 
 ### Methods
 
-## Managing other data quality issues
+## Managing other data quality issues {#sec-other-quality}
+
+**Section lead:** TBD
+**Section support:** TBD
 
 ### Data requirements
 
@@ -79,41 +156,68 @@ working with reporting delays.
 
 # Choosing a modelling method
 
-<!-- Section lead: -->
-<!-- Section support: -->
+**Section overview lead:** TBD
+**Section overview support:** TBD
 
 ## Decision tree for method selection
 
+**Section lead:** TBD
+**Section support:** TBD
+
 ## Implementation considerations
+
+**Section lead:** TBD
+**Section support:** TBD
 
 ## Validating and evaluating a model
 
+**Section lead:** TBD
+**Section support:** TBD
+
 # Communicating and visualising results
 
-<!-- Section lead: -->
-<!-- Section support: -->
+**Section lead:** TBD
+**Section support:** TBD
 
 ## Presenting uncertainty to decision makers
 
+**Section lead:** TBD
+**Section support:** TBD
+
 ## Public-facing output considerations
+
+**Section lead:** TBD
+**Section support:** TBD
 
 ## Common pitfalls
 
+**Section lead:** TBD
+**Section support:** TBD
+
 # How-to case studies
 
-<!-- Section lead: -->
-<!-- Section support: -->
+**Section overview lead:** TBD
+**Section overview support:** TBD
 
 ## Case study: Syndromic surveillance
 
+**Section lead:** Laura Jones
+**Section support:** TBD
+
 ## Case study: To be determined
+
+**Section lead:** TBD
+**Section support:** TBD
 
 ## Pointers to tools and resources
 
+**Section lead:** TBD
+**Section support:** TBD
+
 # Discussion
 
-<!-- Section lead: -->
-<!-- Section support: -->
+**Section lead:** Sam Abbott
+**Section support:** TBD
 
 <!-- Summary -->
 

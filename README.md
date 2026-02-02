@@ -47,6 +47,12 @@ public health practice.
 - Code repository/wiki for implementation snippets
   - **Lead:** TBD
   - **Support:** TBD
+  - **Open questions:**
+    - Complete runnable examples vs minimal snippets?
+    - Keep it simple with markdown files in GitHub?
+    - How do users discover content? Tags, categories, search?
+    - Contribution workflow: PRs, issues, or wiki edits?
+    - Quality control: review process or open submission?
 
 ## Repository structure
 

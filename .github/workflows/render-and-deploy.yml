@@ -47,7 +47,7 @@ jobs:
           cp manuscript/index.html \
             _site/paper/index.html 2>/dev/null || true
           cp manuscript/index.pdf \
-            _site/paper/paper.pdf 2>/dev/null || true
+            _site/paper/index.pdf 2>/dev/null || true
           cp -r manuscript/*_files \
             _site/paper/ 2>/dev/null || true
 

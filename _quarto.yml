@@ -14,7 +14,7 @@ project:
     - "!meeting/templates/"
 
 website:
-  title: "Reporting Delays in Public Health Surveillance"
+  title: "STLT Delays Guide"
   description: >
     A guide to understanding and accounting for reporting
     delays in state, local, and territorial surveillance data.

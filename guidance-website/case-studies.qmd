@@ -1,0 +1,19 @@
+---
+title: "Case Studies"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+Worked examples applying delay-adjustment methods to
+real-world surveillance settings.
+
+## Syndromic surveillance
+
+<!-- Lead: Laura Jones -->
+<!-- Massachusetts syndromic surveillance example -->
+
+## Further case studies
+
+<!-- Additional examples to be added -->

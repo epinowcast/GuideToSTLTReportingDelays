@@ -1,0 +1,26 @@
+---
+title: "Tools and Resources"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+## Software
+
+| Package | Language | Approach | Link |
+|---|---|---|---|
+| baselinenowcast | R | Chain-ladder | [GitHub](https://github.com/epinowcast/baselinenowcast) |
+| epinowcast | R | Bayesian hierarchical | [GitHub](https://github.com/epinowcast/epinowcast) |
+| EpiNow2 | R | Semi-mechanistic | [GitHub](https://github.com/epiforecasts/EpiNow2) |
+| NobBS | R | Bayesian hierarchical | [CRAN](https://cran.r-project.org/package=NobBS) |
+
+## Further reading
+
+<!-- Key references and related guides -->
+
+## Glossary
+
+<!-- Definitions of key terms:
+     right-truncation, nowcasting,
+     reporting delay, data vintage, etc. -->

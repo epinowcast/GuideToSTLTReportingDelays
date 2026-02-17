@@ -1,0 +1,26 @@
+---
+title: "Challenges in Real-Time Surveillance Data"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+## Reporting delays
+
+<!-- Right-truncation, lab confirmation delays,
+     manual data entry variation -->
+
+## Data revisions
+
+<!-- Deduplication, reclassification,
+     date corrections -->
+
+## Surveillance site drop-in and drop-out
+
+<!-- Intermittent facility reporting -->
+
+## Other data quality issues
+
+<!-- Missing dates, incompatible formats,
+     changing case definitions -->

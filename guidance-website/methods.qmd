@@ -1,0 +1,29 @@
+---
+title: "Modelling Methods for Reporting Delays"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+## Chain-ladder approaches
+
+<!-- baselinenowcast, ChainLadder -->
+
+## Generalised additive models
+
+<!-- nowcaster, UKHSA GAMs -->
+
+## Bayesian hierarchical methods
+
+<!-- NobBS -->
+
+## Semi-mechanistic approaches
+
+<!-- EpiNow2, epinowcast -->
+
+## Comparison summary
+
+<!-- Table or summary comparing methods on key dimensions:
+     complexity, data requirements, flexibility,
+     software availability -->

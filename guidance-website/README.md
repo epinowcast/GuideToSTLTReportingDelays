@@ -1,20 +1,21 @@
 # Guidance Website
 
-Website version of the guide content.
-
-## Plan
-
-This folder will host a Quarto website presenting the guidance in an
+Quarto website presenting the guide content in an
 interactive format.
-The coordination centre will support development and hosting.
 
-Key features planned:
+## Structure
 
-- Interactive decision tree for method selection
-- Searchable guidance content
-- Links to tools and resources
+- `index.qmd` - Home page and project overview
+- `challenges.qmd` - Challenges in real-time surveillance
+- `methods.qmd` - Modelling methods for reporting delays
+- `decision-tree.qmd` - Interactive method selection tool
+- `case-studies.qmd` - Worked examples
+- `resources.qmd` - Software, reading, and glossary
+- `contributing.qmd` - How to contribute
 
-## Status
+## Local development
 
-Not yet implemented.
-Development to begin after manuscript content is finalised.
+```bash
+task render-website
+task preview-website
+```

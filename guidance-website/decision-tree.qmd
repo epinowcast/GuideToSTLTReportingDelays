@@ -1,0 +1,21 @@
+---
+title: "Choosing a Method"
+---
+
+::: {.callout-note}
+This page is under development.
+The decision tree will be interactive.
+:::
+
+<!-- Interactive decision tree guiding users through
+     method selection based on:
+     - Data availability and structure
+     - Computational resources
+     - Statistical capacity
+     - Use case (routine monitoring vs outbreak response)
+     - Timeliness requirements
+
+     Implementation options:
+     - Mermaid diagram with clickable nodes
+     - Observable JS for interactivity
+     - Simple flowchart as starting point -->

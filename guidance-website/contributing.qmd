@@ -1,0 +1,28 @@
+---
+title: "Contributing"
+---
+
+We welcome contributions to this guide.
+
+## Ways to contribute
+
+- **Code examples** showing how to apply delay-adjustment
+  methods to your own data.
+- **Case studies** from your surveillance system or
+  jurisdiction.
+- **Feedback** on the guide content, decision tree, or
+  resources listed.
+
+## How to contribute
+
+Open an issue or pull request on the
+[GitHub repository](https://github.com/epinowcast/GuideToSTLTReportingDelays).
+
+For code snippets, include a brief description of the
+data context and the method used.
+
+## Contact
+
+For questions, open a
+[GitHub issue](https://github.com/epinowcast/GuideToSTLTReportingDelays/issues)
+or contact [Sam Abbott](mailto:sam.abbott@lshtm.ac.uk).

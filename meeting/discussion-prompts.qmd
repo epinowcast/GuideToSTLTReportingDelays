@@ -1,0 +1,48 @@
+---
+title: "Discussion Prompts"
+---
+
+Prompts for the facilitated discussion following the
+challenges overview and rapid presentations.
+
+## Reporting delays
+
+- What are the most common sources of reporting delay
+  in your jurisdiction?
+- How long are typical delays for your main surveillance
+  streams?
+- Have you seen delays change over time (e.g. during
+  outbreaks, holiday periods, system changes)?
+- How do you currently handle recent incomplete data
+  when briefing leadership?
+
+## Data revisions
+
+- How often do your data get revised after initial
+  release?
+- What causes revisions in your systems (deduplication,
+  reclassification, date corrections)?
+- Have you experienced large retrospective corrections
+  that affected interpretation?
+
+## Site drop-in and drop-out
+
+- Do you have sites that report intermittently?
+- How do you handle new sites joining or existing sites
+  dropping out of reporting?
+- Does this vary between surveillance streams?
+
+## Other data quality issues
+
+- What data quality issues most affect your ability to
+  interpret recent trends?
+- How do you handle missing dates or strata variables?
+- Are there format or system compatibility issues that
+  create apparent delays?
+
+## Cross-cutting
+
+- Which of these challenges is the biggest barrier to
+  timely analysis in your setting?
+- Are there challenges you face that we have not covered?
+- What would be most useful to you from this effort?

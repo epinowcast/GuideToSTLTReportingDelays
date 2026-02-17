@@ -1,0 +1,25 @@
+---
+title: "How to Implement a Nowcast"
+---
+
+::: {.callout-note}
+Content will be drawn from the companion paper
+(Sections 4-6: method selection guidance,
+communicating results, and how-to case studies).
+:::
+
+Regardless of the specific challenge or modelling
+approach, implementing a model to account for reporting
+issues in surveillance data involves common steps.
+
+1. [Assess the data source](assess-data.qmd)
+2. [Analyse delays and delay distributions](analyse-delays.qmd)
+3. [Understand meaningful strata](understand-strata.qmd)
+4. [Implement the model](implement.qmd)
+5. [Validate and evaluate](validate.qmd)
+6. [Communicate and visualise results](communicate.qmd)
+
+See the [case studies](../case-studies/index.qmd) for
+worked examples applying these steps, or browse
+[community examples](../community-examples/index.qmd)
+for implementation examples.

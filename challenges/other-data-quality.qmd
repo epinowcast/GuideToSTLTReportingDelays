@@ -1,0 +1,18 @@
+---
+title: "Other Data Quality Issues"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- What it is -->
+
+<!-- Why it happens: duplicate entries across systems,
+     missing or incorrect dates,
+     missing strata variables (e.g. race/ethnicity),
+     incompatible formats -->
+
+<!-- How it affects analysis -->
+
+<!-- How to identify it -->

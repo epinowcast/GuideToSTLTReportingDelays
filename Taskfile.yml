@@ -3,7 +3,7 @@ version: '3'
 tasks:
   default:
     desc: "Render all documents"
-    deps: [render-paper]
+    deps: [render-paper, render-website]
 
   install-extensions:
     desc: "Install Quarto extensions"
@@ -28,4 +28,27 @@ tasks:
     deps: [install-extensions]
     cmds:
       - quarto preview manuscript/paper.qmd
+    interactive: true
+
+  render-website:
+    desc: "Render the guidance website"
+    cmds:
+      - quarto render
+    sources:
+      - "*.qmd"
+      - "challenges/*.qmd"
+      - "methods/*.qmd"
+      - "choosing-a-method/*.qmd"
+      - "how-to/*.qmd"
+      - "case-studies/*.qmd"
+      - "community-examples/*.qmd"
+      - "meeting/*.qmd"
+      - _quarto.yml
+    generates:
+      - _site/**
+
+  preview-website:
+    desc: "Preview the guidance website with live reload"
+    cmds:
+      - quarto preview
     interactive: true

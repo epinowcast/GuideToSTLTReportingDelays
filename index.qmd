@@ -1,0 +1,49 @@
+---
+title: "Accounting for Reporting Delays in Public Health Surveillance"
+---
+
+Public health surveillance data are rarely complete when
+first reported.
+Cases, hospitalisations, and other events take time to be
+confirmed, entered into databases, and reported to
+central systems.
+These **reporting delays** mean that the most recent data
+systematically undercount the true number of events,
+complicating real-time analysis.
+
+This guide provides practical support for public health
+practitioners and modellers working with delayed
+surveillance data at state, local, and territorial levels.
+
+## What this guide covers
+
+- **Challenges** that arise when using surveillance data in
+  real time, including reporting delays, data revisions,
+  and site drop-in and drop-out.
+- **Modelling approaches** that can adjust for reporting
+  delays, from chain-ladder approaches to Bayesian
+  hierarchical models.
+- **A decision tree** to help select an appropriate method
+  based on your data characteristics and use case.
+- **A how-to guide** covering the common steps from
+  assessing data through to communicating results.
+- **Case studies** demonstrating practical implementations
+  in surveillance settings.
+
+## Who is this for?
+
+This guide is written for two audiences.
+
+**Epidemiologists and public health practitioners**
+interested in accounting for reporting delays and other
+real-time data issues.
+
+**Modellers** expanding their understanding of reporting
+delays and the methods available to address them.
+
+## Get involved
+
+This is a collaborative effort.
+We welcome contributions of code examples, case studies,
+and feedback.
+See the [contributing guide](contributing.qmd) for details.

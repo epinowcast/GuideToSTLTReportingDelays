@@ -1,0 +1,11 @@
+---
+title: "Assess the Data Source"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- Identify the reporting challenge and its
+     predictability. Understand the data structure
+     and available history. -->

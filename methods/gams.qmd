@@ -1,0 +1,15 @@
+---
+title: "Generalised Additive Models"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- nowcaster, UKHSA GAMs -->
+
+<!-- Data requirements -->
+
+<!-- How it works -->
+
+<!-- Implementation -->

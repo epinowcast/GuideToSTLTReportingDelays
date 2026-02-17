@@ -1,0 +1,14 @@
+---
+title: "Communicate and Visualise Results"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- Present uncertainty to decision makers.
+     Choose prediction/confidence intervals.
+     Place nowcasts in context (e.g. seasonal
+     thresholds).
+     Public-facing output considerations.
+     Common pitfalls. -->

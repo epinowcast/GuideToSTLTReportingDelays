@@ -1,0 +1,15 @@
+---
+title: "Semi-Mechanistic Approaches"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- EpiNow2, epinowcast -->
+
+<!-- Data requirements -->
+
+<!-- How it works -->
+
+<!-- Implementation -->

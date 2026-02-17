@@ -1,0 +1,84 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "challenges/*.qmd"
+    - "methods/*.qmd"
+    - "choosing-a-method/*.qmd"
+    - "how-to/*.qmd"
+    - "case-studies/*.qmd"
+    - "community-examples/*.qmd"
+    - "meeting/*.qmd"
+    - "!manuscript/"
+    - "!meeting/templates/"
+
+website:
+  title: "STLT Delays Guide"
+  description: >
+    A guide to understanding and accounting for reporting
+    delays in state, local, and territorial surveillance data.
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Understanding"
+        menu:
+          - text: "Challenges"
+            href: challenges/index.qmd
+          - text: "Modelling Approaches"
+            href: methods/index.qmd
+      - text: "Implementing"
+        menu:
+          - text: "Choosing a Method"
+            href: choosing-a-method/index.qmd
+          - text: "How-to Guide"
+            href: how-to/index.qmd
+          - text: "Case Studies"
+            href: case-studies/index.qmd
+      - text: "Examples & Resources"
+        menu:
+          - text: "Community Examples"
+            href: community-examples/index.qmd
+          - text: "Submit an Example"
+            href: community-examples/submit.qmd
+          - text: "---"
+          - text: "Further Reading & Glossary"
+            href: resources.qmd
+    right:
+      - text: "Meeting"
+        menu:
+          - text: "Session overview"
+            href: meeting/index.qmd
+          - text: "---"
+          - text: "Templates"
+          - text: "Challenges template"
+            href: meeting/challenges-template.qmd
+          - text: "Models template"
+            href: meeting/models-template.qmd
+          - text: "---"
+          - text: "Session documents"
+          - text: "Discussion prompts"
+            href: meeting/discussion-prompts.qmd
+          - text: "Decision tree exercise"
+            href: meeting/decision-tree-exercise.qmd
+      - text: "Papers"
+        menu:
+          - text: "This guide (companion paper)"
+            href: /paper/
+            target: _blank
+          - text: "Nowcasting methods overview"
+            href: https://example.com/nowcasting-overview
+            target: _blank
+      - text: "Contributing"
+        href: contributing.qmd
+      - icon: github
+        href: https://github.com/epinowcast/GuideToSTLTReportingDelays
+        target: _blank
+
+format:
+  html:
+    theme:
+      - sandstone
+      - custom.scss
+    toc: true

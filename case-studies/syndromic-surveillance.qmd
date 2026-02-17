@@ -1,0 +1,38 @@
+---
+title: "Case Study: Syndromic Surveillance"
+---
+
+::: {.callout-note}
+This page is under development.
+Content will be drawn from the companion paper
+(Section 6: How-to case studies).
+:::
+
+<!-- Lead: Laura Jones -->
+<!-- Massachusetts syndromic surveillance example -->
+
+## Setting
+
+<!-- Description of the surveillance system,
+     data structure, and reporting context -->
+
+## The challenge
+
+<!-- What reporting issues affect this data stream -->
+
+## Approach
+
+<!-- Which modelling approach was chosen and why -->
+
+## Implementation
+
+<!-- How the model was set up and configured -->
+
+## Validation
+
+<!-- How the nowcast was evaluated -->
+
+## Results and lessons
+
+<!-- What worked, what was difficult,
+     what would be done differently -->

@@ -1,0 +1,28 @@
+---
+title: "Choosing a Method"
+---
+
+::: {.callout-note}
+Content will be drawn from the companion paper
+(Section 4: Choosing a modelling method).
+The decision tree will be interactive.
+:::
+
+Selecting an approach depends on the data available,
+the challenge being addressed, and practical
+constraints around capacity and infrastructure.
+
+## Decision tree
+
+<!-- Interactive decision tree guiding users through
+     method selection. Implementation options:
+     - Mermaid diagram with clickable nodes
+     - Observable JS for interactivity
+     - Simple flowchart as starting point -->
+
+## Detailed guidance
+
+- [Adoption and sustainability](adoption.qmd)
+- [Data analysis considerations](data-analysis.qmd)
+- [Implementation considerations](implementation.qmd)
+- [Validation and evaluation](validation.qmd)

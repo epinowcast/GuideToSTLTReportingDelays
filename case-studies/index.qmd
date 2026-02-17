@@ -1,0 +1,20 @@
+---
+title: "Case Studies"
+---
+
+::: {.callout-note}
+Content will be drawn from the companion paper
+(Section 6: How-to case studies).
+:::
+
+Each case study walks through the common
+[implementation steps](../how-to/index.qmd) in a
+specific surveillance setting.
+
+| Case study | Challenge | Approach | Setting |
+|---|---|---|---|
+| [Syndromic surveillance](syndromic-surveillance.qmd) | Reporting delays | TBD | Massachusetts |
+
+: Available case studies {.striped .hover}
+
+<!-- Additional rows added as case studies are written -->

@@ -1,0 +1,13 @@
+---
+title: "Data Analysis Considerations"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- Analysing delay distributions.
+     Choosing maximum delay and training window.
+     Representativeness.
+     What historic data is most informative?
+     Determining variables needed, strata of interest. -->

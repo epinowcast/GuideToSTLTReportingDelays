@@ -1,0 +1,15 @@
+---
+title: "Bayesian Hierarchical Methods"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- NobBS -->
+
+<!-- Data requirements -->
+
+<!-- How it works -->
+
+<!-- Implementation -->

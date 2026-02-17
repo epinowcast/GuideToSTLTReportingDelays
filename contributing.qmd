@@ -1,0 +1,30 @@
+---
+title: "Contributing"
+---
+
+We welcome contributions to this guide.
+
+## Ways to contribute
+
+- **Code examples, data preparation workflows, or
+  package vignettes** relevant to working with delayed
+  surveillance data.
+- **Case studies** from your surveillance system or
+  jurisdiction.
+- **Feedback** on the guide content, decision tree, or
+  resources listed.
+
+## How to contribute
+
+Open an issue or pull request on the
+[GitHub repository](https://github.com/epinowcast/GuideToSTLTReportingDelays).
+
+For community examples, submit via the
+[issue template](https://github.com/epinowcast/GuideToSTLTReportingDelays/issues/new?template=community-example.yml){target="_blank"}
+with a link to your GitHub Gist.
+
+## Contact
+
+For questions, open a
+[GitHub issue](https://github.com/epinowcast/GuideToSTLTReportingDelays/issues)
+or contact [Sam Abbott](mailto:sam.abbott@lshtm.ac.uk).

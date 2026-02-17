@@ -1,5 +1,5 @@
 ---
-title: "Accounting for Reporting Delays in Public Health Surveillance"
+title: "Accounting for Reporting Delays in STLT Public Health Surveillance"
 ---
 
 Public health surveillance data are rarely complete when

@@ -16,18 +16,18 @@ tasks:
     desc: "Render the manuscript"
     deps: [install-extensions]
     cmds:
-      - quarto render manuscript/paper.qmd
+      - quarto render manuscript/index.qmd
     sources:
-      - manuscript/paper.qmd
+      - manuscript/index.qmd
     generates:
-      - manuscript/paper.html
-      - manuscript/paper.pdf
+      - manuscript/index.html
+      - manuscript/index.pdf
 
   preview:
     desc: "Preview the manuscript with live reload"
     deps: [install-extensions]
     cmds:
-      - quarto preview manuscript/paper.qmd
+      - quarto preview manuscript/index.qmd
     interactive: true
 
   render-website:

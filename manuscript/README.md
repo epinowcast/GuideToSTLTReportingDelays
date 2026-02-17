@@ -6,7 +6,7 @@ data.
 ## Aim
 
 Provide practical guidance for data collectors and modellers working with
-reporting delays in state, local, and territorial public health surveillance
+reporting delays in state, tribal, local, and territorial public health surveillance
 systems.
 
 ## Target audiences

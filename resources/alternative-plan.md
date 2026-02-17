@@ -1,6 +1,6 @@
 # Alternative Plan
 
-A practical guide to nowcasting with state, local, and territorial public
+A practical guide to nowcasting with state, tribal, local, and territorial public
 health surveillance data.
 
 Audience(s): epidemiologists and public health practitioners interested in

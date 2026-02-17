@@ -6,8 +6,8 @@ We welcome contributions to this guide.
 
 ## Ways to contribute
 
-- **Code examples** showing how to apply delay-adjustment
-  methods to your own data.
+- **Code examples** showing how to apply methods that
+  account for reporting delays to your own data.
 - **Case studies** from your surveillance system or
   jurisdiction.
 - **Feedback** on the guide content, decision tree, or
@@ -19,7 +19,7 @@ Open an issue or pull request on the
 [GitHub repository](https://github.com/epinowcast/GuideToSTLTReportingDelays).
 
 For code snippets, include a brief description of the
-data context and the method used.
+data context and the approach used.
 
 ## Contact
 

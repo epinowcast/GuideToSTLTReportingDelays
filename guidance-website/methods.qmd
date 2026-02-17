@@ -1,5 +1,5 @@
 ---
-title: "Modelling Methods for Reporting Delays"
+title: "Modelling Approaches for Reporting Delays"
 ---
 
 ::: {.callout-note}
@@ -24,6 +24,6 @@ This page is under development.
 
 ## Comparison summary
 
-<!-- Table or summary comparing methods on key dimensions:
+<!-- Table or summary comparing approaches on key dimensions:
      complexity, data requirements, flexibility,
      software availability -->

@@ -2,42 +2,42 @@
 title: "Accounting for Reporting Delays in Public Health Surveillance"
 ---
 
-Public health surveillance data are rarely complete at the time
-of first reporting.
+Public health surveillance data are rarely complete when
+first reported.
 Cases, hospitalisations, and other events take time to be
 confirmed, entered into databases, and reported to
 central systems.
 These **reporting delays** mean that the most recent data
 systematically undercount the true number of events,
-creating a misleading picture of current trends.
+complicating real-time analysis.
 
-This guide provides practical support for analysts working
-with delayed surveillance data at state, local, and
-territorial levels.
+This guide provides practical support for public health
+practitioners and modellers working with delayed
+surveillance data at state, local, and territorial levels.
 
 ## What this guide covers
 
-- **Common challenges** that arise when using surveillance
-  data in real time, including right-truncation, data
-  revisions, and intermittent reporting.
-- **Modelling methods** that can adjust for reporting delays,
-  from simple chain-ladder approaches to Bayesian
+- **Challenges** that arise when using surveillance data in
+  real time, including reporting delays, data revisions,
+  and site drop-in and drop-out.
+- **Modelling approaches** that can adjust for reporting
+  delays, from chain-ladder approaches to Bayesian
   hierarchical models.
 - **A decision tree** to help select an appropriate method
-  based on your data, capacity, and goals.
+  based on your data characteristics and use case.
 - **Case studies** demonstrating practical implementations
-  in real-world surveillance settings.
+  in surveillance settings.
 
 ## Who is this for?
 
 This guide is written for two audiences.
 
-**Epidemiologists and public health practitioners** who
-need to interpret or adjust delayed surveillance data as
-part of routine operations or outbreak response.
+**Epidemiologists and public health practitioners**
+interested in accounting for reporting delays and other
+real-time data issues.
 
-**Modellers** looking to deepen their understanding of
-reporting delays and the methods available to address them.
+**Modellers** expanding their understanding of reporting
+delays and the methods available to address them.
 
 ## Get involved
 

@@ -6,8 +6,8 @@ title: "Case Studies"
 This page is under development.
 :::
 
-Worked examples applying delay-adjustment methods to
-real-world surveillance settings.
+Practical examples applying methods to account for
+reporting delays in surveillance settings.
 
 ## Syndromic surveillance
 

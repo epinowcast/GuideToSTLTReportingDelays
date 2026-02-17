@@ -6,12 +6,12 @@ title: "Code Snippets"
 This page is under development.
 :::
 
-Community-contributed code examples demonstrating how to
-apply delay-adjustment methods in practice.
+Community-contributed code examples demonstrating methods
+that account for reporting delays.
 
-## Browse by method
+## Browse by approach
 
-<!-- Sections for each method category,
+<!-- Sections for each approach category,
      populated as submissions arrive -->
 
 ### Chain-ladder approaches
@@ -34,7 +34,7 @@ apply delay-adjustment methods in practice.
 
 We welcome code contributions.
 Each snippet should include a brief description of the
-data context, the method used, and a runnable example.
+data context, the approach used, and a runnable example.
 
 See the [contributing guide](contributing.qmd) for how
 to submit.

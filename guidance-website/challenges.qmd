@@ -4,6 +4,8 @@ title: "Challenges in Real-Time Surveillance Data"
 
 ::: {.callout-note}
 This page is under development.
+Content will be drawn from the companion paper
+(Section 2: Challenges in real-time use of surveillance data).
 :::
 
 ## Reporting delays

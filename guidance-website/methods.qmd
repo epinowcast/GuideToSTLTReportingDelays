@@ -4,6 +4,8 @@ title: "Modelling Approaches for Reporting Delays"
 
 ::: {.callout-note}
 This page is under development.
+Content will be drawn from the companion paper
+(Section 3: Opportunities from modelling).
 :::
 
 ## Chain-ladder approaches

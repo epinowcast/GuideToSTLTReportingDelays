@@ -4,6 +4,8 @@ title: "Case Studies"
 
 ::: {.callout-note}
 This page is under development.
+Content will be drawn from the companion paper
+(Section 6: How-to case studies).
 :::
 
 Practical examples applying methods to account for

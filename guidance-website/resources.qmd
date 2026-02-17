@@ -4,6 +4,9 @@ title: "Tools and Resources"
 
 ::: {.callout-note}
 This page is under development.
+Software and further reading will be drawn from the
+companion paper.
+The glossary is website-original content.
 :::
 
 ## Software

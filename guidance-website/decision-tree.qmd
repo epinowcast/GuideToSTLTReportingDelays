@@ -4,7 +4,9 @@ title: "Choosing a Method"
 
 ::: {.callout-note}
 This page is under development.
-The decision tree will be interactive.
+The decision tree will be an interactive version of
+the figure in the companion paper
+(Section 4: Choosing a modelling method).
 :::
 
 <!-- Interactive decision tree guiding users through

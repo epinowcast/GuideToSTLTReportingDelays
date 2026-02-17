@@ -4,6 +4,8 @@ title: "Code Snippets"
 
 ::: {.callout-note}
 This page is under development.
+Content is community-contributed and not drawn from
+the companion paper.
 :::
 
 Community-contributed code examples demonstrating methods

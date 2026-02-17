@@ -4,6 +4,9 @@ title: "How to Implement a Nowcast"
 
 ::: {.callout-note}
 This page is under development.
+Content will be drawn from the companion paper
+(Sections 4-6: method selection guidance,
+communicating results, and how-to case studies).
 :::
 
 Regardless of the specific challenge or modelling approach,

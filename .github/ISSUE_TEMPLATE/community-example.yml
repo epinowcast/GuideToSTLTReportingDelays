@@ -1,0 +1,69 @@
+name: Community example submission
+description: Submit a code example, vignette, or other resource
+title: "Example: "
+labels: ["community-example"]
+body:
+  - type: input
+    id: gist-url
+    attributes:
+      label: Gist URL
+      description: Link to your GitHub Gist
+      placeholder: https://gist.github.com/username/...
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: What kind of example is this?
+      options:
+        - Code snippet
+        - Data preparation
+        - Package vignette
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: challenge
+    attributes:
+      label: Challenge
+      description: Which challenge does this address?
+      options:
+        - Reporting delays
+        - Data revisions
+        - Site drop-in and drop-out
+        - Other data quality issues
+        - General / multiple
+    validations:
+      required: true
+  - type: input
+    id: approach
+    attributes:
+      label: Approach
+      description: >
+        Which modelling approach or method does this use?
+        (e.g. chain-ladder, GAM, Bayesian hierarchical,
+        data munging, visualisation)
+      placeholder: e.g. baselinenowcast, NobBS, data preparation
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - R
+        - Python
+        - Julia
+        - Stan
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Brief description
+      description: >
+        A sentence or two about what this example does.
+    validations:
+      required: true

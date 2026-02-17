@@ -6,8 +6,9 @@ We welcome contributions to this guide.
 
 ## Ways to contribute
 
-- **Code examples** showing how to apply methods that
-  account for reporting delays to your own data.
+- **Code examples, data preparation workflows, or
+  package vignettes** relevant to working with delayed
+  surveillance data.
 - **Case studies** from your surveillance system or
   jurisdiction.
 - **Feedback** on the guide content, decision tree, or
@@ -18,8 +19,9 @@ We welcome contributions to this guide.
 Open an issue or pull request on the
 [GitHub repository](https://github.com/epinowcast/GuideToSTLTReportingDelays).
 
-For code snippets, include a brief description of the
-data context and the approach used.
+For community examples, submit via the
+[issue template](https://github.com/epinowcast/GuideToSTLTReportingDelays/issues/new?template=community-example.yml){target="_blank"}
+with a link to your GitHub Gist.
 
 ## Contact
 

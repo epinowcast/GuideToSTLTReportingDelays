@@ -1,0 +1,58 @@
+---
+title: "Community Examples"
+---
+
+::: {.callout-note}
+This page is under development.
+Content is community-contributed and not drawn from
+the companion paper.
+:::
+
+Community-contributed examples demonstrating how to
+work with delayed surveillance data.
+Contributions can include code snippets, data
+preparation workflows, package vignettes, or other
+practical resources.
+Each example is a GitHub Gist linked from the table
+below.
+
+## Browse examples
+
+::: {.callout-note}
+The table below will be filterable by type, challenge,
+approach, and language once examples are submitted.
+:::
+
+<!-- Interactive table of examples, populated from
+     submitted gists. Columns:
+
+     | Title | Author | Type | Challenge | Approach | Language | Gist |
+
+     Type: code snippet, data preparation, vignette, etc.
+     Filterable by type, challenge, approach, and language.
+     Similar to the seminars listing on epinowcast.org. -->
+
+## How to submit an example
+
+1. **Write a GitHub Gist** containing your example.
+   Include a brief description at the top covering:
+   - What it does (code example, data preparation,
+     package vignette, etc.)
+   - What surveillance data or challenge it addresses
+   - What language and packages are needed
+
+2. **Open an issue** using the
+   [community example template](https://github.com/epinowcast/GuideToSTLTReportingDelays/issues/new?template=community-example.yml){target="_blank"}
+   with a link to your gist and the relevant details.
+
+3. We will review the submission and add it to the table.
+
+## What makes a good example
+
+- Self-contained and runnable where possible
+- Uses simulated or publicly available data
+- Includes comments explaining key steps
+- Clear about what challenge or task it addresses
+
+See the [contributing guide](../contributing.qmd) for
+general contribution guidelines.

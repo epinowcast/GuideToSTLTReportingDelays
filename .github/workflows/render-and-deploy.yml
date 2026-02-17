@@ -38,30 +38,11 @@ jobs:
       - name: Render manuscript
         run: quarto render manuscript/paper.qmd
 
-      - name: Render guidance website
-        run: quarto render guidance-website
+      - name: Render website
+        run: quarto render
 
-      - name: Check for outputs
-        id: check-outputs
+      - name: Add paper to site
         run: |
-          has=false
-          if [ -f "manuscript/paper.html" ] || \
-             [ -f "manuscript/paper.pdf" ]; then
-            has=true
-          fi
-          if [ -d "guidance-website/_site" ]; then
-            has=true
-          fi
-          echo "has-artifacts=$has" >> $GITHUB_OUTPUT
-
-      - name: Assemble site for GitHub Pages
-        run: |
-          mkdir -p _site
-          # Website becomes the main site
-          if [ -d "guidance-website/_site" ]; then
-            cp -r guidance-website/_site/* _site/
-          fi
-          # Paper available at /paper/
           mkdir -p _site/paper
           cp manuscript/paper.html \
             _site/paper/index.html 2>/dev/null || true
@@ -69,6 +50,15 @@ jobs:
             _site/paper/paper.pdf 2>/dev/null || true
           cp -r manuscript/*_files \
             _site/paper/ 2>/dev/null || true
+
+      - name: Check for outputs
+        id: check-outputs
+        run: |
+          if [ -d "_site" ]; then
+            echo "has-artifacts=true" >> $GITHUB_OUTPUT
+          else
+            echo "has-artifacts=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Upload site preview
         if: steps.check-outputs.outputs.has-artifacts == 'true'

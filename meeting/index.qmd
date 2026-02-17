@@ -1,0 +1,60 @@
+---
+title: "InSight Net Session"
+---
+
+This guide is being developed collaboratively through
+the InSight Net nowcasting strike team.
+An initial working session brings together public health
+practitioners and modellers to identify shared challenges
+and inform the guide's content.
+
+## Session overview
+
+The session (~90 minutes) has three parts.
+
+### Challenges in real-time surveillance data (~40 minutes)
+
+Surveillance data used in real time face several common
+challenges: reporting delays, data revisions, site
+drop-in and drop-out, and other data quality issues.
+
+1. Laura Jones: overview of challenges (~10 minutes)
+2. Rapid presentations from participants on their
+   challenges (2-5 slides each, ~15 minutes)
+3. Facilitated discussion (~15 minutes)
+
+### Modelling options (~25 minutes)
+
+What modelling approaches are available to address
+these challenges?
+Covers the range from simple adjustments through to
+formal statistical approaches, what data each requires,
+and what each gives you in return.
+
+1. Sam Abbott: overview of modelling options (~10 minutes)
+2. Rapid presentations from participants on their models
+   or tools (2-5 slides each, ~15 minutes)
+
+### Choosing a modelling approach (~20 minutes)
+
+Group session working through how to choose between
+approaches for different challenge and data scenarios.
+The output will help inform the
+[interactive decision tree](../decision-tree.qmd).
+
+## Materials
+
+### Overview slides
+
+- Challenges overview slides (Laura Jones) — link TBD
+- Modelling options overview slides (Sam Abbott) — link TBD
+
+### Rapid presentation templates
+
+- [Challenges template](challenges-template.qmd)
+- [Models template](models-template.qmd)
+
+### Session documents
+
+- [Discussion prompts](discussion-prompts.qmd)
+- [Decision tree exercise](decision-tree-exercise.qmd)

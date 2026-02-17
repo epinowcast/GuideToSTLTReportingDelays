@@ -1,0 +1,34 @@
+---
+title: "Rapid Presentation Template: Challenges"
+---
+
+Template for a short (2-5 slide) presentation on
+the challenges you face when using surveillance data
+in real time.
+
+::: {.callout-tip}
+Download the
+[Quarto revealjs source](https://github.com/epinowcast/GuideToSTLTReportingDelays/blob/main/meeting/templates/challenges-slides-template.qmd){target="_blank"}
+to create your slides.
+:::
+
+## The challenge
+
+- What surveillance data stream are you working with?
+- What is the main challenge you face in using it in
+  real time?
+
+## How it shows up
+
+- How does this challenge manifest in your data?
+- Example: a plot, table, or screenshot showing the issue
+
+## What you currently do
+
+- How do you handle this challenge today?
+- What works and what does not?
+
+## What would help
+
+- What would make this easier?
+- What questions do you have for the group?

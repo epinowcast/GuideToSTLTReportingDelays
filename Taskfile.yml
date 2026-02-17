@@ -33,15 +33,17 @@ tasks:
   render-website:
     desc: "Render the guidance website"
     cmds:
-      - quarto render guidance-website
+      - quarto render
     sources:
-      - guidance-website/*.qmd
-      - guidance-website/_quarto.yml
+      - "*.qmd"
+      - "meeting/*.qmd"
+      - "community-examples/*.qmd"
+      - _quarto.yml
     generates:
-      - guidance-website/_site/**
+      - _site/**
 
   preview-website:
     desc: "Preview the guidance website with live reload"
     cmds:
-      - quarto preview guidance-website
+      - quarto preview
     interactive: true

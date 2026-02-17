@@ -57,5 +57,5 @@ surveillance data involves common steps.
 
 See the [case studies](case-studies.qmd) for worked
 examples applying these steps, or browse
-[code snippets](code-snippets.qmd) for implementation
-examples.
+[community examples](community-examples/index.qmd) for
+implementation examples.

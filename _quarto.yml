@@ -1,0 +1,68 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "meeting/*.qmd"
+    - "community-examples/*.qmd"
+    - "!manuscript/"
+    - "!meeting/templates/"
+
+website:
+  title: "Reporting Delays in Public Health Surveillance"
+  description: >
+    A guide to understanding and accounting for reporting
+    delays in state, local, and territorial surveillance data.
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Challenges"
+        href: challenges.qmd
+      - text: "Methods"
+        href: methods.qmd
+      - text: "Decision Tree"
+        href: decision-tree.qmd
+      - text: "How-to"
+        href: how-to.qmd
+      - text: "Case Studies"
+        href: case-studies.qmd
+      - text: "Community Examples"
+        href: community-examples/index.qmd
+      - text: "Resources"
+        href: resources.qmd
+    right:
+      - text: "Meeting"
+        menu:
+          - text: "Session overview"
+            href: meeting/index.qmd
+          - text: "---"
+          - text: "Templates"
+          - text: "Challenges template"
+            href: meeting/challenges-template.qmd
+          - text: "Models template"
+            href: meeting/models-template.qmd
+          - text: "---"
+          - text: "Session documents"
+          - text: "Discussion prompts"
+            href: meeting/discussion-prompts.qmd
+          - text: "Decision tree exercise"
+            href: meeting/decision-tree-exercise.qmd
+      - text: "Papers"
+        menu:
+          - text: "This guide (companion paper)"
+            href: /paper/
+            target: _blank
+          - text: "Nowcasting methods overview"
+            href: https://example.com/nowcasting-overview
+            target: _blank
+      - text: "Contributing"
+        href: contributing.qmd
+      - icon: github
+        href: https://github.com/epinowcast/GuideToSTLTReportingDelays
+        target: _blank
+
+format:
+  html:
+    theme: flatly
+    toc: true

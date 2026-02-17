@@ -17,6 +17,8 @@ website:
         href: methods.qmd
       - text: "Decision Tree"
         href: decision-tree.qmd
+      - text: "How-to"
+        href: how-to.qmd
       - text: "Case Studies"
         href: case-studies.qmd
       - text: "Resources"
@@ -43,5 +45,5 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     toc: true

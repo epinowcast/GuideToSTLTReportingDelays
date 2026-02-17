@@ -9,6 +9,7 @@ interactive format.
 - `challenges.qmd` - Challenges in real-time surveillance
 - `methods.qmd` - Modelling methods for reporting delays
 - `decision-tree.qmd` - Interactive method selection tool
+- `how-to.qmd` - Common implementation steps
 - `case-studies.qmd` - Worked examples
 - `resources.qmd` - Software, reading, and glossary
 - `contributing.qmd` - How to contribute

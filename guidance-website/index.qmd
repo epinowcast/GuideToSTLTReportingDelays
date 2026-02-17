@@ -25,6 +25,8 @@ surveillance data at state, local, and territorial levels.
   hierarchical models.
 - **A decision tree** to help select an appropriate method
   based on your data characteristics and use case.
+- **A how-to guide** covering the common steps from
+  assessing data through to communicating results.
 - **Case studies** demonstrating practical implementations
   in surveillance settings.
 

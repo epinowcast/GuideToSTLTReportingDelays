@@ -1,4 +1,4 @@
-# A Guide to Accounting for Reporting Delays in State, Local, and Territorial Public Health Surveillance Data
+# A Guide to Accounting for Reporting Delays in State, Tribal, Local, and Territorial Public Health Surveillance Data
 
 ## Project structure
 

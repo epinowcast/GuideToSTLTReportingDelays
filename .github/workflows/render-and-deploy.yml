@@ -36,7 +36,7 @@ jobs:
         working-directory: manuscript
 
       - name: Render manuscript
-        run: quarto render manuscript/paper.qmd
+        run: quarto render manuscript/index.qmd
 
       - name: Render website
         run: quarto render
@@ -44,10 +44,10 @@ jobs:
       - name: Add paper to site
         run: |
           mkdir -p _site/paper
-          cp manuscript/paper.html \
+          cp manuscript/index.html \
             _site/paper/index.html 2>/dev/null || true
-          cp manuscript/paper.pdf \
-            _site/paper/paper.pdf 2>/dev/null || true
+          cp manuscript/index.pdf \
+            _site/paper/index.pdf 2>/dev/null || true
           cp -r manuscript/*_files \
             _site/paper/ 2>/dev/null || true
 

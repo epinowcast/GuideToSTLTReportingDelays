@@ -11,9 +11,7 @@ These **reporting delays** mean that the most recent data
 systematically undercount the true number of events,
 complicating real-time analysis.
 
-This guide provides practical support for public health
-practitioners and modellers working with delayed
-surveillance data at state, local, and territorial levels.
+This guide is designed with and for state, tribal, local, and territorial (STLT) public health practitioners and modellers in the United States working with delayed surveillance data.
 
 ## What this guide covers
 

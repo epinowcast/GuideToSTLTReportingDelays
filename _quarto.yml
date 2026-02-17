@@ -17,7 +17,7 @@ website:
   title: "STLT Delays Guide"
   description: >
     A guide to understanding and accounting for reporting
-    delays in state, local, and territorial surveillance data.
+    delays in state, tribal, local, and territorial surveillance data.
   navbar:
     left:
       - text: "Home"

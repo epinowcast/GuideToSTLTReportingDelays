@@ -1,5 +1,5 @@
 ---
-title: "A guide to accounting for reporting delays in state, local, and territorial public health surveillance data"
+title: "A guide to accounting for reporting delays in state, tribal, local, and territorial public health surveillance data"
 authors:
   - name: "Laura Jones"
     affiliations:
@@ -399,7 +399,7 @@ evolve.
 Several reviews have examined nowcasting methods in specific contexts
 (@placeholder).
 Our guide complements these by focusing on practical implementation
-considerations for state, local, and territorial public health settings.
+considerations for state, tribal, local, and territorial public health settings.
 
 ## Future directions
 

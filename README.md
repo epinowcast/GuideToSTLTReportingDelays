@@ -1,4 +1,4 @@
-# A guide to accounting for reporting delays in state, local, and territorial public health surveillance data
+# A guide to accounting for reporting delays in state, tribal, local, and territorial public health surveillance data
 
 State, local, and territorial surveillance systems are essential for public
 health decision making, but inherent delays between disease occurrence and

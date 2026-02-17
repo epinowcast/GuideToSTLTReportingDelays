@@ -1,0 +1,44 @@
+---
+title: "Submit an Example"
+---
+
+We accept several types of contributions:
+
+- **Code snippets** as GitHub Gists
+- **Package vignettes** (link to the published vignette)
+- **Data preparation workflows**
+- **Tutorials or walkthroughs**
+- **Other resources** relevant to working with delayed
+  surveillance data
+
+## Submission criteria
+
+All submissions should:
+
+- Be relevant to working with delayed or revised
+  surveillance data
+- Include a clear description of what the example does
+- State the language and any package dependencies
+- Be self-contained and runnable where possible, or
+  link to a reproducible resource
+- Use simulated or publicly available data (no
+  protected health information)
+- Include comments or documentation explaining key
+  steps
+
+## How to submit
+
+**Open an issue** using the
+[community example template](https://github.com/epinowcast/GuideToSTLTReportingDelays/issues/new?template=community-example.yml){target="_blank"}
+with:
+
+- A link to your gist, vignette, or resource
+- The type of contribution
+- Which challenge and approach it covers
+- A brief description
+
+We will review the submission and add it to the
+[examples table](index.qmd).
+
+See the [contributing guide](../contributing.qmd) for
+general contribution guidelines.

@@ -1,0 +1,17 @@
+---
+title: "Reporting Delays"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- What it is: right-truncation -->
+
+<!-- Why it happens: lab confirmation requirements,
+     electronic vs manual reporting differences,
+     weekend and holiday effects -->
+
+<!-- How it affects analysis -->
+
+<!-- How to identify it -->

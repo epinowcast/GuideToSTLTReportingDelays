@@ -3,27 +3,21 @@ title: "Modelling Approaches for Reporting Delays"
 ---
 
 ::: {.callout-note}
-This page is under development.
 Content will be drawn from the companion paper
 (Section 3: Opportunities from modelling).
-The table below will be interactive and filterable.
+Tables will be interactive and filterable.
 :::
 
-## Summary
-
-<!-- Filterable table of modelling approaches from the
-     paper. Implementation: use OJS or a Quarto
-     interactive table with filters for challenge,
-     approach, and data requirements. -->
+## Approaches by challenge
 
 | Challenge | Approach | Examples | Data requirements |
 |---|---|---|---|
-| Reporting delays | Chain-ladder | baselinenowcast, ChainLadder | Reporting triangle |
-| Reporting delays | GAMs | nowcaster, UKHSA GAMs | Reporting triangle |
-| Reporting delays | Bayesian hierarchical | NobBS | Reporting triangle |
+| Reporting delays | [Chain-ladder](chain-ladder.qmd) | baselinenowcast, ChainLadder | Reporting triangle |
+| Reporting delays | [GAMs](gams.qmd) | nowcaster, UKHSA GAMs | Reporting triangle |
+| Reporting delays | [Bayesian hierarchical](bayesian-hierarchical.qmd) | NobBS | Reporting triangle |
 | Reporting delays | Ad-hoc | EpiNow2 | Case counts + delay estimate |
-| Reporting delays | Semi-mechanistic | EpiNow2, epinowcast | Reporting triangle |
-| Data revisions | Chain-ladder | baselinenowcast | Data snapshots |
+| Reporting delays | [Semi-mechanistic](semi-mechanistic.qmd) | EpiNow2, epinowcast | Reporting triangle |
+| Data revisions | [Chain-ladder](chain-ladder.qmd) | baselinenowcast | Data snapshots |
 | Site drop-in/out | — | — | — |
 | Other data quality | — | — | — |
 
@@ -39,19 +33,3 @@ The table below will be interactive and filterable.
 | NobBS | R | Bayesian hierarchical | [CRAN](https://cran.r-project.org/package=NobBS) |
 
 : Available software packages {.striped .hover}
-
-## Chain-ladder approaches
-
-<!-- baselinenowcast, ChainLadder -->
-
-## Generalised additive models
-
-<!-- nowcaster, UKHSA GAMs -->
-
-## Bayesian hierarchical methods
-
-<!-- NobBS -->
-
-## Semi-mechanistic approaches
-
-<!-- EpiNow2, epinowcast -->

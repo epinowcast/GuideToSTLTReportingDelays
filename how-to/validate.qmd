@@ -1,0 +1,15 @@
+---
+title: "Validate and Evaluate"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- Practical qualitative methods (e.g. flipbooking,
+     alignment with trends).
+     Quantitative methods (coverage, correlation,
+     residuals).
+     Advanced methods (WIS, MAE/MSE) for comparison.
+     Evaluation for public health utility.
+     Compare against a baseline. -->

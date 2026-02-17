@@ -40,7 +40,7 @@ and what each gives you in return.
 Group session working through how to choose between
 approaches for different challenge and data scenarios.
 The output will help inform the
-[interactive decision tree](../decision-tree.qmd).
+[interactive decision tree](../choosing-a-method/index.qmd).
 
 ## Materials
 

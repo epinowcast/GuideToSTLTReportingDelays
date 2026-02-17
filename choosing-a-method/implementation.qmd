@@ -1,0 +1,13 @@
+---
+title: "Implementation Considerations"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+<!-- Emergencies vs chronic delays.
+     Software and infrastructure requirements.
+     Failure modes.
+     Maintaining systems over time.
+     Tradeoff between flexibility and complexity. -->

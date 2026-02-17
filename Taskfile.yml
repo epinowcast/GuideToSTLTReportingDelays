@@ -36,8 +36,13 @@ tasks:
       - quarto render
     sources:
       - "*.qmd"
-      - "meeting/*.qmd"
+      - "challenges/*.qmd"
+      - "methods/*.qmd"
+      - "choosing-a-method/*.qmd"
+      - "how-to/*.qmd"
+      - "case-studies/*.qmd"
       - "community-examples/*.qmd"
+      - "meeting/*.qmd"
       - _quarto.yml
     generates:
       - _site/**

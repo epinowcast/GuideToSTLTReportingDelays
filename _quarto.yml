@@ -3,9 +3,13 @@ project:
   output-dir: _site
   render:
     - "*.qmd"
-    - "meeting/*.qmd"
-    - "community-examples/*.qmd"
+    - "challenges/*.qmd"
+    - "methods/*.qmd"
+    - "choosing-a-method/*.qmd"
+    - "how-to/*.qmd"
     - "case-studies/*.qmd"
+    - "community-examples/*.qmd"
+    - "meeting/*.qmd"
     - "!manuscript/"
     - "!meeting/templates/"
 
@@ -21,25 +25,24 @@ website:
       - text: "Understanding"
         menu:
           - text: "Challenges"
-            href: challenges.qmd
+            href: challenges/index.qmd
           - text: "Modelling Approaches"
-            href: methods.qmd
+            href: methods/index.qmd
       - text: "Implementing"
         menu:
           - text: "Choosing a Method"
-            href: decision-tree.qmd
+            href: choosing-a-method/index.qmd
           - text: "How-to Guide"
-            href: how-to.qmd
-          - text: "---"
+            href: how-to/index.qmd
           - text: "Case Studies"
-          - text: "Overview"
             href: case-studies/index.qmd
-          - text: "Syndromic surveillance"
-            href: case-studies/syndromic-surveillance.qmd
       - text: "Examples & Resources"
         menu:
           - text: "Community Examples"
             href: community-examples/index.qmd
+          - text: "Submit an Example"
+            href: community-examples/submit.qmd
+          - text: "---"
           - text: "Further Reading & Glossary"
             href: resources.qmd
     right:
@@ -75,5 +78,7 @@ website:
 
 format:
   html:
-    theme: sandstone
+    theme:
+      - sandstone
+      - custom.scss
     toc: true

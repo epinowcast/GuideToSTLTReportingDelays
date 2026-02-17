@@ -7,7 +7,7 @@ The goal is to work through scenarios and surface the
 questions that matter when choosing how to handle
 reporting delays and other data challenges.
 The output will help inform the
-[interactive decision tree](../decision-tree.qmd).
+[interactive decision tree](../choosing-a-method/index.qmd).
 
 ## How it works
 

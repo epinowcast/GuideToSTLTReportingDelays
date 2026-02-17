@@ -1,8 +1,4 @@
-# Meeting
-
-Planning materials for dissemination and discussion activities.
-
-## Accounting for reporting delays in STLT surveillance data: challenges, models, and practical choices
+# Accounting for reporting delays in STLT surveillance data: challenges, models, and practical choices
 
 InSight Net session (~90 minutes)
 
@@ -37,8 +33,3 @@ See [exercise document](decision-tree-exercise.md).
 
 - Summary of key themes
 - How to get involved in the strike team
-
-## Initial strike team meeting
-
-- Date: TBD (coordination centre to confirm)
-- Agenda: TBD

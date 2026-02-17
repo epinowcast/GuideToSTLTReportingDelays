@@ -1,0 +1,26 @@
+---
+title: "Your challenge with real-time surveillance data"
+subtitle: "InSight Net nowcasting strike team"
+author: "Your name"
+format: revealjs
+---
+
+## The challenge
+
+- What surveillance data stream are you working with?
+- What is the main challenge you face in using it in real time?
+
+## How it shows up
+
+- How does this challenge manifest in your data?
+- Example: a plot, table, or screenshot showing the issue
+
+## What you currently do
+
+- How do you handle this challenge today?
+- What works and what does not?
+
+## What would help
+
+- What would make this easier?
+- What questions do you have for the group?

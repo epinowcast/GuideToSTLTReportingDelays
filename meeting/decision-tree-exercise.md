@@ -7,13 +7,32 @@ The output will help inform constructing an interactive decision tree for the pa
 ## How it works
 
 Pick a scenario that is closest to your own setting, or bring your own.
-As a group, discuss:
+As you work through it, sketch out a decision tree that captures the choices you would make and why.
 
-1. What is the main challenge?
-2. What data do you have available?
-3. What would you try first?
-4. What would you need to move to something more formal?
-5. What would stop you from using a particular approach?
+### Step 1: Define your starting point
+
+- What data do you have?
+- What challenge are you facing?
+- What do you need to deliver and how quickly?
+
+### Step 2: Sketch your decision tree
+
+Work through the choices you would make, branching at each decision point.
+For example:
+
+- Are delays stable or changing? &rarr;
+- Do you have enough historical data to estimate delay patterns? &rarr;
+- Do you need uncertainty estimates or just a point correction? &rarr;
+- How much time and technical capacity do you have? &rarr;
+
+Write or draw your tree as you go.
+It does not need to be neat; the goal is to capture the logic.
+
+### Step 3: Compare and discuss
+
+Share your tree with the group.
+Where do your trees agree?
+Where do they diverge and why?
 
 ## Example scenarios
 
@@ -24,11 +43,11 @@ These are starting points; participants are encouraged to use their own data and
 - **Site drop-in/drop-out in sentinel surveillance:** hospitalisations across 12 sentinel sites, two reporting intermittently, one new site, need a jurisdiction-wide estimate.
 - **Low counts with long delays:** rare condition with 5-10 cases per week, delays up to 6 weeks, 18 months of historical data.
 
-## Questions to capture
+## What to capture
 
-As you work through your scenario, note down:
+As you sketch your tree, note:
 
-- What questions come up repeatedly?
-- What information do you need to make a choice?
-- Where do the boundaries between "simple enough" and "need something more formal" fall?
-- What would you put in a decision tree?
+- What questions determine the next branch?
+- What information do you need at each decision point?
+- Where is the boundary between "simple enough" and "need something more formal"?
+- Are there dead ends where no current tool fits well?

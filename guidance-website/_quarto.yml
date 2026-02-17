@@ -23,7 +23,7 @@ website:
         href: resources.qmd
     right:
       - text: "Paper"
-        href: https://example.com/paper
+        href: /paper/
         target: _blank
       - text: "Presentations"
         menu:
@@ -34,8 +34,7 @@ website:
             href: https://example.com/slides-modelling
             target: _blank
       - text: "Code Snippets"
-        href: https://example.com/code-snippets
-        target: _blank
+        href: code-snippets.qmd
       - text: "Contributing"
         href: contributing.qmd
       - icon: github

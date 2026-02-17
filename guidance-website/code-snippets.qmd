@@ -1,0 +1,40 @@
+---
+title: "Code Snippets"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+Community-contributed code examples demonstrating how to
+apply delay-adjustment methods in practice.
+
+## Browse by method
+
+<!-- Sections for each method category,
+     populated as submissions arrive -->
+
+### Chain-ladder approaches
+
+<!-- e.g. baselinenowcast examples -->
+
+### Generalised additive models
+
+<!-- e.g. nowcaster examples -->
+
+### Bayesian hierarchical methods
+
+<!-- e.g. NobBS examples -->
+
+### Semi-mechanistic approaches
+
+<!-- e.g. EpiNow2, epinowcast examples -->
+
+## Submit a snippet
+
+We welcome code contributions.
+Each snippet should include a brief description of the
+data context, the method used, and a runnable example.
+
+See the [contributing guide](contributing.qmd) for how
+to submit.

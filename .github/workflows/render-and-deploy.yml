@@ -70,15 +70,12 @@ jobs:
           cp -r manuscript/*_files \
             _site/paper/ 2>/dev/null || true
 
-      - name: Upload artifacts
+      - name: Upload site preview
         if: steps.check-outputs.outputs.has-artifacts == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: quarto-outputs-${{ github.sha }}
-          path: |
-            manuscript/paper.html
-            manuscript/paper.pdf
-            guidance-website/_site
+          name: site-preview-${{ github.sha }}
+          path: _site
           retention-days: 30
           if-no-files-found: warn
 

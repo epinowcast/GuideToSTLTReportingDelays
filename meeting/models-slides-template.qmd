@@ -1,0 +1,26 @@
+---
+title: "Your model or tool for handling reporting delays"
+subtitle: "InSight Net nowcasting strike team"
+author: "Your name"
+format: revealjs
+---
+
+## The model or tool
+
+- What is it called?
+- What challenge does it address?
+
+## How it works (briefly)
+
+- What is the basic idea?
+- What data does it need?
+
+## Experience using it
+
+- Where have you applied it?
+- What worked well and what was difficult?
+
+## Advice for others
+
+- When would you recommend this approach?
+- When would you not?

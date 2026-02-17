@@ -1,0 +1,36 @@
+---
+title: "Case Studies"
+---
+
+::: {.callout-note}
+This page is under development.
+Content will be drawn from the companion paper
+(Section 6: How-to case studies).
+:::
+
+Each case study walks through the common steps of
+accounting for reporting challenges in a specific
+surveillance setting.
+
+## Common steps
+
+Regardless of the challenge or modelling approach,
+implementation follows a similar pattern:
+
+1. Assess the data source and the predictability of
+   the reporting challenge
+2. Analyse delay distributions
+3. Identify meaningful strata (e.g. geography, age)
+4. Implement and configure the model
+5. Validate against historical data
+6. Communicate results to decision makers
+
+See the [how-to guide](../how-to.qmd) for detailed
+guidance on each step.
+
+## Available case studies
+
+- [Syndromic surveillance](syndromic-surveillance.qmd)
+
+<!-- Additional case studies to be added as the paper
+     develops -->

@@ -5,6 +5,7 @@ project:
     - "*.qmd"
     - "meeting/*.qmd"
     - "community-examples/*.qmd"
+    - "case-studies/*.qmd"
     - "!manuscript/"
     - "!meeting/templates/"
 
@@ -17,20 +18,30 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Challenges"
-        href: challenges.qmd
-      - text: "Methods"
-        href: methods.qmd
-      - text: "Decision Tree"
-        href: decision-tree.qmd
-      - text: "How-to"
-        href: how-to.qmd
-      - text: "Case Studies"
-        href: case-studies.qmd
-      - text: "Community Examples"
-        href: community-examples/index.qmd
-      - text: "Resources"
-        href: resources.qmd
+      - text: "Understanding"
+        menu:
+          - text: "Challenges"
+            href: challenges.qmd
+          - text: "Modelling Approaches"
+            href: methods.qmd
+      - text: "Implementing"
+        menu:
+          - text: "Choosing a Method"
+            href: decision-tree.qmd
+          - text: "How-to Guide"
+            href: how-to.qmd
+          - text: "---"
+          - text: "Case Studies"
+          - text: "Overview"
+            href: case-studies/index.qmd
+          - text: "Syndromic surveillance"
+            href: case-studies/syndromic-surveillance.qmd
+      - text: "Examples & Resources"
+        menu:
+          - text: "Community Examples"
+            href: community-examples/index.qmd
+          - text: "Further Reading & Glossary"
+            href: resources.qmd
     right:
       - text: "Meeting"
         menu:
@@ -64,5 +75,5 @@ website:
 
 format:
   html:
-    theme: flatly
+    theme: sandstone
     toc: true

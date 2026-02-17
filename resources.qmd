@@ -1,22 +1,12 @@
 ---
-title: "Tools and Resources"
+title: "Further Reading and Glossary"
 ---
 
 ::: {.callout-note}
 This page is under development.
-Software and further reading will be drawn from the
-companion paper.
+Further reading will be drawn from the companion paper.
 The glossary is website-original content.
 :::
-
-## Software
-
-| Package | Language | Approach | Link |
-|---|---|---|---|
-| baselinenowcast | R | Chain-ladder | [GitHub](https://github.com/epinowcast/baselinenowcast) |
-| epinowcast | R | Bayesian hierarchical | [GitHub](https://github.com/epinowcast/epinowcast) |
-| EpiNow2 | R | Semi-mechanistic | [GitHub](https://github.com/epiforecasts/EpiNow2) |
-| NobBS | R | Bayesian hierarchical | [CRAN](https://cran.r-project.org/package=NobBS) |
 
 ## Further reading
 
@@ -26,4 +16,5 @@ The glossary is website-original content.
 
 <!-- Definitions of key terms:
      right-truncation, nowcasting,
-     reporting delay, data vintage, etc. -->
+     reporting delay, data vintage,
+     reporting triangle, etc. -->

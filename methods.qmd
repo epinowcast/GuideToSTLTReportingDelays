@@ -6,7 +6,39 @@ title: "Modelling Approaches for Reporting Delays"
 This page is under development.
 Content will be drawn from the companion paper
 (Section 3: Opportunities from modelling).
+The table below will be interactive and filterable.
 :::
+
+## Summary
+
+<!-- Filterable table of modelling approaches from the
+     paper. Implementation: use OJS or a Quarto
+     interactive table with filters for challenge,
+     approach, and data requirements. -->
+
+| Challenge | Approach | Examples | Data requirements |
+|---|---|---|---|
+| Reporting delays | Chain-ladder | baselinenowcast, ChainLadder | Reporting triangle |
+| Reporting delays | GAMs | nowcaster, UKHSA GAMs | Reporting triangle |
+| Reporting delays | Bayesian hierarchical | NobBS | Reporting triangle |
+| Reporting delays | Ad-hoc | EpiNow2 | Case counts + delay estimate |
+| Reporting delays | Semi-mechanistic | EpiNow2, epinowcast | Reporting triangle |
+| Data revisions | Chain-ladder | baselinenowcast | Data snapshots |
+| Site drop-in/out | — | — | — |
+| Other data quality | — | — | — |
+
+: Modelling approaches for addressing surveillance data challenges {.striped .hover}
+
+## Software
+
+| Package | Language | Approach | Link |
+|---|---|---|---|
+| baselinenowcast | R | Chain-ladder | [GitHub](https://github.com/epinowcast/baselinenowcast) |
+| epinowcast | R | Bayesian hierarchical | [GitHub](https://github.com/epinowcast/epinowcast) |
+| EpiNow2 | R | Semi-mechanistic | [GitHub](https://github.com/epiforecasts/EpiNow2) |
+| NobBS | R | Bayesian hierarchical | [CRAN](https://cran.r-project.org/package=NobBS) |
+
+: Available software packages {.striped .hover}
 
 ## Chain-ladder approaches
 
@@ -23,9 +55,3 @@ Content will be drawn from the companion paper
 ## Semi-mechanistic approaches
 
 <!-- EpiNow2, epinowcast -->
-
-## Comparison summary
-
-<!-- Table or summary comparing approaches on key dimensions:
-     complexity, data requirements, flexibility,
-     software availability -->

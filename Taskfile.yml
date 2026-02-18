@@ -48,6 +48,19 @@ tasks:
     generates:
       - _site/**
 
+  link-glossary:
+    desc: "Link glossary terms in website pages"
+    cmds:
+      - julia scripts/link-glossary.jl
+    sources:
+      - "**/*.qmd"
+      - scripts/link-glossary.jl
+
+  check-glossary:
+    desc: "Check glossary links are up to date"
+    cmds:
+      - julia scripts/link-glossary.jl --check
+
   preview-website:
     desc: "Preview the guidance website with live reload"
     cmds:

@@ -2,6 +2,6 @@
 title: "Resources"
 ---
 
-- [Training courses](training.qmd) on nowcasting and forecasting infectious disease dynamics.
+- [Training courses](training.qmd) on [nowcasting](../resources/glossary.qmd#nowcasting) and forecasting infectious disease dynamics.
 - [Further reading](further-reading.qmd) including key references and related guides.
 - [Glossary](glossary.qmd) of terms used throughout this guide.

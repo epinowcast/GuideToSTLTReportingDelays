@@ -3,7 +3,7 @@ title: "Rapid Presentation Template: Models"
 ---
 
 Template for a short (2-5 slide) presentation on
-a model or tool you use to handle reporting delays
+a model or tool you use to handle [reporting delays](../resources/glossary.qmd#reporting-delay)
 or other data challenges.
 
 ::: {.callout-tip}

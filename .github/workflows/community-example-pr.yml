@@ -1,0 +1,144 @@
+name: Community example PR
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pr:
+    if: >-
+      contains(
+        github.event.issue.labels.*.name,
+        'community-example'
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Parse issue and create PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          set -euo pipefail
+
+          # Parse fields from the issue body.
+          # GitHub forms produce "### Heading\n\nValue" blocks.
+          extract_field() {
+            local field="$1"
+            echo "$ISSUE_BODY" \
+              | awk -v f="### $field" \
+                  'found && /^###/{exit}
+                   found{print}
+                   $0==f{found=1}' \
+              | sed '/^$/d' \
+              | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
+          }
+
+          link=$(extract_field "Link")
+          type=$(extract_field "Type")
+          challenge=$(extract_field "Challenge")
+          approach=$(extract_field "Approach")
+          language=$(extract_field "Language")
+          description=$(extract_field "Brief description")
+
+          # Strip "Example: " prefix from the issue title.
+          title="${ISSUE_TITLE#Example: }"
+
+          # Validate required fields.
+          missing=""
+          for field in link type challenge approach language; do
+            eval "val=\$$field"
+            if [ -z "$val" ]; then
+              missing="$missing $field"
+            fi
+          done
+
+          if [ -n "$missing" ]; then
+            echo "::error::Missing required fields:$missing"
+            gh issue comment "$ISSUE_NUMBER" --body \
+              "Could not parse the following fields from this issue:$missing. Please check the issue body follows the expected template format."
+            exit 1
+          fi
+
+          # Build link label from URL domain.
+          link_label=$(echo "$link" \
+            | sed 's|https\?://||' \
+            | sed 's|/.*||' \
+            | sed 's/^www\.//')
+
+          # Build the new table row.
+          row="| ${title} | @${ISSUE_AUTHOR} | ${type} | ${challenge} | ${approach} | ${language} | [${link_label}](${link}){target=\"_blank\"} |"
+
+          # Insert the row before the table caption line.
+          table_file="community-examples/index.qmd"
+          caption=": Community-contributed examples"
+
+          if ! grep -q "$caption" "$table_file"; then
+            echo "::error::Caption line not found in $table_file"
+            exit 1
+          fi
+
+          sed -i "/$caption/i\\
+          $row" "$table_file"
+
+          # Create branch, commit, push, and open PR.
+          branch="community-example/issue-${ISSUE_NUMBER}"
+          git checkout -b "$branch"
+
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "$table_file"
+          git commit -m "$(cat <<COMMIT_MSG
+          Add community example from issue #${ISSUE_NUMBER}
+
+          Adds '${title}' by @${ISSUE_AUTHOR} to the
+          community examples table.
+
+          Closes #${ISSUE_NUMBER}
+          COMMIT_MSG
+          )"
+
+          git push origin "$branch"
+
+          pr_body=$(cat <<PR_EOF
+          ## Summary
+
+          Adds a new community example to the table in
+          \`community-examples/index.qmd\`, parsed from
+          #${ISSUE_NUMBER}.
+
+          | Field | Value |
+          |---|---|
+          | Title | ${title} |
+          | Author | @${ISSUE_AUTHOR} |
+          | Type | ${type} |
+          | Challenge | ${challenge} |
+          | Approach | ${approach} |
+          | Language | ${language} |
+          | Link | ${link} |
+          | Description | ${description} |
+
+          Closes #${ISSUE_NUMBER}
+          PR_EOF
+          )
+
+          pr_url=$(gh pr create \
+            --title "Add community example: ${title}" \
+            --body "$pr_body" \
+            --base main \
+            --head "$branch")
+
+          gh issue comment "$ISSUE_NUMBER" --body \
+            "Thanks for your submission, @${ISSUE_AUTHOR}! A PR has been opened to add your example to the table: ${pr_url}"

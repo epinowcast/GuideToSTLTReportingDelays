@@ -2,7 +2,7 @@
 title: "Training Courses"
 ---
 
-Training courses on nowcasting and forecasting infectious disease dynamics.
+Training courses on [nowcasting](../resources/glossary.qmd#nowcasting) and forecasting infectious disease dynamics.
 
 | Course | Description | Link |
 |---|---|---|

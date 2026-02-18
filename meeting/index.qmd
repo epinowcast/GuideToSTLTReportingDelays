@@ -3,7 +3,7 @@ title: "InSight Net Session"
 ---
 
 This guide is being developed collaboratively through
-the InSight Net nowcasting strike team.
+the InSight Net [nowcasting](../resources/glossary.qmd#nowcasting) strike team.
 An initial working session brings together public health
 practitioners and modellers to identify shared challenges
 and inform the guide's content.
@@ -15,7 +15,7 @@ The session (~90 minutes) has three parts.
 ### Challenges in real-time surveillance data (~40 minutes)
 
 Surveillance data used in real time face several common
-challenges: reporting delays, data revisions, site
+challenges: [reporting delays](../resources/glossary.qmd#reporting-delay), data revisions, site
 drop-in and drop-out, and other data quality issues.
 
 1. Laura Jones: overview of challenges (~10 minutes)

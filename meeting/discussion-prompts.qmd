@@ -7,7 +7,7 @@ challenges overview and rapid presentations.
 
 ## Reporting delays
 
-- What are the most common sources of reporting delay
+- What are the most common sources of [reporting delay](../resources/glossary.qmd#reporting-delay)
   in your jurisdiction?
 - How long are typical delays for your main surveillance
   streams?

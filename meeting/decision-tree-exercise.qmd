@@ -5,7 +5,7 @@ title: "Decision Tree Exercise"
 A participant-led group exercise.
 The goal is to work through scenarios and surface the
 questions that matter when choosing how to handle
-reporting delays and other data challenges.
+[reporting delays](../resources/glossary.qmd#reporting-delay) and other data challenges.
 The output will help inform the
 [interactive decision tree](../choosing-a-method/index.qmd).
 

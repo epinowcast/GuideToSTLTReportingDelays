@@ -1,0 +1,17 @@
+---
+title: "Further Reading"
+---
+
+::: {.callout-note}
+This page is under development.
+Further reading will be drawn from the companion paper.
+:::
+
+| Title | Authors | Description |
+|---|---|---|
+| | | |
+
+: Further reading {.striped .hover}
+
+<!-- Key references and related guides to add as
+     the companion paper develops -->

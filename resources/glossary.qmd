@@ -1,0 +1,48 @@
+---
+title: "Glossary"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+Terms used throughout this guide.
+Link to a definition from elsewhere on the site using `[term](/resources/glossary.qmd#nowcasting)`.
+
+## N
+
+### Nowcasting {#nowcasting}
+
+Estimating the current state of an outcome by adjusting for reporting delays using historical patterns.
+
+## D
+
+### Data vintage {#data-vintage}
+
+A snapshot of a dataset at a particular point in time, capturing the state of reporting at that moment.
+
+## R
+
+### Reference date {#reference-date}
+
+The date an event occurred (e.g. symptom onset, hospital admission).
+
+### Report date {#report-date}
+
+The date an event appeared in the surveillance system.
+
+### Reporting delay {#reporting-delay}
+
+The time between an event occurring and it appearing in surveillance data.
+
+### Reporting triangle {#reporting-triangle}
+
+A data structure organising counts by both event date and reporting date, used as input to nowcasting methods.
+
+### Right-truncation {#right-truncation}
+
+The systematic undercounting of recent events because not all cases have been reported yet.
+
+<!-- Additional terms to add:
+     chain-ladder, GAM, semi-mechanistic model,
+     data revision, site drop-in/drop-out -->

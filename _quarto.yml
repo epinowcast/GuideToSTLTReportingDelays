@@ -9,6 +9,7 @@ project:
     - "how-to/*.qmd"
     - "case-studies/*.qmd"
     - "community-examples/*.qmd"
+    - "resources/*.qmd"
     - "meeting/*.qmd"
     - "!manuscript/"
     - "!meeting/templates/"
@@ -43,8 +44,12 @@ website:
           - text: "Submit an Example"
             href: community-examples/submit.qmd
           - text: "---"
-          - text: "Further Reading & Glossary"
-            href: resources.qmd
+          - text: "Training Courses"
+            href: resources/training.qmd
+          - text: "Further Reading"
+            href: resources/further-reading.qmd
+          - text: "Glossary"
+            href: resources/glossary.qmd
     right:
       - text: "Meeting"
         menu:

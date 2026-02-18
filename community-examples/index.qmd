@@ -18,6 +18,7 @@ practical resources.
 |---|---|---|---|---|---|---|
 | Nowcasting respiratory illness with baselinenowcast | Example Author | Code snippet | Reporting delays | Chain-ladder | R | [Gist](https://gist.github.com/example){target="_blank"} |
 
+| Test automated table update | @seabbs-bot | Code snippet | Reporting delays | baselinenowcast | R | [gist.github.com](https://gist.github.com/test/example-automation-test){target="_blank"} |
 : Community-contributed examples {.striped .hover}
 
 <!-- Table will grow as submissions are reviewed.

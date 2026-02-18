@@ -42,6 +42,7 @@ tasks:
       - "how-to/*.qmd"
       - "case-studies/*.qmd"
       - "community-examples/*.qmd"
+      - "resources/*.qmd"
       - "meeting/*.qmd"
       - _quarto.yml
     generates:

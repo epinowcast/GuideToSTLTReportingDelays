@@ -1,0 +1,12 @@
+---
+title: "Training Courses"
+---
+
+Training courses on nowcasting and forecasting infectious disease dynamics.
+
+| Course | Description | Link |
+|---|---|---|
+| Nowcasting and Forecasting of Infectious Disease Dynamics | Self-paced course covering delay distributions, nowcasting, forecasting, and evaluation | [nfidd.github.io/nfidd](https://nfidd.github.io/nfidd/){target="_blank"} |
+| SISMID: Nowcasting and Forecasting | Intensive short course on nowcasting and forecasting taught at the Summer Institute in Statistics and Modeling in Infectious Diseases | [nfidd.github.io/sismid](https://nfidd.github.io/sismid/){target="_blank"} |
+
+: Training courses {.striped .hover}

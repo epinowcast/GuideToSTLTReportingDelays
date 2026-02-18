@@ -7,7 +7,6 @@ This page is under development.
 :::
 
 Terms used throughout this guide.
-Link to a definition from elsewhere on the site using `[term](/resources/glossary.qmd#nowcasting)`.
 
 ## N
 

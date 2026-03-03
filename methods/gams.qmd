@@ -6,10 +6,10 @@ title: "Generalised Additive Models"
 This page is under development.
 :::
 
-<!-- nowcaster, UKHSA GAMs -->
+**Software:** nowcaster, UKHSA GAMs
 
-<!-- Data requirements -->
+## Data requirements
 
-<!-- How it works -->
+## How it works
 
-<!-- Implementation -->
+## Implementation

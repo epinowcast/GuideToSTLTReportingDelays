@@ -6,6 +6,5 @@ title: "Analyse Delays and Delay Distributions"
 This page is under development.
 :::
 
-<!-- Characterise the delay distribution from
-     historical data. Choose maximum delay and
-     training window. -->
+- Characterise the delay distribution from historical data
+- Choose maximum delay and training window

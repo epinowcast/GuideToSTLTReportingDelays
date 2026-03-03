@@ -6,13 +6,17 @@ title: "Other Data Quality Issues"
 This page is under development.
 :::
 
-<!-- What it is -->
+## What it is
 
-<!-- Why it happens: duplicate entries across systems,
-     missing or incorrect dates,
-     missing strata variables (e.g. race/ethnicity),
-     incompatible formats -->
+## Why it happens
 
-<!-- How it affects analysis -->
+- Duplicate entries across systems
+- Missing or incorrect dates
+- Missing strata variables (e.g. race/ethnicity)
+- Incompatible formats
+- Changes in testing or admission practices over time
+- Changes in case definitions or reimbursement schemes
 
-<!-- How to identify it -->
+## How it affects analysis
+
+## How to identify it

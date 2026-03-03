@@ -13,6 +13,13 @@ complicating real-time analysis.
 
 This guide is designed with and for state, tribal, local, and territorial (STLT) public health practitioners and modellers in the United States working with delayed surveillance data.
 
+Simple approaches such as discarding recent data, using frozen values, or aggregating by report date are often the first and most accessible options.
+When delays are long or variable, or when uncertainty quantification is needed, statistical methods can improve estimates by learning from historical reporting patterns.
+This guide helps determine when simple approaches are sufficient and when statistical methods would be worthwhile.
+
+This guide is intended as a companion to a technical overview of nowcasting methods that covers mathematical formulation and computational properties in detail.
+Here we focus on practical guidance for choosing and implementing these methods in STLT settings, with emphasis on adoption, communication, and real-world case studies.
+
 ## What this guide covers
 
 - **Challenges** that arise when using surveillance data in

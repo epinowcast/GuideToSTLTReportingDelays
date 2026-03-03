@@ -6,6 +6,9 @@ title: "Assess the Data Source"
 This page is under development.
 :::
 
-<!-- Identify the reporting challenge and its
-     predictability. Understand the data structure
-     and available history. -->
+- Identify the reporting challenge and its predictability
+- Understand the data structure and available history
+- Obtaining reporting triangles in STLT settings: line lists with reference and report dates, or successive snapshots of aggregate data
+- Data versioning: automating downloads at fixed times, using version-controlled data platforms where available, archived PDF reports as fallback
+- When ideal data aren't available: imputing missing reference dates from other date fields, using sentinel data extrapolated to the population
+- Handling rolling sums: need to recover daily or weekly counts before constructing a reporting triangle

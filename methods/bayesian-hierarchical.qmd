@@ -6,10 +6,10 @@ title: "Bayesian Hierarchical Methods"
 This page is under development.
 :::
 
-<!-- NobBS -->
+**Software:** NobBS
 
-<!-- Data requirements -->
+## Data requirements
 
-<!-- How it works -->
+## How it works
 
-<!-- Implementation -->
+## Implementation

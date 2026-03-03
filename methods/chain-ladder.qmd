@@ -6,10 +6,10 @@ title: "Chain-Ladder Approaches"
 This page is under development.
 :::
 
-<!-- baselinenowcast, ChainLadder -->
+**Software:** baselinenowcast, ChainLadder
 
-<!-- Data requirements -->
+## Data requirements
 
-<!-- How it works -->
+## How it works
 
-<!-- Implementation -->
+## Implementation

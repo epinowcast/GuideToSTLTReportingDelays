@@ -6,12 +6,14 @@ title: "Data Revisions"
 This page is under development.
 :::
 
-<!-- What it is -->
+## What it is
 
-<!-- Why it happens: duplicate removal,
-     case reclassifications, date corrections,
-     de-duplication -->
+## Why it happens
 
-<!-- How it affects analysis -->
+- Duplicate removal
+- Case reclassifications
+- Date corrections
 
-<!-- How to identify it -->
+## How it affects analysis
+
+## How to identify it

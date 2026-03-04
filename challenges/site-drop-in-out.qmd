@@ -6,13 +6,15 @@ title: "Surveillance Site Drop-in and Drop-out"
 This page is under development.
 :::
 
-<!-- What it is -->
+## What it is
 
-<!-- Why it happens: system-to-system delays,
-     hospital/facility intermittent reporting,
-     urban vs rural reporting capabilities,
-     EHR integration disparities -->
+## Why it happens
 
-<!-- How it affects analysis -->
+- System-to-system delays
+- Hospital/facility intermittent reporting
+- Urban vs rural reporting capabilities
+- EHR integration disparities
 
-<!-- How to identify it -->
+## How it affects analysis
+
+## How to identify it

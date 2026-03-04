@@ -6,10 +6,10 @@ title: "Validation and Evaluation"
 This page is under development.
 :::
 
-<!-- Practical qualitative methods
-     (flipbooking, alignment with trends).
-     Applied quantitative methods
-     (coverage, correlation, residuals).
-     Advanced methods (WIS, MAE/MSE) for comparison.
-     Evaluation for public health utility.
-     Against a baseline and other common methods. -->
+- What to check first: visual inspection of past nowcasts against final observed values (flipbooking, overlay plots)
+- What "good enough" looks like: prediction intervals cover observed values at roughly the expected rate (e.g. 90% intervals contain ~90% of final values)
+- When to investigate further: persistent directional bias, intervals that are consistently too narrow or too wide, sudden changes in performance
+- Applied quantitative methods (coverage, correlation, residuals)
+- Advanced methods (WIS, MAE/MSE) for comparison
+- Evaluation for public health utility
+- Against a baseline and other common methods

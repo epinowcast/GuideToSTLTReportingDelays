@@ -14,11 +14,7 @@ constraints around capacity and infrastructure.
 
 ## Decision tree
 
-<!-- Interactive decision tree guiding users through
-     method selection. Implementation options:
-     - Mermaid diagram with clickable nodes
-     - Observable JS for interactivity
-     - Simple flowchart as starting point -->
+Interactive decision tree guiding users through method selection (under development).
 
 ## Detailed guidance
 

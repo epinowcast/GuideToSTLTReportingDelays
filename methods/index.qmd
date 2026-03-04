@@ -8,18 +8,25 @@ Content will be drawn from the companion paper
 Tables will be interactive and filterable.
 :::
 
+For each approach below, we describe what it does, what data it needs, and what it gives you.
+For mathematical details and computational properties, see the companion technical overview.
+
 ## Approaches by challenge
 
 | Challenge | Approach | Examples | Data requirements |
 |---|---|---|---|
+| Reporting delays | Discarding recent data | — | Empirical delay distribution |
+| Reporting delays | Frozen values | — | Data snapshots |
+| Reporting delays | Aggregation by report date | — | Report date counts |
 | Reporting delays | [Chain-ladder](chain-ladder.qmd) | baselinenowcast, ChainLadder | Reporting triangle |
 | Reporting delays | [GAMs](gams.qmd) | nowcaster, UKHSA GAMs | Reporting triangle |
 | Reporting delays | [Bayesian hierarchical](bayesian-hierarchical.qmd) | NobBS | Reporting triangle |
 | Reporting delays | Ad-hoc | EpiNow2 | Case counts + delay estimate |
 | Reporting delays | [Semi-mechanistic](semi-mechanistic.qmd) | EpiNow2, epinowcast | Reporting triangle |
+| Data revisions | Excluding known revision periods | — | Revision history |
 | Data revisions | [Chain-ladder](chain-ladder.qmd) | baselinenowcast | Data snapshots |
-| Site drop-in/out | — | — | — |
-| Other data quality | — | — | — |
+| Site drop-in/out | Restricting to consistent sites | — | Site participation records |
+| Other data quality | De-duplication and imputation | — | Line list or aggregate data |
 
 : Modelling approaches for addressing surveillance data challenges {.striped .hover}
 

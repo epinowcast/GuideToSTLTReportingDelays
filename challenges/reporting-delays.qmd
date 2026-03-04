@@ -6,12 +6,22 @@ title: "Reporting Delays"
 This page is under development.
 :::
 
-<!-- What it is: right-truncation -->
+## What it is
 
-<!-- Why it happens: lab confirmation requirements,
-     electronic vs manual reporting differences,
-     weekend and holiday effects -->
+- Right-truncation
 
-<!-- How it affects analysis -->
+## Why it happens
 
-<!-- How to identify it -->
+- Lab confirmation requirements
+- Electronic vs manual reporting differences
+- Weekend and holiday effects (fewer reports filed on weekends, lab closures)
+- Holiday periods (extended closures affect both reporting and care-seeking)
+- Delays may shorten as reporting improves or lengthen when systems are under strain
+
+## How it affects analysis
+
+- High variability in count data can make delay patterns harder to estimate
+- Seasonal patterns in disease incidence interact with delay patterns
+- Day-of-week effects appear in both disease incidence and reporting
+
+## How to identify it

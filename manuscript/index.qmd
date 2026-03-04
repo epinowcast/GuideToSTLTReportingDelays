@@ -57,7 +57,9 @@ Site-specific variations in reporting capabilities and intermittent reporting fr
 Other data quality issues such as missing or incorrect dates and incompatible formats can further limit the utility of recent data.
 Many of these issues can manifest as apparent delays when viewed in aggregate data, even when the underlying cause is not a true reporting delay.
 
-Common approaches to handling these challenges include pruning recent data or using incomplete data with caveats. However, statistical methods exist that can adjust for these issues by learning from historical patterns.
+Common approaches to handling these challenges include discarding recent data, presenting frozen values that strip out delayed reports, or aggregating by report date rather than event date.
+These simple approaches are often the first and most accessible options and may be sufficient when delays are short and stable or when recent data does not directly drive time-sensitive decisions.
+When delays are long or variable, when timely estimates matter, or when uncertainty quantification is needed, statistical methods that learn from historical reporting patterns can improve estimates.
 Addressing these challenges can improve situational awareness of true disease
 trends, supports decision making (such as timing of public health
 interventions), and can improve forecasting of disease trends and resource needs (i.e. hospitalisations).
@@ -74,6 +76,8 @@ provide guidance on choosing and implementing appropriate methods.
 We also highlight gaps where new methods could address unmet needs in practice.
 This guide is accompanied by an interactive website with a decision tree for
 method selection and a community code repository with implementation examples.
+This guide is intended as a companion to @placeholder, which provides a detailed technical treatment of nowcasting methods including their mathematical formulation and computational properties.
+Here we focus on practical guidance for choosing and implementing these methods in STLT settings, with emphasis on adoption, communication, and real-world case studies.
 
 # Challenges in real-time use of surveillance data
 
@@ -104,9 +108,15 @@ method selection and a community code repository with implementation examples.
 
 - Lab confirmation requirements
 - Electronic vs manual reporting differences
-- Weekend and holiday effects
+- Weekend and holiday effects (fewer reports filed on weekends, lab closures)
+- Holiday periods (extended closures affect both reporting and care-seeking)
+- Delays may shorten as reporting improves or lengthen when systems are under strain
 
 ### How it affects analysis
+
+- High variability in count data can make delay patterns harder to estimate
+- Seasonal patterns in disease incidence interact with delay patterns
+- Day-of-week effects appear in both disease incidence and reporting
 
 ### How to identify it
 
@@ -159,6 +169,8 @@ method selection and a community code repository with implementation examples.
 - Missing or incorrect dates
 - Missing strata variables of interest (e.g., race/ethnicity)
 - Incompatible formats
+- Changes in testing or admission practices over time
+- Changes in case definitions or reimbursement schemes
 
 ### How it affects analysis
 
@@ -168,6 +180,9 @@ method selection and a community code repository with implementation examples.
 
 **Section overview lead:** TBD
 **Section overview support:** TBD
+
+For each approach below, we describe what it does, what data it needs, and what it gives you in plain language.
+For mathematical details and computational properties, see @placeholder.
 
 @tbl-methods provides an overview of modelling approaches that can address the
 challenges described in the previous section.
@@ -196,9 +211,16 @@ challenges described in the previous section.
 - Event date hierarchy (NYC mpox example)
 - Ability to assess data revision history
 - Volume of data available
+- How to obtain reporting triangles in STLT settings: line lists with reference and report dates, or successive snapshots of aggregate data
+- Practical tips for data versioning: automating downloads at fixed times, using version-controlled data platforms where available, archived PDF reports as fallback
+- What to do when ideal data aren't available: imputing missing reference dates from other date fields, using sentinel data extrapolated to the population
+- Handling rolling sums: need to recover daily or weekly counts before constructing a reporting triangle
 
 ### Methods
 
+- Discarding recent data (greying out data points assumed to still be incomplete, e.g. using the 95th percentile of the empirical delay distribution)
+- Frozen values (presenting data with all delayed reports removed so trends are interpretable even if magnitudes are obscured)
+- Aggregation by report date (aggregating by time of reporting rather than time of event; lags behind and blurs trends but avoids delay correction entirely)
 - Chain ladder approaches (baselinenowcast, ChainLadder)
 - GAMs (nowcaster, UKHSA GAMs)
 - Bayesian hierarchical methods (NobBS)
@@ -220,6 +242,10 @@ challenges described in the previous section.
 
 ### Methods
 
+- Excluding data from known backlog or major revision periods
+- Flagging and annotating revision events so downstream analyses can account for them
+- Redistributing negative entries in reporting triangles across neighbouring cells
+
 ### Implementation
 
 ## Handling site drop-in and drop-out {#sec-site-variations}
@@ -231,6 +257,10 @@ challenges described in the previous section.
 
 ### Methods
 
+- Restricting analysis to consistently reporting sites
+- Weighting or normalising by reporting completeness
+- Monitoring site participation over time to detect changes
+
 ### Implementation
 
 ## Managing other data quality issues {#sec-other-quality}
@@ -241,6 +271,10 @@ challenges described in the previous section.
 ### Data requirements
 
 ### Methods
+
+- De-duplication rules applied before analysis
+- Imputing missing reference dates from available date fields
+- Standardising formats across data sources before aggregation
 
 ### Implementation
 
@@ -296,10 +330,12 @@ selection, referring back to the decision tree where relevant.
 **Section lead:** TBD
 **Section support:** TBD
 
-- Practical qualitative methods (flipbooking, alignment with trends)
+- What to check first: visual inspection of past nowcasts against final observed values (flipbooking, overlay plots)
 - Alignment with overall trend vs inflection points
+- What "good enough" looks like: prediction intervals cover observed values at roughly the expected rate (e.g. 90% intervals contain ~90% of final values)
+- When to investigate further: persistent directional bias, intervals that are consistently too narrow or too wide, sudden changes in performance
 - Applied PH quantitative methods (coverage, correlation, residuals)
-- Advanced methods (WIS, MAE/MSE) for method comparison
+- Advanced methods (WIS, MAE/MSE) for method comparison; see @placeholder for scoring rules and formal comparative evaluation
 - Tension between domain expertise and theoretical scores
 - Evaluation for public health utility
 - Against a baseline and other common methods
@@ -391,6 +427,8 @@ This guide brings together practical experience from public health practitioners
 and modellers working with delayed surveillance data.
 We focus on methods that have been applied in real-world settings rather than
 purely theoretical approaches.
+Compared to the companion technical overview (@placeholder), this guide adds practical coverage of site drop-in/drop-out and data quality issues beyond reporting delays, guidance on adoption and making the case to leadership, communication and visualisation strategies, and case studies with actual STLT data and workflows.
+The companion website with its decision tree and community code repository provides interactive resources that a static paper cannot.
 However, our coverage of methods is not exhaustive and the field continues to
 evolve.
 
@@ -403,11 +441,16 @@ considerations for state, tribal, local, and territorial public health settings.
 
 ## Future directions
 
+Nowcasting is often an intermediate step toward other analytical goals.
+Nowcast-corrected incidence can feed into reproduction number estimators, and joint estimation avoids losing uncertainty between steps.
+Nowcasts can also be coupled with forecasting models to improve timeliness, and reporting delays can reduce the sensitivity of outbreak detection systems where approaches exist to adjust thresholds rather than correct data.
+See @placeholder for detailed treatment of these downstream applications.
+
 Key areas for methodological development include methods for handling site
 drop-in and drop-out, approaches for managing data revisions beyond
 reporting delays, and tools that integrate multiple data quality adjustments.
 Improved software implementations that lower barriers to adoption would also
-benefit practitioners.
+benefit those working with these data.
 
 ## Conclusions
 

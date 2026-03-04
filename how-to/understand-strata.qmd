@@ -6,6 +6,5 @@ title: "Understand Meaningful Strata"
 This page is under development.
 :::
 
-<!-- Determine variables needed and strata of interest
-     (e.g. geography, age, race/ethnicity).
-     Assess representativeness. -->
+- Determine variables needed and strata of interest (e.g. geography, age, race/ethnicity)
+- Assess representativeness

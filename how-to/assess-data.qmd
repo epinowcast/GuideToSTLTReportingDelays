@@ -11,4 +11,4 @@ This page is under development.
 - Obtaining [reporting triangles](../resources/glossary.qmd#reporting-triangle) in STLT settings: line lists with reference and [report dates](../resources/glossary.qmd#report-date), or successive snapshots of aggregate data
 - Data versioning: automating downloads at fixed times, using version-controlled data platforms where available, archived PDF reports as fallback
 - When ideal data aren't available: imputing missing [reference dates](../resources/glossary.qmd#reference-date) from other date fields, using sentinel data extrapolated to the population
-- Handling rolling sums: need to recover daily or weekly counts before constructing a reporting triangle
+- Handling rolling sums: need to recover daily or weekly counts before constructing a [reporting triangle](../resources/glossary.qmd#reporting-triangle)

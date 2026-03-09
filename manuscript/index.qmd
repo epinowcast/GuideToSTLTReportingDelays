@@ -264,6 +264,8 @@ For multiplicative methods, `baselinenowcast` [@Johnson2025] provides a straight
 `EpiNow2` [@EpiNow2] implements a truncation model that can be used as input to its more flexible epidemic model, which can also accept nowcasts from any method expressed as a delay distribution.
 
 For regression approaches, `nowcaster` [@bastos] uses smooth functions of event time and delay, with user-specified count distributions, support for day-of-week effects, and stratification by age or geography.
+A benefit of the regression framework is that it builds on widely used statistical software.
+@vandeKassteele2019 provide accompanying scripts for their constrained P-spline approach, and the UK Health Security Agency (UKHSA) nowcasting pipelines are available as public code repositories [@Overton2023-dk; @Mellor2025; @Tang2025].
 
 For generative models, `NobBS` [@McGough2020] implements a simple marginal generative model with a random walk expectation model.
 `EpiLPS` [@Gressani2024] uses a marginal generative approach with smooth functions of event time and delay and user-specified count distributions.

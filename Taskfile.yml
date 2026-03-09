@@ -5,6 +5,11 @@ tasks:
     desc: "Render all documents"
     deps: [render-paper, render-website]
 
+  install-r-deps:
+    desc: "Install R packages needed for the website"
+    cmds:
+      - Rscript -e 'install.packages(c("DT", "htmltools"))'
+
   install-extensions:
     desc: "Install Quarto extensions"
     cmds:

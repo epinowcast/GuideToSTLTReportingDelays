@@ -163,18 +163,84 @@ For generative models, [NobBS](https://cran.r-project.org/package=NobBS) [@McGou
 [surveillance](https://cran.r-project.org/package=surveillance) [@surveillance] implements the conditional approach of @hohle with a log-linear expectation model and support for additional data sources.
 [epinowcast](https://github.com/epinowcast/epinowcast) [@epinowcast] implements a marginal generative approach with a flexible expectation model, multiple count distributions, parametric delays, hierarchical pooling across strata, joint effective reproduction number estimation, missing reference date imputation, user-defined reporting schedules, missing data handling, forecasting, and support for additional data sources.
 
-| Package | Method | Expectation model | Time-varying delays | Count distribution | Day-of-week effects | Proper delay | Parametric delay | Strata pooling | Additional data |
-|---|---|---|---|---|---|---|---|---|---|
-| [baselinenowcast](https://github.com/epinowcast/baselinenowcast) | [Multiplicative](#multiplicative-methods) | None | Rolling window | Poisson, NegBin | Separate models | Yes | No | No | No |
-| [ChainLadder](https://cran.r-project.org/package=ChainLadder) | [Multiplicative](#multiplicative-methods) | None | Rolling window | Various | No | Yes | No | No | No |
-| [EpiNow2](https://github.com/epiforecasts/EpiNow2) | [Multiplicative](#multiplicative-methods) | None | Partial | Poisson, NegBin | Yes | Yes | Yes | No | No |
-| [nowcaster](https://github.com/covid19br/nowcaster) | [Regression](#regression-approaches) | Smooth | Yes | User-specified | Yes | No | No | Yes | Possible |
-| [NobBS](https://cran.r-project.org/package=NobBS) | [Generative](#generative-models) (marginal) | Random walk | Rolling window | NegBin | No | Yes | No | No | No |
-| [EpiLPS](https://github.com/oswaldogressani/EpiLPS) | [Generative](#generative-models) (marginal) | Smooth | Yes | User-specified | Yes | No | No | No | No |
-| [surveillance](https://cran.r-project.org/package=surveillance) | [Generative](#generative-models) (conditional) | Log-linear | Yes | Poisson, NegBin | Yes | Yes | No | No | Yes |
-| [epinowcast](https://github.com/epinowcast/epinowcast) | [Generative](#generative-models) (marginal) | Flexible | Yes | Multiple built-in | Yes | Yes | Yes | Yes | Yes |
+```{r}
+#| echo: false
+#| label: tbl-software
+library(DT)
 
-: Available software packages for correcting delayed surveillance data. This table covers released packages; methods without dedicated software are described in the text. {.striped .hover}
+software <- data.frame(
+  Package = c(
+    '<a href="https://github.com/epinowcast/baselinenowcast">baselinenowcast</a>',
+    '<a href="https://cran.r-project.org/package=ChainLadder">ChainLadder</a>',
+    '<a href="https://github.com/epiforecasts/EpiNow2">EpiNow2</a>',
+    '<a href="https://github.com/covid19br/nowcaster">nowcaster</a>',
+    '<a href="https://cran.r-project.org/package=NobBS">NobBS</a>',
+    '<a href="https://github.com/oswaldogressani/EpiLPS">EpiLPS</a>',
+    '<a href="https://cran.r-project.org/package=surveillance">surveillance</a>',
+    '<a href="https://github.com/epinowcast/epinowcast">epinowcast</a>'
+  ),
+  Method = c(
+    "Multiplicative", "Multiplicative", "Multiplicative",
+    "Regression",
+    "Generative (marginal)", "Generative (marginal)",
+    "Generative (conditional)", "Generative (marginal)"
+  ),
+  `Expectation model` = c(
+    "None", "None", "None", "Smooth",
+    "Random walk", "Smooth", "Log-linear", "Flexible"
+  ),
+  `Time-varying delays` = c(
+    "Rolling window", "Rolling window", "Partial", "Yes",
+    "Rolling window", "Yes", "Yes", "Yes"
+  ),
+  `Count distribution` = c(
+    "Poisson, NegBin", "Various", "Poisson, NegBin",
+    "User-specified", "NegBin", "User-specified",
+    "Poisson, NegBin", "Multiple built-in"
+  ),
+  `Day-of-week` = c(
+    "Separate models", "No", "Yes", "Yes",
+    "No", "Yes", "Yes", "Yes"
+  ),
+  `Proper delay` = c(
+    "Yes", "Yes", "Yes", "No",
+    "Yes", "Yes", "Yes", "Yes"
+  ),
+  `Parametric delay` = c(
+    "No", "No", "Yes", "No",
+    "No", "No", "No", "Yes"
+  ),
+  `Strata pooling` = c(
+    "No", "No", "No", "Yes",
+    "No", "No", "No", "Yes"
+  ),
+  `Additional data` = c(
+    "No", "No", "No", "Possible",
+    "No", "No", "Yes", "Yes"
+  ),
+  check.names = FALSE
+)
+
+datatable(
+  software,
+  escape = FALSE,
+  filter = "top",
+  options = list(
+    pageLength = 10,
+    dom = "ft",
+    columnDefs = list(
+      list(className = "dt-center", targets = 5:9)
+    )
+  ),
+  caption = htmltools::tags$caption(
+    style = "caption-side: bottom; text-align: left;",
+    "Available software packages for correcting delayed ",
+    "surveillance data. This table covers released packages; ",
+    "methods without dedicated software are described in the text."
+  ),
+  rownames = FALSE
+)
+```
 
 ### Starting simple
 

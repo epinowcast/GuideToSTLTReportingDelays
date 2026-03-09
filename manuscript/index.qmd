@@ -187,16 +187,16 @@ For mathematical details and computational properties, see @placeholder.
 @tbl-methods provides an overview of modelling approaches that can address the
 challenges described in the previous section.
 
-| Challenge | Approach category | Examples | Data requirements |
-|-----------|------------------|----------|-------------------|
-| **Reporting delays** | Chain ladder | baselinenowcast, ChainLadder | @placeholder |
-| | GAMs | nowcaster, UKHSA GAMs | @placeholder |
-| | Bayesian hierarchical | NobBS | @placeholder |
-| | Ad-hoc | EpiNow2 | @placeholder |
-| | Semi-mechanistic | EpiNow2, epinowcast | @placeholder |
-| **Data revisions** | Chain ladder | baselinenowcast | @placeholder |
-| **Site drop-in/out** | @placeholder | @placeholder | @placeholder |
-| **Other data quality** | @placeholder | @placeholder | @placeholder |
+| Challenge | Approach | What it does |
+|-----------|----------|-------------|
+| **Reporting delays** | Simple | Flag recent data as provisional, use report dates, or freeze snapshots |
+| | Multiplicative | Scale up partial counts by historical reporting proportions |
+| | Regression | Jointly model the epidemic curve and delay as a smooth surface |
+| | Generative | Model expected events and their delay distribution explicitly |
+| | Other statistical | Apply general ML or time series methods to the reporting triangle |
+| **Data revisions** | @placeholder | @placeholder |
+| **Site drop-in/out** | @placeholder | @placeholder |
+| **Other data quality** | @placeholder | @placeholder |
 
 : Modelling approaches for addressing surveillance data challenges {#tbl-methods}
 

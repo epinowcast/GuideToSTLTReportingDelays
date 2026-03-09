@@ -19,17 +19,17 @@ For mathematical details and computational properties, see the companion technic
 
 ## Data requirements
 
-Any [nowcasting](../resources/glossary.qmd#nowcasting) method that accounts for [reporting delays](../resources/glossary.qmd#reporting-delay) needs data organised by both [reference date](../resources/glossary.qmd#reference-date) (when the event occurred) and reporting delay (or equivalently, [report date](../resources/glossary.qmd#report-date)).
-This is often represented as a [reporting triangle](../resources/glossary.qmd#reporting-triangle), where rows are reference dates, columns are delays, and cells contain the number of events first reported at each delay, but can equally be stored as a data frame with one row per reference-date-by-delay combination.
+Any [nowcasting](../resources/glossary.qmd#nowcasting) method that accounts for [reporting delays](../resources/glossary.qmd#reporting-delay) needs data organised by both [reference date](../resources/glossary.qmd#reference-date) (when the event occurred) and [reporting delay](../resources/glossary.qmd#reporting-delay) (or equivalently, [report date](../resources/glossary.qmd#report-date)).
+This is often represented as a [reporting triangle](../resources/glossary.qmd#reporting-triangle), where rows are [reference dates](../resources/glossary.qmd#reference-date), columns are delays, and cells contain the number of events first reported at each delay, but can equally be stored as a data frame with one row per reference-date-by-delay combination.
 
-If you have individual line list records with both a reference date and a report date, this structure is built by counting events within each combination.
+If you have individual line list records with both a reference date and a [report date](../resources/glossary.qmd#report-date), this structure is built by counting events within each combination.
 If instead you receive periodic snapshots of aggregate counts (for example, a daily download of cumulative totals by event date), it is obtained by differencing successive snapshots [@Wolffram2023; @Johnson2025].
 Following a fixed data extraction schedule makes modelling substantially easier, because irregular download times introduce artificial variation in what appears as a new report.
 
 There are several common data cleaning issues.
 Differencing snapshots can produce negative cell values when earlier counts are revised downward, for example through deduplication or reclassification.
 Some surveillance systems report rolling sums (for example, 7-day totals) rather than daily counts.
-These typically need to be decomposed back into daily or weekly values before the reporting triangle can be constructed, but some methods can target rolling sums directly, which has the advantage of avoiding the need to model correlations between the constituent counts [@Johnson2025; @Wolffram2023].
+These typically need to be decomposed back into daily or weekly values before the [reporting triangle](../resources/glossary.qmd#reporting-triangle) can be constructed, but some methods can target rolling sums directly, which has the advantage of avoiding the need to model correlations between the constituent counts [@Johnson2025; @Wolffram2023].
 
 ## Methods
 
@@ -58,7 +58,7 @@ These approaches discard information that statistical methods could use, and the
 ### Multiplicative {#multiplicative-methods}
 
 Multiplicative methods estimate current counts by scaling up partially reported values according to the proportion of cases historically observed at each delay.
-The approach originates from actuarial claims reserving, where it is known as the chain ladder method, and remains one of the most widely used approaches to nowcasting because it is fast, transparent, and easy to explain to decision makers.
+The approach originates from actuarial claims reserving, where it is known as the chain ladder method, and remains one of the most widely used approaches to [nowcasting](../resources/glossary.qmd#nowcasting) because it is fast, transparent, and easy to explain to decision makers.
 It works well when the delay pattern is reasonably stable over the fitting window and counts are large enough that the scaling factors are well estimated.
 The main limitations are that the basic form assumes a fixed delay distribution, cannot produce meaningful estimates when event-date counts are zero, and does not account for systematic day-of-the-week effects in reporting [@Wolffram2023].
 Variants that address some of these issues exist, and uncertainty can be added either through distributional assumptions or by evaluating past prediction errors [@Johnson2025].

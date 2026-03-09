@@ -32,11 +32,15 @@ For mathematical details and computational properties, see the companion technic
 
 ## Software
 
-| Package | Language | Approach | Link |
-|---|---|---|---|
-| baselinenowcast | R | Chain-ladder | [GitHub](https://github.com/epinowcast/baselinenowcast) |
-| epinowcast | R | Bayesian hierarchical | [GitHub](https://github.com/epinowcast/epinowcast) |
-| EpiNow2 | R | Semi-mechanistic | [GitHub](https://github.com/epiforecasts/EpiNow2) |
-| NobBS | R | Bayesian hierarchical | [CRAN](https://cran.r-project.org/package=NobBS) |
+| Package | Method | Expectation model | Time-varying delays | Count distribution | Day-of-week effects | Proper delay | Parametric delay | Strata pooling | Additional data |
+|---|---|---|---|---|---|---|---|---|---|
+| [baselinenowcast](https://github.com/epinowcast/baselinenowcast) | Multiplicative | None | Rolling window | Poisson, NegBin | Separate models | Yes | No | No | No |
+| [ChainLadder](https://cran.r-project.org/package=ChainLadder) | Multiplicative | None | Rolling window | Various | No | Yes | No | No | No |
+| [NobBS](https://cran.r-project.org/package=NobBS) | Multiplicative | Random walk | Rolling window | NegBin | No | Yes | No | No | No |
+| [EpiNow2](https://github.com/epiforecasts/EpiNow2) | Multiplicative | Flexible | Partial | Poisson, NegBin | Yes | Yes | Yes | No | No |
+| [nowcaster](https://github.com/covid19br/nowcaster) | Regression | Smooth | Yes | User-specified | Yes | No | No | Yes | Possible |
+| [EpiLPS](https://github.com/oswaldogressani/EpiLPS) | Regression | Smooth | Yes | User-specified | Yes | No | No | No | No |
+| [surveillance](https://cran.r-project.org/package=surveillance) | Generative (conditional) | Log-linear | Yes | Poisson, NegBin | Yes | Yes | No | No | Yes |
+| [epinowcast](https://github.com/epinowcast/epinowcast) | Generative (marginal) | Flexible | Yes | Multiple built-in | Yes | Yes | Yes | Yes | Yes |
 
-: Available software packages {.striped .hover}
+: Available software packages for correcting delayed surveillance data. Additional implementations exist in the literature; see the companion technical overview for a full treatment. {.striped .hover}

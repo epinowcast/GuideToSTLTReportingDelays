@@ -12,7 +12,7 @@ For mathematical details and computational properties, see the companion technic
 | [Simple approaches](#simple-approaches) | Delays are short and stable; trends matter more than levels | No uncertainty quantification; discards information |
 | [Multiplicative](#multiplicative-methods) | Delay pattern is stable; counts are moderate to large | Fixed delay distribution; no weekday effects |
 | [Regression](#regression-approaches) | Delays change over time; covariates matter | Unconstrained delay; no mechanistic components |
-| [Generative](#generative-models) | Need mechanistic structure, pooling, or joint Rt | More complex to specify |
+| [Generative](#generative-models) | Need mechanistic structure, delay constraints, parametric delays, pooling, or joint Rt | More complex to specify |
 | [Other statistical](#other-statistical-approaches) | Flexible pattern learning; quick prototyping | Black-box limitations |
 
 : Quick comparison of method classes. {.striped .hover}

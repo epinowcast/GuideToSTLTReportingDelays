@@ -81,6 +81,8 @@ website:
         href: https://github.com/epinowcast/GuideToSTLTReportingDelays
         target: _blank
 
+bibliography: manuscript/references.bib
+
 format:
   html:
     theme:

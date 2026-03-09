@@ -8,7 +8,7 @@ This page is under development.
 
 ## What it is
 
-- Right-truncation
+- [Right-truncation](../resources/glossary.qmd#right-truncation)
 
 ## Why it happens
 

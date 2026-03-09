@@ -13,7 +13,6 @@ This page is under development.
 - Duplicate removal
 - Case reclassifications
 - Date corrections
-- De-duplication
 
 ## How it affects analysis
 

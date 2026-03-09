@@ -19,8 +19,8 @@ For mathematical details and computational properties, see the companion technic
 
 ## Data requirements
 
-Any nowcasting method that accounts for reporting delays needs data organised by both reference date (when the event occurred) and reporting delay (or equivalently, report date).
-This is often represented as a reporting triangle, where rows are reference dates, columns are delays, and cells contain the number of events first reported at each delay, but can equally be stored as a data frame with one row per reference-date-by-delay combination.
+Any [nowcasting](../resources/glossary.qmd#nowcasting) method that accounts for [reporting delays](../resources/glossary.qmd#reporting-delay) needs data organised by both [reference date](../resources/glossary.qmd#reference-date) (when the event occurred) and reporting delay (or equivalently, [report date](../resources/glossary.qmd#report-date)).
+This is often represented as a [reporting triangle](../resources/glossary.qmd#reporting-triangle), where rows are reference dates, columns are delays, and cells contain the number of events first reported at each delay, but can equally be stored as a data frame with one row per reference-date-by-delay combination.
 
 If you have individual line list records with both a reference date and a report date, this structure is built by counting events within each combination.
 If instead you receive periodic snapshots of aggregate counts (for example, a daily download of cumulative totals by event date), it is obtained by differencing successive snapshots [@Wolffram2023; @Johnson2025].

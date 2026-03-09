@@ -37,6 +37,7 @@ tasks:
 
   render-website:
     desc: "Render the guidance website"
+    deps: [install-r-deps]
     cmds:
       - quarto render
     sources:

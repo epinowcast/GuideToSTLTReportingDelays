@@ -1,10 +1,6 @@
 ---
 title: "A guide to accounting for reporting delays in state, tribal, local, and territorial public health surveillance data"
 authors:
-  - name: "Laura Jones"
-    affiliations:
-      - ref: mdph
-    orcid: "0009-0005-9214-0661"
   - name: "Sam Abbott"
     affiliations:
       - ref: lshtm
@@ -14,8 +10,6 @@ authors:
       corresponding: true
 
 affiliations:
-  - id: mdph
-    name: "Massachusetts Department of Public Health, Boston, MA, USA"
   - id: lshtm
     name: "Centre for Mathematical Modelling of Infectious Diseases, London School of Hygiene & Tropical Medicine, United Kingdom"
 date: today

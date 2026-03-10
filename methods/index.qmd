@@ -22,7 +22,7 @@ For mathematical details and computational properties, see the companion technic
 Any [nowcasting](../resources/glossary.qmd#nowcasting) method that accounts for [reporting delays](../resources/glossary.qmd#reporting-delay) needs data organised by both [reference date](../resources/glossary.qmd#reference-date) (when the event occurred) and [reporting delay](../resources/glossary.qmd#reporting-delay) (or equivalently, [report date](../resources/glossary.qmd#report-date)).
 This is often represented as a [reporting triangle](../resources/glossary.qmd#reporting-triangle), where rows are [reference dates](../resources/glossary.qmd#reference-date), columns are delays, and cells contain the number of events first reported at each delay, but can equally be stored as a data frame with one row per reference-date-by-delay combination.
 
-If you have individual line list records with both a reference date and a [report date](../resources/glossary.qmd#report-date), this structure is built by counting events within each combination.
+If you have individual line list records with both a [reference date](../resources/glossary.qmd#reference-date) and a [report date](../resources/glossary.qmd#report-date), this structure is built by counting events within each combination.
 If instead you receive periodic snapshots of aggregate counts (for example, a daily download of cumulative totals by event date), it is obtained by differencing successive snapshots [@Wolffram2023; @Johnson2025].
 Following a fixed data extraction schedule makes modelling substantially easier, because irregular download times introduce artificial variation in what appears as a new report.
 
@@ -41,7 +41,7 @@ Not all situations require statistical correction.
 When delays are short relative to the decision timescale, or when the primary concern is monitoring trends rather than estimating levels, simpler strategies may be enough.
 One option is to flag recent dates as provisional and exclude them from interpretation until enough reports have accumulated.
 Another is to show only the counts available at each snapshot in time, removing any later additions, so that all dates are treated consistently even though each underestimates the true level.
-A third is to work with report dates instead of event dates, accepting a lagged and smoothed picture of the underlying signal.
+A third is to work with [report dates](../resources/glossary.qmd#report-date) instead of event dates, accepting a lagged and smoothed picture of the underlying signal.
 Each of these trades timeliness or completeness for simplicity, and each avoids the modelling choices that statistical methods require.
 They become problematic when delays are long or changing, when the gap between reported and actual counts matters for decisions, or when decision makers need to understand how uncertain current estimates are.
 
@@ -75,7 +75,7 @@ Fixed delay assumption breaks down when reporting practices change. Zero counts 
 
 ### Regression {#regression-approaches}
 
-Regression approaches go further by jointly modelling the epidemic curve and the delay distribution within a single model, treating the reporting triangle as a smooth surface over event time and delay [@vandeKassteele2019; @Schneble2021; @bastos; @Mellor2025].
+Regression approaches go further by jointly modelling the epidemic curve and the delay distribution within a single model, treating the [reporting triangle](../resources/glossary.qmd#reporting-triangle) as a smooth surface over event time and delay [@vandeKassteele2019; @Schneble2021; @bastos; @Mellor2025].
 This means models can be specified that borrow information from neighbouring time points to stabilise estimates where counts are low, allow the delay pattern to change over time, account for systematic day-of-week effects, and incorporate additional covariates such as age group or geography.
 Uncertainty can be estimated as part of the model rather than as a postprocessing step.
 These are marginal approaches, treating each cell of the reporting triangle as independent [@Stoner2020].
@@ -93,7 +93,7 @@ Unconstrained delay distribution can produce odd behaviour at long delays. Diffi
 
 ### Generative {#generative-models}
 
-Generative models are a more general class than regression approaches, specifying an explicit model for both the expected number of events at each event time and how those events distribute across reporting delays [@hohle; @McGough2020; @gunther2021nowcasting; @lison2024; @epinowcast].
+Generative models are a more general class than regression approaches, specifying an explicit model for both the expected number of events at each event time and how those events distribute across [reporting delays](../resources/glossary.qmd#reporting-delay) [@hohle; @McGough2020; @gunther2021nowcasting; @lison2024; @epinowcast].
 This structure makes it straightforward to incorporate mechanistic components, such as a renewal process linking expected counts to a reproduction number, or to bring in auxiliary data sources like leading epidemiological indicators [@lison2024; @Bergstrom2022].
 It also makes it straightforward to add constraints to the delay distribution, such as requiring reporting proportions to sum to one or specifying a parametric form.
 Two main variants exist: conditional and marginal.
@@ -113,7 +113,7 @@ More complex to specify and fit. Conditional variants can be slow. Marginal vari
 
 ### Other statistical {#other-statistical-approaches}
 
-Because the nowcasting problem can be expressed as a regression model, any generalisation of regression can in principle be applied, including ARIMA models with covariates, gradient-boosted trees, neural networks, and other machine learning approaches.
+Because the [nowcasting](../resources/glossary.qmd#nowcasting) problem can be expressed as a regression model, any generalisation of regression can in principle be applied, including ARIMA models with covariates, gradient-boosted trees, neural networks, and other machine learning approaches.
 These methods can be easier to set up and may learn flexible structure from the data without requiring the analyst to specify it.
 The downside is that they typically lack the constraints and mechanistic components that purpose-built nowcasting models provide, and they carry the common limitations of black-box approaches.
 

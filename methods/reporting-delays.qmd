@@ -78,7 +78,7 @@ Fixed delay assumption breaks down when reporting practices change. Zero counts 
 Regression approaches go further by jointly modelling the epidemic curve and the delay distribution within a single model, treating the [reporting triangle](../resources/glossary.qmd#reporting-triangle) as a smooth surface over event time and delay [@vandeKassteele2019; @Schneble2021; @bastos; @Mellor2025].
 This means models can be specified that borrow information from neighbouring time points to stabilise estimates where counts are low, allow the delay pattern to change over time, account for systematic day-of-week effects, and incorporate additional covariates such as age group or geography.
 Uncertainty can be estimated as part of the model rather than as a postprocessing step.
-These are marginal approaches, treating each cell of the reporting triangle as independent [@Stoner2020].
+These are marginal approaches, treating each cell of the [reporting triangle](../resources/glossary.qmd#reporting-triangle) as independent [@Stoner2020].
 The regression structure makes it difficult to encode mechanistic components such as laboratory capacity or test-seeking behaviour, the delay component is not constrained to produce reporting proportions that sum to one, and parametric delay distributions are not supported, which in practice means that nowcasts can behave unpredictably at long delays where data are sparse.
 
 ::: {.callout-tip}
@@ -115,7 +115,7 @@ More complex to specify and fit. Conditional variants can be slow. Marginal vari
 
 Because the [nowcasting](../resources/glossary.qmd#nowcasting) problem can be expressed as a regression model, any generalisation of regression can in principle be applied, including ARIMA models with covariates, gradient-boosted trees, neural networks, and other machine learning approaches.
 These methods can be easier to set up and may learn flexible structure from the data without requiring the analyst to specify it.
-The downside is that they typically lack the constraints and mechanistic components that purpose-built nowcasting models provide, and they carry the common limitations of black-box approaches.
+The downside is that they typically lack the constraints and mechanistic components that purpose-built [nowcasting](../resources/glossary.qmd#nowcasting) models provide, and they carry the common limitations of black-box approaches.
 
 ::: {.callout-tip}
 ## Best when
@@ -163,7 +163,7 @@ A benefit of the regression framework is that it builds on widely used statistic
 For generative models, [NobBS](https://cran.r-project.org/package=NobBS) [@McGough2020] implements a simple marginal generative model with a random walk expectation model.
 [EpiLPS](https://github.com/oswaldogressani/EpiLPS) [@Gressani2024] uses a marginal generative approach with smooth functions of event time and delay and user-specified count distributions.
 [surveillance](https://cran.r-project.org/package=surveillance) [@surveillance] implements the conditional approach of @hohle with a log-linear expectation model and support for additional data sources.
-[epinowcast](https://github.com/epinowcast/epinowcast) [@epinowcast] implements a marginal generative approach with a flexible expectation model, multiple count distributions, parametric delays, hierarchical pooling across strata, joint effective reproduction number estimation, missing reference date imputation, user-defined reporting schedules, missing data handling, forecasting, and support for additional data sources.
+[epinowcast](https://github.com/epinowcast/epinowcast) [@epinowcast] implements a marginal generative approach with a flexible expectation model, multiple count distributions, parametric delays, hierarchical pooling across strata, joint effective reproduction number estimation, missing [reference date](../resources/glossary.qmd#reference-date) imputation, user-defined reporting schedules, missing data handling, forecasting, and support for additional data sources.
 
 ```{r}
 #| echo: false

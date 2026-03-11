@@ -251,7 +251,7 @@ datatable(
 Visualise your data first, start with a simple baseline adapted to your problem, and add complexity only when you can see that it is needed.
 :::
 
-Before choosing a method, visualise the reporting triangle to understand the structure of your data: how long delays typically are, whether they change over time, and whether there are systematic day-of-week patterns.
+Before choosing a method, visualise the [reporting triangle](../resources/glossary.qmd#reporting-triangle) to understand the structure of your data: how long delays typically are, whether they change over time, and whether there are systematic day-of-week patterns.
 This informs which features a model actually needs.
 A good strategy is to start simple and build up complexity only when you can see that it is needed.
 Having a baseline nowcast adapted to your specific problem provides a reference point for judging whether additional model features add value [@Johnson2025]; a multiplicative method is a sensible choice for this.

@@ -1,0 +1,17 @@
+---
+title: "Handling Site Drop-in and Drop-out"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+### Data requirements
+
+### Methods
+
+- Restricting analysis to consistently reporting sites
+- Weighting or normalising by reporting completeness
+- Monitoring site participation over time to detect changes
+
+### Implementation

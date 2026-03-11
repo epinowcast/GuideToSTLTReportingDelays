@@ -1,0 +1,20 @@
+---
+title: "Managing Data Revisions"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+### Data requirements
+
+### Methods
+
+- Excluding data from known backlog or major revision periods
+- Flagging and annotating revision events so downstream analyses can account for them
+- Redistributing negative entries in reporting triangles across neighbouring cells
+- Nowcasting methods that model cumulative counts without enforcing a proper CDF (i.e. monotonically increasing) can accommodate negative increments directly
+- Methods that allow an improper PMF, such as `baselinenowcast`, can also handle negative counts in the reporting triangle
+- Many methods can be used without modification when negative counts are present for individual cells provided the net count for each delay is non-negative
+
+### Implementation

@@ -1,0 +1,286 @@
+---
+title: "Correcting Delayed Data"
+---
+
+For each approach below, we describe what it does, what data it needs, and when it is most useful.
+For mathematical details and computational properties, see the companion technical overview.
+
+## At a glance
+
+| Approach | Best when | Watch out for |
+|---|---|---|
+| [Simple approaches](#simple-approaches) | Delays are short and stable; you care about trends not levels | No uncertainty; throws away information |
+| [Multiplicative](#multiplicative-methods) | Stable delay pattern; moderate to large counts | Assumes fixed delays; no weekday effects |
+| [Regression](#regression-approaches) | Delays change over time; covariates matter | Delay not constrained; hard to add mechanisms |
+| [Generative](#generative-models) | You need delay constraints, parametric delays, pooling, or mechanistic structure | More work to set up |
+| [Other statistical](#other-statistical-approaches) | Quick prototyping; large datasets | Hard to diagnose when things go wrong |
+
+: {.striped .hover}
+
+## Data requirements
+
+Any [nowcasting](../resources/glossary.qmd#nowcasting) method that accounts for [reporting delays](../resources/glossary.qmd#reporting-delay) needs data organised by both [reference date](../resources/glossary.qmd#reference-date) (when the event occurred) and [reporting delay](../resources/glossary.qmd#reporting-delay) (or equivalently, [report date](../resources/glossary.qmd#report-date)).
+This is often represented as a [reporting triangle](../resources/glossary.qmd#reporting-triangle), where rows are [reference dates](../resources/glossary.qmd#reference-date), columns are delays, and cells contain the number of events first reported at each delay, but can equally be stored as a data frame with one row per reference-date-by-delay combination.
+
+If you have individual line list records with both a [reference date](../resources/glossary.qmd#reference-date) and a [report date](../resources/glossary.qmd#report-date), this structure is built by counting events within each combination.
+If instead you receive periodic snapshots of aggregate counts (for example, a daily download of cumulative totals by event date), it is obtained by differencing successive snapshots [@Wolffram2023; @Johnson2025].
+Following a fixed data extraction schedule makes modelling substantially easier, because irregular download times introduce artificial variation in what appears as a new report.
+
+There are several common data cleaning issues.
+Differencing snapshots can produce negative cell values when earlier counts are revised downward, for example through deduplication or reclassification.
+Some surveillance systems report rolling sums (for example, 7-day totals) rather than daily counts.
+These typically need to be decomposed back into daily or weekly values before the [reporting triangle](../resources/glossary.qmd#reporting-triangle) can be constructed, but some methods can target rolling sums directly, which has the advantage of avoiding the need to model correlations between the constituent counts [@Johnson2025; @Wolffram2023].
+
+## Methods
+
+::: {.panel-tabset}
+
+### Simple approaches
+
+Not all situations require statistical correction.
+When delays are short relative to the decision timescale, or when the primary concern is monitoring trends rather than estimating levels, simpler strategies may be enough.
+One option is to flag recent dates as provisional and exclude them from interpretation until enough reports have accumulated.
+Another is to show only the counts available at each snapshot in time, removing any later additions, so that all dates are treated consistently even though each underestimates the true level.
+A third is to work with [report dates](../resources/glossary.qmd#report-date) instead of event dates, accepting a lagged and smoothed picture of the underlying signal.
+Each of these trades timeliness or completeness for simplicity, and each avoids the modelling choices that statistical methods require.
+They become problematic when delays are long or changing, when the gap between reported and actual counts matters for decisions, or when decision makers need to understand how uncertain current estimates are.
+
+::: {.callout-tip}
+## Best when
+Delays are short and stable, recent data does not drive time-sensitive decisions, or resources for statistical modelling are unavailable.
+:::
+
+::: {.callout-warning}
+## Watch out for
+These approaches discard information that statistical methods could use, and they do not provide uncertainty estimates.
+:::
+
+### Multiplicative {#multiplicative-methods}
+
+Multiplicative methods estimate current counts by scaling up partially reported values according to the proportion of cases historically observed at each delay.
+The approach originates from actuarial claims reserving, where it is known as the chain ladder method, and remains one of the most widely used approaches to [nowcasting](../resources/glossary.qmd#nowcasting) because it is fast, transparent, and easy to explain to decision makers.
+It works well when the delay pattern is reasonably stable over the fitting window and counts are large enough that the scaling factors are well estimated.
+The main limitations are that the basic form assumes a fixed delay distribution, cannot produce meaningful estimates when event-date counts are zero, and does not account for systematic day-of-the-week effects in reporting [@Wolffram2023].
+Variants that address some of these issues exist, and uncertainty can be added either through distributional assumptions or by evaluating past prediction errors [@Johnson2025].
+
+::: {.callout-tip}
+## Best when
+Delays are reasonably stable, counts are large enough for stable scaling factors, and speed and simplicity are priorities.
+:::
+
+::: {.callout-warning}
+## Watch out for
+Fixed delay assumption breaks down when reporting practices change. Zero counts produce undefined scaling factors. Day-of-week effects are not handled natively.
+:::
+
+### Regression {#regression-approaches}
+
+Regression approaches go further by jointly modelling the epidemic curve and the delay distribution within a single model, treating the [reporting triangle](../resources/glossary.qmd#reporting-triangle) as a smooth surface over event time and delay [@vandeKassteele2019; @Schneble2021; @bastos; @Mellor2025].
+This means models can be specified that borrow information from neighbouring time points to stabilise estimates where counts are low, allow the delay pattern to change over time, account for systematic day-of-week effects, and incorporate additional covariates such as age group or geography.
+Uncertainty can be estimated as part of the model rather than as a postprocessing step.
+These are marginal approaches, treating each cell of the reporting triangle as independent [@Stoner2020].
+The regression structure makes it difficult to encode mechanistic components such as laboratory capacity or test-seeking behaviour, the delay component is not constrained to produce reporting proportions that sum to one, and parametric delay distributions are not supported, which in practice means that nowcasts can behave unpredictably at long delays where data are sparse.
+
+::: {.callout-tip}
+## Best when
+Delays change over time, day-of-week or other covariate effects matter, and you want uncertainty as a direct model output.
+:::
+
+::: {.callout-warning}
+## Watch out for
+Unconstrained delay distribution can produce odd behaviour at long delays. Difficult to add mechanistic components. Each cell is treated independently, which can affect uncertainty calibration.
+:::
+
+### Generative {#generative-models}
+
+Generative models are a more general class than regression approaches, specifying an explicit model for both the expected number of events at each event time and how those events distribute across [reporting delays](../resources/glossary.qmd#reporting-delay) [@hohle; @McGough2020; @gunther2021nowcasting; @lison2024; @epinowcast].
+This structure makes it straightforward to incorporate mechanistic components, such as a renewal process linking expected counts to a reproduction number, or to bring in auxiliary data sources like leading epidemiological indicators [@lison2024; @Bergstrom2022].
+It also makes it straightforward to add constraints to the delay distribution, such as requiring reporting proportions to sum to one or specifying a parametric form.
+Two main variants exist: conditional and marginal.
+Conditional generative models separate variability in incidence from variability in reporting by modelling total counts directly and then distributing them across delays, producing well-calibrated uncertainty for the quantities decision makers most care about [@hohle; @Stoner2020; @Stoner2023; @Seaman2022].
+Marginal generative models instead treat each cell of the reporting triangle as an independent draw [@McGough2020; @gunther2021nowcasting; @lison2024; @epinowcast].
+Both variants can support parametric delay distributions, time-varying delays through covariates such as day-of-week effects, hierarchical pooling across regions or age groups, joint estimation of the reproduction number, and incorporation of leading indicators [@Stoner2023; @Seaman2022; @Bergstrom2022; @epinowcast].
+
+::: {.callout-tip}
+## Best when
+You need mechanistic structure, constrained delay distributions, pooling across strata, joint Rt estimation, or integration of auxiliary data sources.
+:::
+
+::: {.callout-warning}
+## Watch out for
+More complex to specify and fit. Conditional variants can be slow. Marginal variants may underestimate uncertainty when delays are highly variable.
+:::
+
+### Other statistical {#other-statistical-approaches}
+
+Because the [nowcasting](../resources/glossary.qmd#nowcasting) problem can be expressed as a regression model, any generalisation of regression can in principle be applied, including ARIMA models with covariates, gradient-boosted trees, neural networks, and other machine learning approaches.
+These methods can be easier to set up and may learn flexible structure from the data without requiring the analyst to specify it.
+The downside is that they typically lack the constraints and mechanistic components that purpose-built nowcasting models provide, and they carry the common limitations of black-box approaches.
+
+::: {.callout-tip}
+## Best when
+Quick prototyping, flexible pattern learning from large datasets, or when existing ML infrastructure is already in place.
+:::
+
+::: {.callout-warning}
+## Watch out for
+Predictions are difficult to interpret, failure modes are hard to diagnose, and behaviour in novel situations is unpredictable.
+:::
+
+:::
+
+## Implementation
+
+| Topic | What it covers |
+|---|---|
+| [Software](#software) | Available packages, what they support, and how they differ |
+| [Starting simple](#starting-simple) | Look at your data first, fit a baseline, then build up |
+| [Model specification](#model-specification) | Maximum delay, training window, and stratification |
+| [Practical considerations](#practical-considerations) | Fitting times, installation constraints, and checking outputs |
+
+: {.striped .hover}
+
+::: {.panel-tabset}
+
+### Software
+
+::: {.callout-note}
+## At a glance
+Multiple packages exist for each method class, differing in flexibility, inference method, and installation requirements. Use the table and descriptions below to identify which packages support the features you need.
+:::
+
+The table below compares available software packages across key features.
+The Method column links to the corresponding approach description above.
+
+For multiplicative methods, [baselinenowcast](https://github.com/epinowcast/baselinenowcast) [@Johnson2025] provides a straightforward implementation with options for Poisson or negative binomial count models, separate day-of-week adjustment, and a correction for zero counts that ad hoc baseline methods cannot handle.
+[ChainLadder](https://cran.r-project.org/package=ChainLadder) implements the classical actuarial chain ladder and its variants.
+[EpiNow2](https://github.com/epiforecasts/EpiNow2) [@EpiNow2] implements a truncation model that can be used as input to its more flexible epidemic model, which can also accept nowcasts from any method expressed as a delay distribution.
+
+For regression approaches, [nowcaster](https://github.com/covid19br/nowcaster) [@bastos] uses smooth functions of event time and delay, with user-specified count distributions, support for day-of-week effects, and stratification by age or geography.
+A benefit of the regression framework is that it builds on widely used statistical software.
+@vandeKassteele2019 provide accompanying scripts for their constrained P-spline approach, and the UK Health Security Agency (UKHSA) nowcasting pipelines are available as public code repositories [@Overton2023-dk; @Mellor2025; @Tang2025].
+
+For generative models, [NobBS](https://cran.r-project.org/package=NobBS) [@McGough2020] implements a simple marginal generative model with a random walk expectation model.
+[EpiLPS](https://github.com/oswaldogressani/EpiLPS) [@Gressani2024] uses a marginal generative approach with smooth functions of event time and delay and user-specified count distributions.
+[surveillance](https://cran.r-project.org/package=surveillance) [@surveillance] implements the conditional approach of @hohle with a log-linear expectation model and support for additional data sources.
+[epinowcast](https://github.com/epinowcast/epinowcast) [@epinowcast] implements a marginal generative approach with a flexible expectation model, multiple count distributions, parametric delays, hierarchical pooling across strata, joint effective reproduction number estimation, missing reference date imputation, user-defined reporting schedules, missing data handling, forecasting, and support for additional data sources.
+
+```{r}
+#| echo: false
+#| label: tbl-software
+library(DT)
+
+software <- data.frame(
+  Package = c(
+    '<a href="https://github.com/epinowcast/baselinenowcast">baselinenowcast</a>',
+    '<a href="https://cran.r-project.org/package=ChainLadder">ChainLadder</a>',
+    '<a href="https://github.com/epiforecasts/EpiNow2">EpiNow2</a>',
+    '<a href="https://github.com/covid19br/nowcaster">nowcaster</a>',
+    '<a href="https://cran.r-project.org/package=NobBS">NobBS</a>',
+    '<a href="https://github.com/oswaldogressani/EpiLPS">EpiLPS</a>',
+    '<a href="https://cran.r-project.org/package=surveillance">surveillance</a>',
+    '<a href="https://github.com/epinowcast/epinowcast">epinowcast</a>'
+  ),
+  Method = c(
+    "Multiplicative", "Multiplicative", "Multiplicative",
+    "Regression",
+    "Generative (marginal)", "Generative (marginal)",
+    "Generative (conditional)", "Generative (marginal)"
+  ),
+  `Expectation model` = c(
+    "None", "None", "None", "Smooth",
+    "Random walk", "Smooth", "Log-linear", "Flexible"
+  ),
+  `Time-varying delays` = c(
+    "Rolling window", "Rolling window", "Partial", "Yes",
+    "Rolling window", "Yes", "Yes", "Yes"
+  ),
+  `Count distribution` = c(
+    "Poisson, NegBin", "Various", "Poisson, NegBin",
+    "User-specified", "NegBin", "User-specified",
+    "Poisson, NegBin", "Multiple built-in"
+  ),
+  `Day-of-week` = c(
+    "Separate models", "No", "Yes", "Yes",
+    "No", "Yes", "Yes", "Yes"
+  ),
+  `Proper delay` = c(
+    "Yes", "Yes", "Yes", "No",
+    "Yes", "Yes", "Yes", "Yes"
+  ),
+  `Parametric delay` = c(
+    "No", "No", "Yes", "No",
+    "No", "No", "No", "Yes"
+  ),
+  `Strata pooling` = c(
+    "No", "No", "No", "Yes",
+    "No", "No", "No", "Yes"
+  ),
+  `Additional data` = c(
+    "No", "No", "No", "Possible",
+    "No", "No", "Yes", "Yes"
+  ),
+  check.names = FALSE
+)
+
+datatable(
+  software,
+  escape = FALSE,
+  filter = "top",
+  options = list(
+    pageLength = 10,
+    dom = "ft",
+    columnDefs = list(
+      list(className = "dt-center", targets = 5:9)
+    )
+  ),
+  caption = htmltools::tags$caption(
+    style = "caption-side: bottom; text-align: left;",
+    "Available software packages for correcting delayed ",
+    "surveillance data. This table covers released packages; ",
+    "methods without dedicated software are described in the text."
+  ),
+  rownames = FALSE
+)
+```
+
+### Starting simple
+
+::: {.callout-tip}
+## Key message
+Visualise your data first, start with a simple baseline adapted to your problem, and add complexity only when you can see that it is needed.
+:::
+
+Before choosing a method, visualise the reporting triangle to understand the structure of your data: how long delays typically are, whether they change over time, and whether there are systematic day-of-week patterns.
+This informs which features a model actually needs.
+A good strategy is to start simple and build up complexity only when you can see that it is needed.
+Having a baseline nowcast adapted to your specific problem provides a reference point for judging whether additional model features add value [@Johnson2025]; a multiplicative method is a sensible choice for this.
+From there, you can assess whether the residual errors point to a specific deficiency and choose a more flexible method that addresses it.
+Using a framework that allows the model to be built up step by step makes this incremental approach easier to manage, such as [epinowcast](https://github.com/epinowcast/epinowcast) [@epinowcast].
+
+### Model specification
+
+::: {.callout-note}
+## Key decisions
+Maximum delay, data requirements, training window length, and stratification strategy.
+:::
+
+Regardless of which method you choose, several specification decisions are likely going to be needed to be made.
+
+- **Maximum delay.** This should be set at the point that captures the vast majority of the target reporting, which you can estimate from historical data. Unless computational performance is a priority, there is generally little reason to vary this as part of the model development.
+- **Data requirements.** More complex models need more data to fit their additional flexibility. Most methods need at least as many snapshots of data as the target delay length at a minimum, though some Bayesian methods can work with less data by relying on prior models or parametric delay distributions.
+- **Training window.** Most methods fit to a window of recent data rather than the full history. A shorter window lets the model adapt quickly to changes in reporting behaviour but provides fewer data points for estimating delay proportions, which matters when counts are low. The appropriate window length depends on data frequency and the stability of reporting patterns [@Johnson2025; @Wolffram2023]. Some methods support time-varying delays directly (see the Software tab), which makes optimising the training window less important because the model itself can adapt. In settings where the delay distribution is expected to change, these methods are likely to perform better than those that assume a fixed delay within each window.
+- **Stratification.** When nowcasts are needed by age group, geography, or another variable, you can either fit separate models to each stratum or fit a single model that pools information across strata. Separate models are simpler but can be unstable when individual strata have low counts. Pooled or hierarchical models borrow strength across strata to stabilise estimates, but require software that supports this feature (see the Software tab) and take longer to fit [@Stoner2023]. A middle ground is to assume that the delay distribution is shared across strata while allowing the epidemic curve to vary [@Seaman2022], which reduces the number of parameters without forcing strata to have identical trajectories.
+
+### Practical considerations
+
+::: {.callout-warning}
+## Watch out for
+Software installation constraints in public health settings can limit which packages are available. Check that your computing environment supports the inference backend a package requires before committing to it.
+:::
+
+- **Computation.** Multiplicative methods typically run in seconds. Regression and generative models fitted with Bayesian inference take longer, and fitting time depends heavily on the inference method. Full MCMC sampling via Stan [@stan] is the most flexible but slowest option, with run times ranging from minutes to days depending on model complexity, the number of strata, and the length of the time series [@Stoner2023; @epinowcast]. Approximate inference methods can be substantially faster: [nowcaster](https://github.com/covid19br/nowcaster) uses INLA [@Rue2009], [EpiLPS](https://github.com/oswaldogressani/EpiLPS) uses Laplacian P-splines [@Gressani2024], and [epinowcast](https://github.com/epinowcast/epinowcast) supports variational inference via Pathfinder [@Zhang2022] as an alternative to MCMC. Plan for this when deciding how to integrate nowcasting into an operational workflow, for instance by scheduling model runs overnight.
+- **Software availability.** Public health departments often have limited ability to install software, with access restricted to packages available as pre-compiled binaries from CRAN. This rules out tools that depend on [cmdstanr](https://mc-stan.org/cmdstanr/) [@cmdstanr], which requires a local C++ toolchain: for example, [epinowcast](https://github.com/epinowcast/epinowcast) is cmdstanr-based and cannot be installed in such environments, whereas [EpiNow2](https://github.com/epiforecasts/EpiNow2) uses rstan and is available from CRAN. [nowcaster](https://github.com/covid19br/nowcaster) depends on INLA [@Rue2009], which may face similar installation barriers depending on the computing environment.
+- **Monitoring.** Once a pipeline is running, inspect the nowcast visually against the raw data after each run to confirm that estimates are plausible and uncertainty intervals are reasonable. Watch for estimates that swing sharply between runs, which can indicate changes in reporting practice, data quality events, or a model that is poorly suited to the current data. Compare the nowcast against what was eventually observed for recent past dates; persistent over- or under-prediction suggests the model needs recalibration [@Wolffram2023].
+
+:::

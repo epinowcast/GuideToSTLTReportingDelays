@@ -1,0 +1,17 @@
+---
+title: "Managing Data Revisions"
+---
+
+::: {.callout-note}
+This page is under development.
+:::
+
+### Data requirements
+
+### Methods
+
+- Excluding data from known backlog or major revision periods
+- Flagging and annotating revision events so downstream analyses can account for them
+- Redistributing negative entries in reporting triangles across neighbouring cells
+
+### Implementation

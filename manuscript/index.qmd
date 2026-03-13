@@ -39,7 +39,7 @@ abstract: |
 # Introduction
 
 **Section lead:** Sam Abbott
-**Section support:** TBD
+**Section support:** Laura Jones
 
 State, local, and territorial surveillance systems play a central role in
 public health decision making in the United States.
@@ -75,8 +75,8 @@ Here we focus on practical guidance for choosing and implementing these methods 
 
 # Challenges in real-time use of surveillance data
 
-**Section overview lead:** TBD
-**Section overview support:** TBD
+**Section overview lead:** Sharon Greene
+**Section overview support:** Laura Jones, 
 
 @tbl-challenges summarises the challenges described in this section.
 
@@ -102,6 +102,7 @@ Here we focus on practical guidance for choosing and implementing these methods 
 
 - Lab confirmation requirements
 - Electronic vs manual reporting differences
+- Delays in facility coding of clinical encounters
 - Weekend and holiday effects (fewer reports filed on weekends, lab closures)
 - Holiday periods (extended closures affect both reporting and care-seeking)
 - Delays may shorten as reporting improves or lengthen when systems are under strain
@@ -357,7 +358,7 @@ Regardless of which method you choose, several specification decisions are likel
 
 # Choosing a modelling method
 
-**Section overview lead:** TBD
+**Section overview lead:** Ian Painter & Allie Warren
 **Section overview support:** TBD
 
 @fig-decision-tree provides a decision tree linking methods to data
@@ -372,8 +373,8 @@ selection, referring back to the decision tree where relevant.
 
 ## Adoption and sustainability
 
-**Section lead:** TBD
-**Section support:** TBD
+**Section lead:** Tomas Leon & Natalie Linton
+**Section support:** Laura Jones
 
 - Advocating to public health leadership
 - Explaining nowcasts to decision makers
@@ -381,8 +382,8 @@ selection, referring back to the decision tree where relevant.
 
 ## Data analysis
 
-**Section lead:** TBD
-**Section support:** TBD
+**Section lead:** Tomas Leon & Natalie Linton
+**Section support:** Laura Jones
 
 - Analysing delay distributions
 - Choosing maximum delay and training window
@@ -392,8 +393,8 @@ selection, referring back to the decision tree where relevant.
 
 ## Implementation considerations
 
-**Section lead:** TBD
-**Section support:** TBD
+**Section lead:** Tomas Leon & Natalie Linton
+**Section support:** Laura Jones
 
 - Considerations for emergencies vs chronic delays
 - Software/infrastructure requirements
@@ -404,7 +405,7 @@ selection, referring back to the decision tree where relevant.
 
 ## Validating and evaluating a model
 
-**Section lead:** TBD
+**Section lead:** Kaitlyn Johnson & Laura Jones
 **Section support:** TBD
 
 - What to check first: visual inspection of past nowcasts against final observed values (flipbooking, overlay plots)
@@ -445,7 +446,7 @@ selection, referring back to the decision tree where relevant.
 
 # How-to case studies
 
-**Section overview lead:** TBD
+**Section overview lead:** Laura Jones & Kaitlyn Johnson
 **Section overview support:** TBD
 
 Regardless of the specific challenge or method, implementing a model to account for reporting challenges in surveillance data involves common steps:

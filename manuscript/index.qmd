@@ -197,8 +197,8 @@ challenges described in the previous section.
 
 ## Correcting delayed data {#sec-reporting-delays}
 
-**Section lead:** TBD
-**Section support:** TBD
+**Section lead:** Sam Abbott
+**Section support:** Daniel Mcdonald
 
 ### Data requirements
 

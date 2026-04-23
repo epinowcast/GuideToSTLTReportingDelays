@@ -1,0 +1,36 @@
+---
+title: "Case Study: Outbreak data"
+---
+
+::: {.callout-note}
+This page is under development.
+Content will be drawn from the companion paper
+(Section 6: How-to case studies).
+:::
+
+**Lead:** Kaitlyn Johnson
+
+Early outbreak data (e.g. measles in the U.S.)
+
+## Setting
+
+- Early outbreak data, could be obtained from contact-tracing from a single outbreak or multiple outbreaks in different locations. For example, data from multiple outbreaks of measles across the U.S./a specific state in 2025. 
+- If contact-tracing data, often have time-stamp of multiple events e.g. presumed exposure time, symptom onset time, time of  reporting prospective case, time of specimen collection for testing, time of reporting of test results
+- If case count data, often have symptom onset time (which may or may not be missing) and time of report of prospective/confirmed cases
+- 
+## The challenge
+
+- prospective cases become confirmed cases (negative revisions)
+- missingness in the primary event we choose to index by (e.g. missingness in symptom onset time)
+- different definitions of symptom onset across the dataset of interest 
+- facility-level reporting lags 
+- might only have the case counts by primary event time without knowledge of when each of the cases was reported (e.g. would need to use Wayback or set up system to save daily data snapshots in order to obtain counts of cases by primary event and report time)
+- contact-tracing data very rich but still might not have all the time stamps you need/could have unclear definitions of primary events and report times
+
+## Approach
+
+## Implementation
+
+## Validation
+
+## Results and lessons

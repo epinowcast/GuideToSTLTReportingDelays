@@ -5,7 +5,18 @@ title: "Discussion Prompts"
 Prompts for the facilitated discussion following the
 challenges overview and rapid presentations.
 
-## Reporting delays
+## Data Challenges
+
+- Which of these challenges is the biggest barrier to
+  timely analysis in your setting?
+- What kinds of questions do you get about your incomplete data that you wish you could answer? 
+- How do you currently handle recent incomplete data
+  when briefing leadership?
+- How do you currently monitor or assess the completeness of your data?
+- Are there challenges, data or operational, you face that we have not covered?
+- What would be most useful to you from this effort?
+
+### Reporting delays
 
 - What are the most common sources of [reporting delay](../resources/glossary.qmd#reporting-delay)
   in your jurisdiction?
@@ -13,10 +24,8 @@ challenges overview and rapid presentations.
   streams?
 - Have you seen delays change over time (e.g. during
   outbreaks, holiday periods, system changes)?
-- How do you currently handle recent incomplete data
-  when briefing leadership?
 
-## Data revisions
+### Data revisions
 
 - How often do your data get revised after initial
   release?
@@ -25,14 +34,14 @@ challenges overview and rapid presentations.
 - Have you experienced large retrospective corrections
   that affected interpretation?
 
-## Site drop-in and drop-out
+### Site drop-in and drop-out
 
 - Do you have sites that report intermittently?
 - How do you handle new sites joining or existing sites
   dropping out of reporting?
 - Does this vary between surveillance streams?
 
-## Other data quality issues
+### Other data quality issues
 
 - What data quality issues most affect your ability to
   interpret recent trends?
@@ -40,9 +49,4 @@ challenges overview and rapid presentations.
 - Are there format or system compatibility issues that
   create apparent delays?
 
-## Cross-cutting
 
-- Which of these challenges is the biggest barrier to
-  timely analysis in your setting?
-- Are there challenges you face that we have not covered?
-- What would be most useful to you from this effort?

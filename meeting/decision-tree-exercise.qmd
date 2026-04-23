@@ -52,8 +52,8 @@ challenges if you prefer.
 
 - **Weekly syndromic surveillance with stable delays:**
   weekly ED visit counts for respiratory illness,
-  typically complete within two weeks, stable delay
-  pattern, need to report trends each Monday.
+  typically "complete" within 6 weeks, fairly stable delay
+  pattern, need to report prior week's trends midweek.
 - **Daily case counts during an emerging outbreak:**
   daily counts by symptom onset, delays getting longer
   as labs come under strain, leadership wants daily
@@ -63,7 +63,7 @@ challenges if you prefer.
   reporting intermittently, one new site, need a
   jurisdiction-wide estimate.
 - **Low counts with long delays:** rare condition with
-  5-10 cases per week, delays up to 6 weeks, 18 months
+  5-10 cases per week, delays up to 8 weeks, 18 months
   of historical data.
 
 ## What to capture

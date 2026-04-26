@@ -6,7 +6,9 @@
   stage/.style={draw, rounded corners, minimum height=8mm,
                 minimum width=24mm, fill=blue!8},
   method/.style={draw, dashed, rounded corners, minimum height=9mm,
-                 minimum width=27mm, fill=yellow!18},
+                 minimum width=26mm, fill=yellow!18},
+  delaybox/.style={draw, dashed, rounded corners, minimum height=7mm,
+                   minimum width=22mm, fill=yellow!18, font=\scriptsize},
   arr/.style={->, thick, >=latex},
   marr/.style={->, dashed, gray, >=latex}
 ]
@@ -19,7 +21,10 @@
   \draw[arr] (b) -- (c);
   \draw[arr] (c) -- (d);
 
-  \node[method] (m1) at (0,-1.8) {Modelling event\\dynamics (Rt)};
+  \node[delaybox] (md) at (1.55,1.2) {Estimate delays};
+  \draw[marr] (md) -- (1.55,0.35);
+
+  \node[method] (m1) at (0,-1.8) {Modelling event\\dynamics (e.g.\ Rt)};
   \node[method] (m2) at (3.1,-1.8) {Modelling the\\reporting process};
   \node[method] (m3) at (6.2,-1.8) {Nowcasting\\(joint or two-step)};
   \node[method] (m4) at (9.3,-1.8) {Forecasting with\\reporting delays};

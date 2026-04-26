@@ -10,6 +10,10 @@ format:
     slide-level: 2
     chalkboard: true
     incremental: false
+    auto-stretch: false
+    slide-number: c/t
+    title-slide-attributes:
+      data-background-color: "#1f4e79"
 engine: knitr
 ---
 
@@ -40,14 +44,16 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, F
 ```{tikz}
 %%| fig-align: center
 %%| fig-ext: png
-%%| fig-width: 8.5
-%%| fig-height: 3.4
+%%| fig-width: 9
+%%| fig-height: 4.2
 \begin{tikzpicture}[
   every node/.style={align=center, font=\footnotesize},
   stage/.style={draw, rounded corners, minimum height=8mm,
                 minimum width=24mm, fill=blue!8},
   method/.style={draw, dashed, rounded corners, minimum height=9mm,
-                 minimum width=27mm, fill=yellow!18},
+                 minimum width=26mm, fill=yellow!18},
+  delaybox/.style={draw, dashed, rounded corners, minimum height=7mm,
+                   minimum width=22mm, fill=yellow!18, font=\scriptsize},
   arr/.style={->, thick, >=latex},
   marr/.style={->, dashed, gray, >=latex}
 ]
@@ -60,7 +66,10 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, F
   \draw[arr] (b) -- (c);
   \draw[arr] (c) -- (d);
 
-  \node[method] (m1) at (0,-1.8) {Modelling event\\dynamics (Rt)};
+  \node[delaybox] (md) at (1.55,1.2) {Estimate delays};
+  \draw[marr] (md) -- (1.55,0.35);
+
+  \node[method] (m1) at (0,-1.8) {Modelling event\\dynamics (e.g.\ Rt)};
   \node[method] (m2) at (3.1,-1.8) {Modelling the\\reporting process};
   \node[method] (m3) at (6.2,-1.8) {Nowcasting\\(joint or two-step)};
   \node[method] (m4) at (9.3,-1.8) {Forecasting with\\reporting delays};
@@ -158,12 +167,14 @@ Materials are open and reusable; happy to point you to specific sessions if a to
 
 ## Up next: rapid talks on modelling
 
-As you listen, three things to note:
+As you listen, things to note:
 
-- **What data does each method need?** Line list, snapshots, full reporting triangle?
+- **What questions can it help answer?** Current level, trend, forecast, delay distribution?
+- **What data does it need?** Line list, snapshots, full reporting triangle?
 - **What does it give back?** Point estimates, intervals, mechanistic structure?
-- **Where does it attach in the pipeline above?**
+- **Where does it attach in the modelling workflow?** Event dynamics, reporting process, observation, or downstream?
+- **What does it assume?** Stable delays, fixed reporting population, complete data?
 
-The group exercise after will work on how to choose between these.
+These are the same questions the group exercise will work through afterwards.
 
 [Back to the session overview](index.qmd)

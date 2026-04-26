@@ -130,7 +130,7 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/).
 
 **Approaches**
 
-- Pre-processing where it is enough: deduplication, format harmonisation, strata cleaning
+- Pre-processing: deduplication, format harmonisation, strata cleaning
 - Generative / Bayesian methods can be adapted to many of these — e.g. `epinowcast` does missing-date imputation alongside the nowcast
 - More custom or ad-hoc work where no standard tool fits
 

@@ -29,6 +29,10 @@
   \draw[arr] (f) -- (d);
   \draw[arr] (c) to[bend left=15] (f);
 
+  \node[stage] (s) at (14.4,1.7) {Event scenarios};
+  \draw[arr] (s) -- (d);
+  \draw[arr] (c) to[bend right=15] (s);
+
   \node[method] (m1) at (0,-2.2) {Modelling event\\dynamics (e.g.\ Rt)};
   \node[method] (m2) at (4.8,-2.2) {Nowcasting\\(joint or two-step)};
   \node[method] (m3) at (10.2,-2.2) {Modelling the\\reporting process};

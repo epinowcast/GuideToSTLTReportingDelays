@@ -148,7 +148,7 @@ Most of the methods we work on sit in the [epinowcast](https://www.epinowcast.or
 
 - [epinowcast](https://package.epinowcast.org/) — modular Bayesian framework for nowcasting, Rt estimation, delay estimation, and forecasting from delayed data
 - [epidist](https://epidist.epinowcast.org/), [primarycensored](https://primarycensored.epinowcast.org/), [baselinenowcast](https://baselinenowcast.epinowcast.org/) — R packages for delay distribution estimation, primary event censored distributions, and simple baseline nowcasts
-- [EpiNow2](https://epiforecasts.io/EpiNow2/) — R package for Bayesian Rt and forecasting with reporting delays
+- [EpiNow2](https://epiforecasts.io/EpiNow2/) — R package for Bayesian Rt estimation, nowcasting, delay estimation, and forecasting with reporting delays
 - The [EpiAware](https://github.com/EpiAware) org for the same ideas in Julia, including [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
 
 If any of these are relevant to your setting, please grab me after the session.

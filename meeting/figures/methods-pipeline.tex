@@ -27,11 +27,12 @@
 
   \node[stage] (f) at (12,-2.2) {Events forecast};
   \draw[arr] (f) -- (d);
+  \draw[arr] (c) to[bend left=15] (f);
 
   \node[method] (m1) at (0,-2.2) {Modelling event\\dynamics (e.g.\ Rt)};
   \node[method] (m2) at (4,-2.2) {Nowcasting\\(joint or two-step)};
   \node[method] (m3) at (8,-2.2) {Modelling the\\reporting process};
-  \node[method] (m4) at (12,-3.9) {Forecasting with\\reporting delays};
+  \node[method] (m4) at (12,-3.9) {Forecasting};
 
   \draw[marr] (m1) -- (a);
   \draw[marr] (m2) -- (b);

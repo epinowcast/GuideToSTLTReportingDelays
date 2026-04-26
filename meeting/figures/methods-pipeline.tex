@@ -12,21 +12,21 @@
   arr/.style={->, thick, >=latex},
   marr/.style={->, dashed, gray, >=latex}
 ]
-  \node[stage] (a) at (0,0) {Events occur};
-  \node[stage] (b) at (3.1,0) {Events reported};
-  \node[stage] (c) at (6.2,0) {Partial observations};
+  \node[stage] (a) at (0,0) {Infections};
+  \node[stage] (b) at (3.1,0) {Events};
+  \node[stage] (c) at (6.2,0) {Events reported};
   \node[stage] (d) at (9.3,0) {Decisions};
 
-  \draw[arr] (a) -- node[above, font=\scriptsize\itshape]{delay} (b);
-  \draw[arr] (b) -- (c);
+  \draw[arr] (a) -- node[above, font=\scriptsize\itshape]{onset delay} (b);
+  \draw[arr] (b) -- node[above, font=\scriptsize\itshape]{reporting delay} (c);
   \draw[arr] (c) -- (d);
 
-  \node[delaybox] (md) at (1.55,1.2) {Estimate delays};
-  \draw[marr] (md) -- (1.55,0.35);
+  \node[delaybox] (md) at (4.65,1.2) {Estimate delays};
+  \draw[marr] (md) -- (4.65,0.35);
 
   \node[method] (m1) at (0,-1.8) {Modelling event\\dynamics (e.g.\ Rt)};
-  \node[method] (m2) at (3.1,-1.8) {Modelling the\\reporting process};
-  \node[method] (m3) at (6.2,-1.8) {Nowcasting\\(joint or two-step)};
+  \node[method] (m2) at (3.1,-1.8) {Nowcasting\\(joint or two-step)};
+  \node[method] (m3) at (6.2,-1.8) {Modelling the\\reporting process};
   \node[method] (m4) at (9.3,-1.8) {Forecasting with\\reporting delays};
 
   \draw[marr] (m1) -- (a);

@@ -2,45 +2,42 @@
 title: "InSight Net Session"
 ---
 
-This guide is being developed collaboratively through
-the InSight Net [nowcasting](../resources/glossary.qmd#nowcasting) strike team.
-An initial working session brings together public health
-practitioners and modellers to identify shared challenges
-and inform the guide's content.
+This session invites practitioners and modelers interested in nowcasting to work with the Insight Net nowcasting strike team to identify challenges, review and discuss applicable tools, and to inform the development of guidance materials. Discussion will begin with a presentation of nowcasting challenges, including reporting delays, data revisions, site drop-in/drop-out, and other quality issues, followed by a facilitated discussion. Participants will then present available approaches and tools. Finally, a group working session will work on draft recommendations  for selecting approaches appropriate for different goals and data challenges. Outcomes from this session will be used to inform the strike team’s materials on nowcasting.
 
 ## Session overview
 
 The session (~90 minutes) has three parts.
 
-### Challenges in real-time surveillance data (~40 minutes)
+### Challenges in real-time surveillance data (~45 minutes)
 
-Surveillance data used in real time face several common
-challenges: [reporting delays](../resources/glossary.qmd#reporting-delay), data revisions, site
-drop-in and drop-out, and other data quality issues.
+Surveillance data used in real time face several common challenges: [reporting delays](../resources/glossary.qmd#reporting-delay), data revisions, site drop-in and drop-out, and other data quality issues.
 
 1. Laura Jones: overview of challenges (~10 minutes)
-2. Rapid presentations from participants on their
-   challenges (2-5 slides each, ~15 minutes)
-3. Facilitated discussion (~15 minutes)
+2. Rapid presentations from participants on their challenges (2-5 slides each, ~15 minutes)
+3. Facilitated discussion (~20 minutes)
+
+The discussion will focus on cross-cutting questions across data challenges rather than a deep dive into any one of them.
+We will take notes throughout and, if the room is large, may split into small groups around flipcharts.
+See the [discussion prompts](discussion-prompts.qmd) for the questions we plan to use.
 
 ### Modelling options (~25 minutes)
 
-What modelling approaches are available to address
-these challenges?
-Covers the range from simple adjustments through to
-formal statistical approaches, what data each requires,
-and what each gives you in return.
+What [modelling options](../methods/index.qmd) are available to address these [challenges](../challenges/index.qmd)?
+Covers the range from simple adjustments through to formal statistical approaches, what data each requires, and what each gives you in return.
 
-1. Sam Abbott: overview of modelling options (~10 minutes)
-2. Rapid presentations from participants on their models
-   or tools (2-5 slides each, ~15 minutes)
+1. Sam Abbott: overview of modelling options (~5 minutes)
+2. Rapid presentations from participants on their models or tools (2-5 slides each, ~15 minutes)
 
 ### Choosing a modelling approach (~20 minutes)
 
-Group session working through how to choose between
-approaches for different challenge and data scenarios.
-The output will help inform the
-[interactive decision tree](../choosing-a-method/index.qmd).
+A group session working through how to choose between approaches for different challenge and data scenarios.
+The output will help inform the [interactive decision tree](../choosing-a-method/index.qmd).
+
+Participants split into up to four small groups, mixing STLT practitioners with modellers and aiming to be with people they do not already work with closely.
+Each group sketches decision trees in pairs (~10 minutes), then compares them on a flipchart to find common ground (~10 minutes).
+We will collect the paper sketches, take photos of the flipcharts, and ask each group to nominate a note-taker.
+After the session we will write up the material and circulate it for feedback.
+See the [decision tree exercise](decision-tree-exercise.qmd) for the full brief.
 
 ## Materials
 

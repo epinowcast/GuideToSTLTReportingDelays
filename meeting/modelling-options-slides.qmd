@@ -29,7 +29,7 @@ Different surveillance streams, different operational responses, but a similar u
 
 All three examples share *right truncation*: most events have happened, but some are not yet visible to us.
 
-They also have other things going on — data revisions, sites coming and going, missing or messy fields — that the same kinds of methods can help with.
+They also have other things going on — data revisions, sites coming and going, missing or messy fields — that need different kinds of methods.
 
 ::: {.aside}
 Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, Funk, Lison, Bracher, Bosse).

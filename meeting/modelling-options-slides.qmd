@@ -74,16 +74,60 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, F
 
 Each method attaches at a different point in the same pipeline; the right choice depends on the question, not the method.
 
-## Modelling by challenge {.smaller}
+## Reporting delays {.smaller}
 
-| Challenge | Approaches | What you get |
-|---|---|---|
-| **Reporting delays** (correcting delayed data) | Simple (pruning, caveats, report-date), multiplicative (chain ladder), regression, generative (Bayesian, mechanistic), other statistical (ML) | Estimates of current levels and trends with uncertainty |
-| **Data revisions** | Model the revision process or use latest snapshot only | Stable estimates that do not flip with each new release |
-| **Site drop-in / drop-out** | Pooling across sites; explicit reporting-population models | Jurisdiction-wide estimates from changing site sets |
-| **Other data quality** | Pre-processing, deduplication, format harmonisation | Cleaner inputs upstream of any of the above |
+**Approaches**
 
-: {.striped .hover tbl-colwidths="[18,52,30]"}
+- *Simple:* pruning recent dates, caveats, switching to report date
+- *Multiplicative* (chain ladder): scale partial counts by historical completion rates
+- *Regression:* joint model of epidemic curve and delay surface, with covariates
+- *Generative* (Bayesian, mechanistic): explicit delay distributions, pooling, structure
+- *Other statistical:* machine-learning approaches
+
+**What you get:** estimates of current levels and trends, usually with uncertainty.
+
+::: {.callout-note appearance="simple"}
+*Preliminary — we need your input.*
+:::
+
+## Data revisions {.smaller}
+
+**Approaches**
+
+- Nowcasting methods that do not assume monotonic (increasing) reporting, so they can absorb downward revisions (e.g. deduplication, reclassification)
+- Direct modelling of the revision process across snapshots
+
+**What you get:** estimates that do not flip when a later release revises earlier values down.
+
+::: {.callout-note appearance="simple"}
+*Preliminary — we need your input.*
+:::
+
+## Site drop-in / drop-out {.smaller}
+
+**Approaches**
+
+- Pooling across sites, with explicit handling of which sites contributed at each time
+- Reporting-population models that separate "what happened" from "who was reporting"
+
+**What you get:** jurisdiction-wide estimates that stay coherent as sites join, leave, or report intermittently.
+
+::: {.callout-note appearance="simple"}
+*Preliminary — we need your input.*
+:::
+
+## Other data quality {.smaller}
+
+**Approaches**
+
+- Mostly custom / ad-hoc work today: deduplication, format harmonisation, missing-date imputation, strata cleaning
+- Less mature than the methods above; the guide needs more case material here
+
+**What you get:** cleaner inputs upstream of any of the methods on the previous slides.
+
+::: {.callout-note appearance="simple"}
+*Preliminary — we need your input — please share your own approaches.*
+:::
 
 More detail in the guide's [modelling options](../methods/index.qmd) section.
 
@@ -103,7 +147,8 @@ The group exercise after will work on how to choose between these.
 
 Most of the methods we work on sit in the [epinowcast](https://www.epinowcast.org/) community:
 
-- [epinowcast](https://package.epinowcast.org/), [epidist](https://epidist.epinowcast.org/), [primarycensored](https://primarycensored.epinowcast.org/), [baselinenowcast](https://baselinenowcast.epinowcast.org/) — R packages for nowcasting, delay estimation, and primary event censored distributions
+- [epinowcast](https://package.epinowcast.org/) — modular Bayesian framework for nowcasting, Rt estimation, delay estimation, and forecasting from delayed data
+- [epidist](https://epidist.epinowcast.org/), [primarycensored](https://primarycensored.epinowcast.org/), [baselinenowcast](https://baselinenowcast.epinowcast.org/) — R packages for delay distribution estimation, primary event censored distributions, and simple baseline nowcasts
 - [EpiNow2](https://epiforecasts.io/EpiNow2/) — R package for Bayesian Rt and forecasting with reporting delays
 - The [EpiAware](https://github.com/EpiAware) org for the same ideas in Julia, including [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
 

@@ -23,14 +23,14 @@ You have just seen three concrete cases:
 
 Different surveillance streams, different operational responses, but the same underlying data picture.
 
-::: {.fragment}
+## The shared structure: right truncation {.smaller}
+
 ![](figures/truncation_final.png){fig-align="center" width="55%"}
 
-Most events of interest have happened, but some are not yet visible to us — *right truncation*.
+Most events of interest have happened, but some are not yet visible to us.
 
 ::: {.aside}
 Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, Funk, Lison, Bracher, Bosse).
-:::
 :::
 
 ## Modelling for delays is broader than nowcasting alone {.smaller}

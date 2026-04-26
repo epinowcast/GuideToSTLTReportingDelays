@@ -21,13 +21,15 @@ You have just seen three concrete cases:
 - Washington State (case investigation, COVID-19)
 - South Carolina (measles)
 
-Different surveillance streams, different operational responses, but the same underlying data picture.
+Different surveillance streams, different operational responses, but a similar underlying data picture.
 
-## The shared structure: right truncation {.smaller}
+## Right truncation, and more {.smaller}
 
-![](figures/truncation_final.png){fig-align="center" width="55%"}
+![](figures/truncation_final.png){fig-align="center" width="50%"}
 
-Most events of interest have happened, but some are not yet visible to us.
+All three examples share *right truncation*: most events have happened, but some are not yet visible to us.
+
+They also have other things going on — data revisions, sites coming and going, missing or messy fields — that the same kinds of methods can help with.
 
 ::: {.aside}
 Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, Funk, Lison, Bracher, Bosse).
@@ -51,7 +53,7 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, F
 ]
   \node[stage] (a) at (0,0) {Events occur};
   \node[stage] (b) at (3.1,0) {Events reported};
-  \node[stage] (c) at (6.2,0) {Partial counts seen};
+  \node[stage] (c) at (6.2,0) {Partial observations};
   \node[stage] (d) at (9.3,0) {Decisions};
 
   \draw[arr] (a) -- node[above, font=\scriptsize\itshape]{delay} (b);
@@ -72,32 +74,32 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/) (Abbott, F
 
 Each method attaches at a different point in the same pipeline; the right choice depends on the question, not the method.
 
-## Trade-offs at a glance
+## Modelling by challenge {.smaller}
 
-| Approach | Best when | Watch out for |
+| Challenge | Approaches | What you get |
 |---|---|---|
-| Simple (pruning, caveats, report-date) | Delays short and stable; trends not levels | No uncertainty; throws away information |
-| Multiplicative (chain ladder) | Stable delay pattern; moderate-to-large counts | Fixed-delay assumption; no day-of-week |
-| Regression | Delays change over time; covariates matter | Delay not constrained; hard to add mechanism |
-| Generative (Bayesian, mechanistic) | Need delay constraints, parametric delays, pooling, mechanism | More work to set up |
-| Other statistical (ML, etc.) | Quick prototyping; large datasets | Hard to diagnose when wrong |
+| **Reporting delays** (correcting delayed data) | Simple (pruning, caveats, report-date), multiplicative (chain ladder), regression, generative (Bayesian, mechanistic), other statistical (ML) | Estimates of current levels and trends with uncertainty |
+| **Data revisions** | Model the revision process or use latest snapshot only | Stable estimates that do not flip with each new release |
+| **Site drop-in / drop-out** | Pooling across sites; explicit reporting-population models | Jurisdiction-wide estimates from changing site sets |
+| **Other data quality** | Pre-processing, deduplication, format harmonisation | Cleaner inputs upstream of any of the above |
 
-: {.striped .hover tbl-colwidths="[20,40,40]"}
+: {.striped .hover tbl-colwidths="[18,52,30]"}
 
 More detail in the guide's [modelling options](../methods/index.qmd) section.
 
-## What this means for the exercise
+## Up next: rapid talks on modelling
 
-Four questions worth keeping in mind as you sketch your tree:
+You will hear participants describe their own models and tools.
 
-1. **What is the question?** A current level, a trend, a forecast, or a delay characterisation?
-2. **What data do you have?** Snapshots, line list, full reporting triangle?
-3. **How stable are the delays?** Fixed pattern, drifting, or changing fast?
-4. **What capacity do you have?** Time, infrastructure, modelling experience, communication needs?
+As you listen, three things to note:
 
-The decision tree exercise will work through how these questions narrow the choice.
+- **What data does each method need?** Line list, snapshots, full reporting triangle?
+- **What does it give back?** Point estimates, intervals, mechanistic structure?
+- **Where does it attach in the pipeline above?**
 
-## Our tools and courses
+The group exercise after will work on how to choose between these.
+
+## Our tools and courses {.smaller}
 
 Most of the methods we work on sit in the [epinowcast](https://www.epinowcast.org/) community:
 
@@ -110,11 +112,6 @@ We also teach a free open-source short course on these topics:
 - [NFIDD](https://nfidd.github.io/nfidd/) — *Nowcasting and forecasting of infectious disease dynamics*, available online any time
 - Taught in person at [SISMID 2026](https://sph.emory.edu/SISMID/) (Emory, July 2026): [course site](https://nfidd.github.io/sismid/)
 
-I have kept this overview generic on purpose.
 If any of these are relevant to your setting, please grab me after the session.
-
-## Discussion
-
-Questions, then on to the next section.
 
 [Back to the session overview](index.qmd)

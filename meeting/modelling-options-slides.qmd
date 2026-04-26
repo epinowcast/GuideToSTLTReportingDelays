@@ -120,10 +120,11 @@ Each method attaches at a different point in the same pipeline; the right choice
 
 **Approaches**
 
-- Mostly custom / ad-hoc work today: deduplication, format harmonisation, missing-date imputation, strata cleaning
-- Less mature than the methods above; the guide needs more case material here
+- Pre-processing where it is enough: deduplication, format harmonisation, strata cleaning
+- Generative / Bayesian methods can be adapted to many of these — e.g. `epinowcast` does missing-date imputation alongside the nowcast
+- More custom or ad-hoc work where no standard tool fits
 
-**What you get:** cleaner inputs upstream of any of the methods on the previous slides.
+**What you get:** principled handling of messy data, in the same model as the rest of the analysis where possible.
 
 ::: {.callout-note appearance="simple"}
 *Preliminary — we need your input — please share your own approaches.*

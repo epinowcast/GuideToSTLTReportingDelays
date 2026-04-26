@@ -132,6 +132,26 @@ Each method attaches at a different point in the same pipeline; the right choice
 
 More detail in the guide's [modelling options](../methods/index.qmd) section.
 
+## Our tools {.smaller}
+
+Most of the methods we work on sit in the [epinowcast](https://www.epinowcast.org/) community:
+
+- [epinowcast](https://package.epinowcast.org/) — modular Bayesian framework for nowcasting, Rt estimation, delay estimation, and forecasting from delayed data
+- [epidist](https://epidist.epinowcast.org/), [primarycensored](https://primarycensored.epinowcast.org/), [baselinenowcast](https://baselinenowcast.epinowcast.org/) — R packages for delay distribution estimation, primary event censored distributions, and simple baseline nowcasts
+- [EpiNow2](https://epiforecasts.io/EpiNow2/) — R package for Bayesian Rt and forecasting with reporting delays
+- The [EpiAware](https://github.com/EpiAware) org for the same ideas in Julia, including [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+
+If any of these are relevant to your setting, please grab me after the session.
+
+## Our courses {.smaller}
+
+We teach a free open-source short course on nowcasting and forecasting:
+
+- [NFIDD](https://nfidd.github.io/nfidd/) — *Nowcasting and forecasting of infectious disease dynamics*, available online any time
+- Taught in person at [SISMID 2026](https://sph.emory.edu/SISMID/) (Emory, July 2026): [course site](https://nfidd.github.io/sismid/)
+
+Materials are open and reusable; happy to point you to specific sessions if a topic from today is useful for your team.
+
 ## Up next: rapid talks on modelling
 
 You will hear participants describe their own models and tools.
@@ -143,21 +163,5 @@ As you listen, three things to note:
 - **Where does it attach in the pipeline above?**
 
 The group exercise after will work on how to choose between these.
-
-## Our tools and courses {.smaller}
-
-Most of the methods we work on sit in the [epinowcast](https://www.epinowcast.org/) community:
-
-- [epinowcast](https://package.epinowcast.org/) — modular Bayesian framework for nowcasting, Rt estimation, delay estimation, and forecasting from delayed data
-- [epidist](https://epidist.epinowcast.org/), [primarycensored](https://primarycensored.epinowcast.org/), [baselinenowcast](https://baselinenowcast.epinowcast.org/) — R packages for delay distribution estimation, primary event censored distributions, and simple baseline nowcasts
-- [EpiNow2](https://epiforecasts.io/EpiNow2/) — R package for Bayesian Rt and forecasting with reporting delays
-- The [EpiAware](https://github.com/EpiAware) org for the same ideas in Julia, including [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
-
-We also teach a free open-source short course on these topics:
-
-- [NFIDD](https://nfidd.github.io/nfidd/) — *Nowcasting and forecasting of infectious disease dynamics*, available online any time
-- Taught in person at [SISMID 2026](https://sph.emory.edu/SISMID/) (Emory, July 2026): [course site](https://nfidd.github.io/sismid/)
-
-If any of these are relevant to your setting, please grab me after the session.
 
 [Back to the session overview](index.qmd)

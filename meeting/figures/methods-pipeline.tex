@@ -1,0 +1,32 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[
+  every node/.style={align=center, font=\small},
+  stage/.style={draw, rounded corners, minimum height=10mm,
+                minimum width=28mm, fill=blue!8},
+  method/.style={draw, dashed, rounded corners, minimum height=11mm,
+                 minimum width=32mm, fill=yellow!18},
+  arr/.style={->, thick, >=latex},
+  marr/.style={->, dashed, gray, >=latex}
+]
+  \node[stage] (a) at (0,0) {Events occur};
+  \node[stage] (b) at (3.7,0) {Events reported};
+  \node[stage] (c) at (7.4,0) {Partial counts seen};
+  \node[stage] (d) at (11.1,0) {Decisions};
+
+  \draw[arr] (a) -- node[above, font=\scriptsize\itshape]{delay} (b);
+  \draw[arr] (b) -- (c);
+  \draw[arr] (c) -- (d);
+
+  \node[method] (m1) at (0,-2.2) {Delay distribution\\estimation};
+  \node[method] (m2) at (3.7,-2.2) {Modelling the\\reporting process};
+  \node[method] (m3) at (7.4,-2.2) {Nowcasting\\(joint or two-step)};
+  \node[method] (m4) at (11.1,-2.2) {Forecasting with\\reporting delays};
+
+  \draw[marr] (m1) -- (a);
+  \draw[marr] (m2) -- (b);
+  \draw[marr] (m3) -- (c);
+  \draw[marr] (m4) -- (d);
+\end{tikzpicture}
+\end{document}

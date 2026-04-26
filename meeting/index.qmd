@@ -44,7 +44,7 @@ See the [decision tree exercise](decision-tree-exercise.qmd) for the full brief.
 ### Overview slides
 
 - Challenges overview slides (Laura Jones) — link TBD
-- Modelling options overview slides (Sam Abbott) — link TBD
+- [Modelling options overview slides](modelling-options-slides.qmd) (Sam Abbott)
 
 ### Rapid presentation templates
 

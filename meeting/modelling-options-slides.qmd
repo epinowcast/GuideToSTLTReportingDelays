@@ -170,11 +170,11 @@ Materials are open and reusable; happy to point you to specific sessions if a to
 
 As you listen, things to note:
 
-- **What questions can it help answer?** Current level, trend, forecast, delay distribution?
-- **What data does it need?** Line list, snapshots, full reporting triangle?
-- **What does it give back?** Point estimates, intervals, mechanistic structure?
-- **Where does it attach in the modelling workflow?** Event dynamics, reporting process, observation, or downstream?
-- **What does it assume?** Stable delays, fixed reporting population, complete data?
+- What questions can it help answer?
+- What data does it need?
+- What does it give back?
+- Where does it attach in the modelling workflow?
+- What does it assume?
 
 These are the same questions the group exercise will work through afterwards.
 

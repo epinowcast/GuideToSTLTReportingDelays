@@ -42,8 +42,8 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/).
 ```{tikz}
 %%| fig-align: center
 %%| fig-ext: png
-%%| fig-width: 9
-%%| fig-height: 4.2
+%%| fig-width: 10
+%%| fig-height: 5.5
 \begin{tikzpicture}[
   every node/.style={align=center, font=\footnotesize},
   stage/.style={draw, rounded corners, minimum height=8mm,
@@ -56,36 +56,39 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/).
   marr/.style={->, dashed, gray, >=latex}
 ]
   \node[stage] (a) at (0,0) {Infections};
-  \node[stage] (b) at (3.1,0) {Events};
-  \node[stage] (c) at (6.2,0) {Events reported};
-  \node[stage] (d) at (9.3,0) {Decisions};
+  \node[stage] (b) at (4,0) {Events};
+  \node[stage] (c) at (8,0) {Events reported};
+  \node[stage] (d) at (12,0) {Decisions};
 
   \draw[arr] (a) -- node[above, font=\scriptsize\itshape]{onset delay} (b);
   \draw[arr] (b) -- node[above, font=\scriptsize\itshape]{reporting delay} (c);
   \draw[arr] (c) -- (d);
 
-  \node[delaybox] (md) at (4.65,1.2) {Estimate delays};
-  \draw[marr] (md) -- (4.65,0.35);
+  \node[delaybox] (md) at (6,1.7) {Estimate delays};
+  \draw[marr] (md) -- (2,0.45);
+  \draw[marr] (md) -- (6,0.45);
 
-  \node[method] (m1) at (0,-1.8) {Modelling event\\dynamics (e.g.\ Rt)};
-  \node[method] (m2) at (3.1,-1.8) {Nowcasting\\(joint or two-step)};
-  \node[method] (m3) at (6.2,-1.8) {Modelling the\\reporting process};
-  \node[method] (m4) at (9.3,-1.8) {Forecasting with\\reporting delays};
+  \node[stage] (f) at (12,-2.2) {Events forecast};
+  \draw[arr] (f) -- (d);
+
+  \node[method] (m1) at (0,-2.2) {Modelling event\\dynamics (e.g.\ Rt)};
+  \node[method] (m2) at (4,-2.2) {Nowcasting\\(joint or two-step)};
+  \node[method] (m3) at (8,-2.2) {Modelling the\\reporting process};
+  \node[method] (m4) at (12,-3.9) {Forecasting with\\reporting delays};
 
   \draw[marr] (m1) -- (a);
   \draw[marr] (m2) -- (b);
   \draw[marr] (m3) -- (c);
-  \draw[marr] (m4) -- (d);
+  \draw[marr] (m4) -- (f);
 \end{tikzpicture}
 ```
-
-Each method attaches at a different point in the same pipeline; the right choice depends on the question, not the method.
 
 ## Reporting delays {.smaller}
 
 **Approaches**
 
 - *Simple:* pruning recent dates, caveats, switching to report date
+- *Individual-level delay estimation:* fit a delay distribution to paired event/report records (line list); feed into other methods
 - *Multiplicative* (chain ladder): scale partial counts by historical completion rates
 - *Regression:* joint model of epidemic curve and delay surface, with covariates
 - *Generative:* joint model of counts and delay distribution, with explicit structure (parametric delays, pooling, mechanism)

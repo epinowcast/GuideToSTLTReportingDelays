@@ -181,6 +181,4 @@ As you listen, things to note:
 - Where does it attach in the modelling workflow?
 - What does it assume?
 
-These are the same questions the group exercise will work through afterwards.
-
 [Back to the session overview](index.qmd)

@@ -98,17 +98,18 @@ Four questions worth keeping in mind as you sketch your tree:
 
 The decision tree exercise will work through how these questions narrow the choice.
 
-## A note on what I have not talked about
+## Our tools and courses
 
-Most of the methods we work on in our team sit in the [epinowcast](https://www.epinowcast.org/) community:
+Most of the methods we work on sit in the [epinowcast](https://www.epinowcast.org/) community:
 
-- [epinowcast](https://package.epinowcast.org/) — Bayesian framework for nowcasting (R)
-- [epidist](https://epidist.epinowcast.org/) — delay distribution estimation with `brms` (R)
-- [primarycensored](https://primarycensored.epinowcast.org/) — primary event censored distributions (R)
-- [baselinenowcast](https://baselinenowcast.epinowcast.org/) — simple baseline nowcasting (R)
-- [EpiNow2](https://epiforecasts.io/EpiNow2/) — Bayesian Rt and forecasting with reporting delays (R)
+- [epinowcast](https://package.epinowcast.org/), [epidist](https://epidist.epinowcast.org/), [primarycensored](https://primarycensored.epinowcast.org/), [baselinenowcast](https://baselinenowcast.epinowcast.org/) — R packages for nowcasting, delay estimation, and primary event censored distributions
+- [EpiNow2](https://epiforecasts.io/EpiNow2/) — R package for Bayesian Rt and forecasting with reporting delays
+- The [EpiAware](https://github.com/EpiAware) org for the same ideas in Julia, including [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
 
-Composable Julia tooling lives in the [EpiAware](https://github.com/EpiAware) org, including [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl) for primary event censored distributions in Julia.
+We also teach a free open-source short course on these topics:
+
+- [NFIDD](https://nfidd.github.io/nfidd/) — *Nowcasting and forecasting of infectious disease dynamics*, available online any time
+- Taught in person at [SISMID 2026](https://sph.emory.edu/SISMID/) (Emory, July 2026): [course site](https://nfidd.github.io/sismid/)
 
 I have kept this overview generic on purpose.
 If any of these are relevant to your setting, please grab me after the session.

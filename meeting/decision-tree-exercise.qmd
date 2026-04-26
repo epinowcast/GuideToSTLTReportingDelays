@@ -3,75 +3,68 @@ title: "Decision Tree Exercise"
 ---
 
 A participant-led group exercise.
-The goal is to work through scenarios and surface the
-questions that matter when choosing how to handle
-[reporting delays](../resources/glossary.qmd#reporting-delay) and other data challenges.
-The output will help inform the
-[interactive decision tree](../choosing-a-method/index.qmd).
+The goal is to work through scenarios and surface the questions that matter when choosing how to handle [reporting delays](../resources/glossary.qmd#reporting-delay) and other data challenges.
+The output will help inform the [interactive decision tree](../choosing-a-method/index.qmd).
 
-## How it works
+For reference during the exercise, see the guide's [challenges](../challenges/index.qmd) and [modelling options](../methods/index.qmd) pages.
 
-Pick a scenario closest to your own setting, or bring
-your own.
-As you work through it, sketch out a decision tree that
-captures the choices you would make and why.
+## How it works (~20 minutes)
 
-### Step 1: Define your starting point
+Please split yourselves into up to four small groups, sized to the room.
+Please aim to mix STLT practitioners with modellers, and to be with people you do not already work with closely.
 
-- What data do you have?
-- What challenge are you facing?
-- What do you need to deliver and how quickly?
+### Step 1: Sketch in pairs (~10 minutes)
 
-### Step 2: Sketch your decision tree
+Pair up within your group.
+Pick a scenario closest to your setting, or bring your own.
+On paper, sketch a decision tree that captures the choices you would make and why.
 
-Work through the choices you would make, branching at
-each decision point.
-For example:
+Sketching trees is a skill in itself, so do not worry about being neat.
+Boxes for choices, lines for branches, short labels.
+If a step does not fit a clean yes/no, write it in as a note next to the branch.
+
+Some questions to consider as you sketch:
 
 - Are delays stable or changing?
-- Do you have enough historical data to estimate delay
-  patterns?
-- Do you need uncertainty estimates or just a point
-  correction?
+- Do you have enough historical data to estimate delay patterns?
+- Do you need uncertainty estimates or just a point correction?
 - How much time and technical capacity do you have?
 
-Write or draw your tree as you go.
-It does not need to be neat; the goal is to capture
-the logic.
+### Step 2: Compare in your group (~10 minutes)
 
-### Step 3: Compare and discuss
-
-Share your tree with the group.
+Bring your pair sketches together at the flipchart or board.
 Where do your trees agree?
-Where do they diverge and why?
+Where do they diverge, and why?
+Try to draw a shared tree, or mark the points where the group does not agree.
+
+Please nominate one person in the group to take brief notes on the discussion.
+
+## Things that are hard to put on a tree
+
+Trees are good for binary choices but awkward for some real decisions.
+If any of these come up, capture them as notes next to the branch rather than forcing them into the structure:
+
+- Trade-offs that are not binary (e.g. complexity vs. accuracy, speed vs. precision).
+- Multiple valid paths where more than one approach would work.
+- Constraints that change through a season (capacity, leadership attention, data volume).
+- Stakeholder or communication needs that cut across the technical choice.
+- Dead ends where no current tool fits well.
 
 ## Example scenarios
 
-These are starting points; use your own data and
-challenges if you prefer.
+These are starting points; use your own data and challenges if you prefer.
 
-- **Weekly syndromic surveillance with stable delays:**
-  weekly ED visit counts for respiratory illness,
-  typically "complete" within 6 weeks, fairly stable delay
-  pattern, need to report prior week's trends midweek.
-- **Daily case counts during an emerging outbreak:**
-  daily counts by symptom onset, delays getting longer
-  as labs come under strain, leadership wants daily
-  updates.
-- **Site drop-in/drop-out in sentinel surveillance:**
-  hospitalisations across 12 sentinel sites, two
-  reporting intermittently, one new site, need a
-  jurisdiction-wide estimate.
-- **Low counts with long delays:** rare condition with
-  5-10 cases per week, delays up to 8 weeks, 18 months
-  of historical data.
+- **Weekly syndromic surveillance with stable delays:** weekly ED visit counts for respiratory illness, typically "complete" within 6 weeks, fairly stable delay pattern, need to report prior week's trends midweek.
+- **Daily case counts during an emerging outbreak:** daily counts by symptom onset, delays getting longer as labs come under strain, leadership wants daily updates.
+- **Site drop-in/drop-out in sentinel surveillance:** hospitalisations across 12 sentinel sites, two reporting intermittently, one new site, need a jurisdiction-wide estimate.
+- **Low counts with long delays:** rare condition with 5-10 cases per week, delays up to 8 weeks, 18 months of historical data.
 
-## What to capture
+## What we will collect
 
-As you sketch your tree, note:
+To feed into the [interactive decision tree](../choosing-a-method/index.qmd), we would like to take away:
 
-- What questions determine the next branch?
-- What information do you need at each decision point?
-- Where is the boundary between "simple enough" and
-  "need something more formal"?
-- Are there dead ends where no current tool fits well?
+- Your paper sketches from the pair stage (we will collect them at the end if you are willing to share).
+- Photos of each group's flipchart.
+- The note-taker's summary of the group discussion.
+
+After the session we will write up this material and circulate it for your feedback before it informs the guidance.

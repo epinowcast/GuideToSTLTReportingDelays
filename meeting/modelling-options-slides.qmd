@@ -80,7 +80,7 @@ Each one attaches to a different point in the same pipeline; the right choice de
 | Simple (pruning, caveats, report-date) | Delays short and stable; trends not levels | No uncertainty; throws away information |
 | Multiplicative (chain ladder) | Stable delay pattern; moderate-to-large counts | Fixed-delay assumption; no day-of-week |
 | Regression | Delays change over time; covariates matter | Delay not constrained; hard to add mechanism |
-| Generative | Need delay constraints, parametric delays, pooling, mechanism | More work to set up |
+| Generative (Bayesian, mechanistic) | Need delay constraints, parametric delays, pooling, mechanism | More work to set up |
 | Other statistical (ML, etc.) | Quick prototyping; large datasets | Hard to diagnose when wrong |
 
 : {.striped .hover tbl-colwidths="[20,40,40]"}
@@ -114,6 +114,8 @@ We also teach a free open-source short course on these topics:
 I have kept this overview generic on purpose.
 If any of these are relevant to your setting, please grab me after the session.
 
-#
+## Discussion
+
+Questions, then on to the next section.
 
 [Back to the session overview](index.qmd)

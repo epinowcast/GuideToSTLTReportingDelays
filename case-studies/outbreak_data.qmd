@@ -15,12 +15,15 @@ Early outbreak data (e.g. measles in the U.S.)
 ## Setting
 
 - Early outbreak data, could be obtained from contact-tracing from a single outbreak or multiple outbreaks in different locations. For example, data from multiple outbreaks of measles across the U.S./a specific state in 2025. 
-- If contact-tracing data, often have time-stamp of multiple events e.g. presumed exposure time, symptom onset time, time of  reporting prospective case, time of specimen collection for testing, time of reporting of test results
-- If case count data, often have symptom onset time (which may or may not be missing) and time of report of prospective/confirmed cases
-- 
+- If contact-tracing data, often have time-stamps of multiple events e.g. presumed exposure time, symptom onset time, time of  reporting prospective case, time of specimen collection for testing, time of reporting of test results
+- If line-list patient level data, might have one primary event e.g. symptom onset time (which may or may not be missing) and time stamp of report of  the individual becoming a prospective and/or lab-confirmed case.
+- If case count data, often have counts of prospective or confirmed cases indexed by symptom onset time. May or may not have historical vintages of the number of prospective/confirmed cases at each time or the time that each case was reported. If only have a single time series indexed by primary event, need to take "snapshots" of data (e.g. record what was available as of each day). 
+- For outbreaks with prospective and confirmed cases, prospective cases will be subject to downward revisions if prospective cases are moved to confirmed. In this case, it might be best to count cases by prospective and confirmed (totals) indexed by a shared primary event (e.g. symptom onset if available, or if missing, first time of report of either prospective or confirmed case). 
+- If testing is very limited for a novel pathogen, might expect that lab-confirmed cases are a small subset of prospective cases, and this might also impact decisions made on how to "count cases" over time (especially as testing availability changes). 
+
 ## The challenge
 
-- prospective cases become confirmed cases (negative revisions)
+- prospective cases can become confirmed cases (negative revisions)
 - missingness in the primary event we choose to index by (e.g. missingness in symptom onset time)
 - different definitions of symptom onset across the dataset of interest 
 - facility-level reporting lags 
@@ -29,8 +32,30 @@ Early outbreak data (e.g. measles in the U.S.)
 
 ## Approach
 
+- Pick a primary event with which you want cases to be indexed by and define your "case definition". Examples of primary events include the date of hospital admission, the date of symptom onset, the date of specimen collection. We recommend picking a primary event that is closest to the transmission event with minimal missingness. Define "cases" in a way that minimises bias due to factors unrelated to transmission such as testing capacity. 
+- Decide on your stratification of interest. For example, you might have information on patient's location, age, gender, and possibly suspected setting of exposure depending on the level of detail in the data. Another important factor might be facility, which might influence the reporting delay. 
+_ Decide on a temporal granularity. We recommend nowcasting at the finest temporal granularity that the data allows to begin with, and then aggregating as a final step if desired.
+- Obtain a count of cases by primary event and date of report. If using time stamped snapshots of total cases, the additional or loss of cases at each date will need to be recorded and assigned to that report date. 
+
 ## Implementation
+1. Choose a nowcasting model. Things to consider:
+- How sparse is your data?
+- How much training data do you have to learn a delay distribution?
+- Do you want to be able to share information across strata within the strata you are nowcasting? 
+- Do you want to model the trend in time-varying delay distribution?
+- Do you need to be able to handle downward (negative) revisions? 
+- Do you want to be able to model things like weekday effects in either reporting or in your primary event? 
+
+2. Summarise nowcasts for communication using either probabilistic trajectories or quantiles.
 
 ## Validation
 
+- Evaluate the performance of your nowcasts using a rolling evaluation window (count the final cases indexed by primary event as of X time frame after the date of the nowcast, and compare that to your nowcasts)
+- Use proper scoring rules to evaluate your nowcasts, examples include weighted interval score or continuous ranked probability score and interval coverage. 
+
 ## Results and lessons
+
+- Nowcasting on outbreak data is only possible if both the time of the primary event and the time of report are somehow included. A single time series of cases indexed by primary event cannot be nowcasted 
+- Your choice of primary event and case definition influence your case counts as well as your choices regarding nowcasting. 
+- Limited training data from early outbreaks can limit the choices you have in terms of nowcasting models (necessitating using a model which allows for passing in a prior on the delay distribution). 
+

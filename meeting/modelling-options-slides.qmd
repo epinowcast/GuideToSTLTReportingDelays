@@ -80,11 +80,13 @@ Figure from the [NFIDD short course](https://nfidd.github.io/sismid/).
   \node[method] (m2) at (4.8,-2.2) {Nowcasting\\(joint or two-step)};
   \node[method] (m3) at (10.2,-2.2) {Modelling the\\reporting process};
   \node[method] (m4) at (14.4,-3.9) {Forecasting};
+  \node[method] (m5) at (14.4,3.4) {Scenario modelling};
 
   \draw[marr] (m1) -- (a);
   \draw[marr] (m2) -- (b);
   \draw[marr] (m3) -- (c);
   \draw[marr] (m4) -- (f);
+  \draw[marr] (m5) -- (s);
 \end{tikzpicture}
 ```
 

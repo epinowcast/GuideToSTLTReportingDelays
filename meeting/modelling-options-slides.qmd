@@ -169,7 +169,7 @@ If any of these are relevant to your setting, please grab me after the session.
 
 **Seminar series** — talks from the wider community:
 
-- [epinowcast seminars](https://www.epinowcast.org/seminars.html) — recurring online seminar series on nowcasting, forecasting, and real-time methods
+- [epinowcast seminars](https://www.epinowcast.org/seminars.html) — recurring online seminar series on [nowcasting](../resources/glossary.qmd#nowcasting), forecasting, and real-time methods
 
 Materials are open and reusable; happy to point you to specific sessions if a topic from today is useful for your team.
 

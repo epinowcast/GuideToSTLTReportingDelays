@@ -10,7 +10,7 @@ Content will be drawn from the companion paper
 
 **Lead:** Kaitlyn Johnson
 
-SARS-CoV-2 variant nowcasting example
+SARS-CoV-2 variant [nowcasting](../resources/glossary.qmd#nowcasting) example
 
 ## Setting
 

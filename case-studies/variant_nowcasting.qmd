@@ -1,0 +1,27 @@
+---
+title: "Case Study: Variant nowcasting"
+---
+
+::: {.callout-note}
+This page is under development.
+Content will be drawn from the companion paper
+(Section 6: How-to case studies).
+:::
+
+**Lead:** Kaitlyn Johnson
+
+SARS-CoV-2 variant nowcasting example
+
+## Setting
+
+## The challenge
+
+## Approach
+
+## Implementation
+
+## Validation
+
+## Results and lessons
+
+

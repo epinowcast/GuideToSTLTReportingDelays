@@ -20,19 +20,19 @@ bibliography: references.bib
 filters:
   - authors-block
 abstract: |
-  State, local, and territorial surveillance systems are essential for public
-  health decision making, but inherent delays between disease occurrence and
-  reporting create challenges for real-time analysis.
+  State, tribal, local, and territorial (STLT) public health surveillance systems are essential for the delivery of public
+  health services, but inherent delays between disease or event occurrence and when they are 
+  reported to the surveillance system create challenges for real-time analysis.
   Other issues such as data revisions, site drop-in and drop-out, and data
   quality problems can also manifest as apparent delays in aggregate data.
   This guide provides practical guidance for epidemiologists, public health
-  practitioners, and modellers working with reporting delays and related
+  practitioners, and modelers working with reporting delays and related
   challenges in surveillance data.
   We describe challenges in real-time use of surveillance data, opportunities
-  from modelling approaches, guidance on choosing appropriate methods,
+  from modeling approaches, guidance on choosing appropriate methods,
   considerations for communicating results, and practical case studies with
   implementation resources.
-  We also highlight gaps where new modelling methods could address unmet needs
+  We also highlight gaps where new modeling methods could address unmet needs
   in public health practice.
 ---
 
@@ -41,29 +41,27 @@ abstract: |
 **Section lead:** Sam Abbott
 **Section support:** Laura Jones
 
-State, local, and territorial surveillance systems play a central role in
-public health decision making in the United States.
-Similarly, sub-national jurisdictions in other countries also play a signficant role in public health decision making.
+Public health surveillance systems and surveillance data—at state, tribal, local, and territorial (STLT) jurisdictions in the United States and within sub-national jurisdictions internationally—play a core role in the delivery of essential public health services. In the United States’ structurally complex public health system, the operationalization of surveillance systems, reporting requirements, and legal mandates all differ significantly among and between STLT public health entities. Despite these differences, public health authorities have a shared need for the rapid collection, analysis, and interpretation of surveillance data to support swift public health action and decision-making. 
 However, several challenges complicate the use of surveillance data in real time. 
-Reporting delays arise from lab confirmation requirements, differences between electronic and manual reporting, and weekend and holiday effects. 
-Data revisions occur as duplicates are removed, cases are reclassified, and dates are corrected. 
-Site-specific variations in reporting capabilities and intermittent reporting from some facilities create additional uncertainty.
-Other data quality issues such as missing or incorrect dates and incompatible formats can further limit the utility of recent data.
+Reporting delays—the time lag between an epidemiological event of interest and when it is reported to the surveillance system—often result from operational and administrative hurdles like lab confirmation requirements, differences between electronic and manual reporting, and weekend and holiday effects. 
+Surveillance data revisions occur as duplicates are removed, and, as more information is received, cases may be reclassified and dates corrected. 
+Site-specific variations in reporting capabilities and intermittent reporting from some healthcare facilities create additional uncertainty.
+Other data quality issues, such as missing or incorrect dates and incompatible formats, can further limit the utility of recent data.
 Many of these issues can manifest as apparent delays when viewed in aggregate data, even when the underlying cause is not a true reporting delay.
 
 Common approaches to handling these challenges include discarding recent data, presenting frozen values that strip out delayed reports, or aggregating by report date rather than event date.
 These simple approaches are often the first and most accessible options and may be sufficient when delays are short and stable or when recent data does not directly drive time-sensitive decisions.
-When delays are long or variable, when timely estimates matter, or when uncertainty quantification is needed, statistical methods that learn from historical reporting patterns can improve estimates.
+When delays are long or variable, when timely estimates matter, or when uncertainty quantification is needed, modeling methods—often called "nowcasting"—that learn from historical reporting patterns can account for data lags or missingness in preliminary data.
 Addressing these challenges can improve situational awareness of true disease
 trends, supports decision making (such as timing of public health
-interventions), and can improve forecasting of disease trends and resource needs (i.e. hospitalisations).
-Examples of publicly available use of modelling to account for challenges data reporting include the Massachusetts
-Department of Public Health's respiratory illness dashboard, New York City's
+interventions), and can improve forecasting of disease trends and resource needs (i.e., hospitalizations).
+Examples of publicly available use of modeling to account for challenges in data reporting include nowcasting on the Massachusetts
+Department of Public Health's viral respiratory illness dashboard, New York City's
 nowcasting during mpox and COVID-19 emergencies, California's nowcast of
 COVID-19 effective reproduction number, and the CDC's COVID-19 variant nowcast.
 
 In this guide, we provide practical guidance for public health practitioners
-and modellers planning to account for reporting delays and other data quality issues in their analyses.
+and modelers planning to account for reporting delays and other data quality issues in their analyses.
 We describe the challenges that arise when using surveillance data in real
 time, review modelling approaches that can address these challenges, and
 provide guidance on choosing and implementing appropriate methods.
@@ -78,11 +76,11 @@ Here we focus on practical guidance for choosing and implementing these methods 
 **Section overview lead:** Sharon Greene
 **Section overview support:** Laura Jones, 
 
-@tbl-challenges summarises the challenges described in this section.
+Despite differences between surveillance systems and reporting requirements between STLT jurisdictions in the United States, data challenges in real-time or preliminary public health surveillance data often share similarities at a high-level in how or why they present in the data. Additionally, surveillance data challenges both between and within STLT entities can differ by pathogen or disease of interest, during public health emergencies, by geography or health system, and more. Understanding the data challenges present in surveillance data is crucial for selecting appropriate modeling methods for the analysis of real-time surveillance data. @tbl-challenges summarises the overarching data challenges described in this section. 
 
 | Challenge | Description | Examples |
 |-----------|-------------|----------|
-| Reporting delays | Time between event and report | Lab confirmation, manual entry |
+| Reporting delays | Time between event and report | Lab confirmation, diagnosis coding practices, manual entry |
 | Data revisions | Changes to previously reported data | Duplicate removal, reclassification |
 | Site drop-in/out | Facilities joining or leaving | New sites, closures, intermittent reporting |
 | Other data quality | Additional data issues | Missing dates, format incompatibilities |
@@ -96,7 +94,7 @@ Here we focus on practical guidance for choosing and implementing these methods 
 
 ### What it is
 
-- Right-truncation
+Reporting delays introduce a bias to real-time surveillance data known as “right-trunction”, wherein recent events are systematically under-represented in real-time data since a portion of the final observed events have not yet been reported to the surveillance system. Most frequently, this is seen when an event or case definition requires certain diagnostic or other confirmatory criteria to be met, particularly laboratory results, information from the case investigation, or clinical encounter data that is not always immediately available.
 
 ### Why it happens
 

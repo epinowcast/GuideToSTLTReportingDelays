@@ -94,7 +94,7 @@ Despite differences between surveillance systems and reporting requirements betw
 
 ### What it is
 
-Reporting delays introduce a bias to real-time surveillance data known as “right-trunction”, wherein recent events are systematically under-represented in real-time data since a portion of the final observed events have not yet been reported to the surveillance system. Most frequently, this is seen when an event or case definition requires certain diagnostic or other confirmatory criteria to be met, particularly laboratory results, information from the case investigation, or clinical encounter data that is not always immediately available.
+Reporting delays introduce a bias to real-time surveillance data known as “right-truncation”, wherein recent events are systematically under-represented in real-time data since a portion of the final observed events have not yet been reported to the surveillance system. Most frequently, this is seen when an event or case definition requires certain diagnostic or other confirmatory criteria to be met, particularly laboratory results, information from the case investigation, or clinical encounter data that is not always immediately available.
 
 ### Why it happens
 

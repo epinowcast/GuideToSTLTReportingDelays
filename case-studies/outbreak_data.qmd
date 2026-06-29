@@ -33,9 +33,9 @@ Early outbreak data (e.g. measles in the U.S.)
 ## Approach
 
 - Pick a primary event with which you want cases to be indexed by and define your "case definition". Examples of primary events include the date of hospital admission, the date of symptom onset, the date of specimen collection. We recommend picking a primary event that is closest to the transmission event with minimal missingness. Define "cases" in a way that minimises bias due to factors unrelated to transmission such as testing capacity. 
-- Decide on your stratification of interest. For example, you might have information on patient's location, age, gender, and possibly suspected setting of exposure depending on the level of detail in the data. Another important factor might be facility, which might influence the reporting delay. 
-_ Decide on a temporal granularity. We recommend nowcasting at the finest temporal granularity that the data allows to begin with, and then aggregating as a final step if desired.
-- Obtain a count of cases by primary event and date of report. If using time stamped snapshots of total cases, the additional or loss of cases at each date will need to be recorded and assigned to that report date. 
+- Decide on your stratification of interest. For example, you might have information on patient's location, age, gender, and possibly suspected setting of exposure depending on the level of detail in the data. Another important factor might be facility, which might influence the [reporting delay](../resources/glossary.qmd#reporting-delay). 
+_ Decide on a temporal granularity. We recommend [nowcasting](../resources/glossary.qmd#nowcasting) at the finest temporal granularity that the data allows to begin with, and then aggregating as a final step if desired.
+- Obtain a count of cases by primary event and date of report. If using time stamped snapshots of total cases, the additional or loss of cases at each date will need to be recorded and assigned to that [report date](../resources/glossary.qmd#report-date). 
 
 ## Implementation
 1. Choose a nowcasting model. Things to consider:

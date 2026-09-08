@@ -8,20 +8,23 @@ This page is under development.
 
 ## What it is
 
-- [Right-truncation](../resources/glossary.qmd#right-truncation)
+Reporting delays introduce a bias to real-time surveillance data known as “[Right-truncation](../resources/glossary.qmd#right-truncation)”, wherein recent events are systematically under-represented in real-time data since a portion of the final observed events have not yet been reported to the surveillance system. Most frequently, this is seen when an event or case definition requires certain diagnostic or other confirmatory criteria to be met, particularly through laboratory results, information from the case investigation, or clinical encounter data that is not always immediately available.
 
-## Why it happens
-
-- Lab confirmation requirements
-- Electronic vs manual reporting differences
-- Weekend and holiday effects (fewer reports filed on weekends, lab closures)
-- Holiday periods (extended closures affect both reporting and care-seeking)
-- Delays may shorten as reporting improves or lengthen when systems are under strain
+| Why it happens | Examples and considerations |
+|---|---|
+| **Laboratory confirmation requirements:** cases or events are not yet confirmed for recently collected specimens that are still undergoing laboratory work-up. | Delays in laboratory confirmation are often due to practical realities like timeliness of receipt of a specimen and turnaround time for lab processing, which can change during times of high or low incidence due to strain on healthcare and laboratory systems. For example, for *Salmonella*, confirmed cases might be reported slower than probable cases because of the requirement to isolate *Salmonella spp.* from a clinical specimen. COVID-19 variant subtyping may take longer during times of low volume at resource-constrained jurisdictions if there aren't enough specimen to fill a full PCR assay plate. |
+| **Clinical encounter coding delays:** Recent encounters have not yet been fully coded by medical staff, causing lags in final categorization or diagnoses in the surveillance system. | These kinds of delays can vary considerably by condition, facility, geography, and season, and coding practices can also change over time. For example, hospital visits for injuries are often coded immediately, while hospital coding updates of respiratory illness visits may take longer if providers are awaiting lab results or other diagnosis information. |
+| **Manual reporting entry:** surveillance reports received by phone or fax are still pending data entry. | Surveillance systems usually receive multiple reports per event, where different temporal elements might come from different reports. For example, the specimen collection date might be reported by a laboratory, while the illness onset date might be reported by a provider or obtained by patient interview. |
+| **Weekend and holiday effects:** Closures or limited hours reduce access to care and impact availability of confirmatory data. | These day-of-week effects are both operationally and behaviorally driven. Outpatient health care provider offices might be closed. Personnel who conduct lab tests and report results might operate under reduced staffing. Even care-seeking behavior at emergency departments is typically lower on weekends. |
 
 ## How it affects analysis
 
-- High variability in count data can make delay patterns harder to estimate
-- Seasonal patterns in disease incidence interact with delay patterns
-- Day-of-week effects appear in both disease incidence and reporting
+Right truncation of epidemiological events caused by reporting delays can ultimately create a misleading impression that recent data are decreasing. In a given public health surveillance data source, some or all of these challenges may be occurring simulataneously. Seasonal patterns in disease transmission and incidence can interact with these delay patterns, further complicating insights into recent trends. 
 
 ## How to identify it
+To assess reporting delays in surveillance data, consider: 
+- How to track these delays in the data source, like keeping data snapshots or maintaining timestamps of updates to key variables
+- Whether the case definition for the disease or condition of interest requires laboratory work-up or diagnosis coding, and what the typical turnaround time is for relevant tests
+- What dates are most informative (encounter date, diagnosis date, specimen collection date, symptom onset date), what methodology is used by the public health jurisdiction to determine a system event date, and whether the  report date is a *functional* date (when did the data first became actionable to public health?)
+- Review reporting delays over time, including by day, week, season, facility, and overall volume
+- Changes to testing or hospital coding practices that may differ over time

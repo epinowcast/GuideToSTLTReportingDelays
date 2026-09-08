@@ -2,18 +2,13 @@
 title: "Challenges in Real-Time Surveillance Data"
 ---
 
-::: {.callout-note}
-Content will be drawn from the companion paper
-(Section 2: Challenges in real-time use of
-surveillance data).
-Tables will be interactive and filterable.
-:::
+Despite differences between surveillance systems and reporting requirements between STLT jurisdictions in the United States, data challenges in real-time or preliminary public health surveillance data often share similarities at a high-level in how or why they present in the data. Surveillance data challenges can differ by pathogen or disease of interest, during public health emergencies, by geography or health system, and more. The table below summarises some of the overarching data challenges described in this section.
 
 | Challenge | Description | Examples | Effect on analysis |
 |---|---|---|---|
-| [Reporting delays](reporting-delays.qmd) | Time between event and report | Lab confirmation, manual entry, weekend effects | Right-truncation of recent counts |
+| [Reporting delays](reporting-delays.qmd) | Time between event and report | Lab confirmation, diagnosis coding practices, manual entry | Right-truncation of recent counts |
 | [Data revisions](data-revisions.qmd) | Changes to previously reported data | Duplicate removal, reclassification, date corrections | Retrospective changes to trends |
-| [Site drop-in/out](site-drop-in-out.qmd) | Facilities joining or leaving | New sites, closures, intermittent reporting | Apparent changes unrelated to disease |
+| [Site drop-in/out](site-drop-in-out.qmd) | Facilities joining or leaving | New sites, closures, intermittent reporting | Apparent changes unrelated to disease trends |
 | [Other data quality](other-data-quality.qmd) | Additional data issues | Missing dates, format incompatibilities, missing strata | Reduced utility of recent data |
 
 : Summary of challenges in real-time surveillance data {.striped .hover}

@@ -8,5 +8,6 @@ Training courses on [nowcasting](../resources/glossary.qmd#nowcasting) and forec
 |---|---|---|
 | Nowcasting and Forecasting of Infectious Disease Dynamics | Self-paced course covering delay distributions, nowcasting, forecasting, and evaluation | [nfidd.github.io/nfidd](https://nfidd.github.io/nfidd/){target="_blank"} |
 | SISMID: Nowcasting and Forecasting | Intensive short course on nowcasting and forecasting taught at the Summer Institute in Statistics and Modeling in Infectious Diseases | [nfidd.github.io/sismid](https://nfidd.github.io/sismid/){target="_blank"} |
+| CFA: Behind the Model: Nowcasting | Brief explainer from CDC's Center for Forecasting and Outbreak Analytics (CFA) with applied examples of nowcasting to support public health surveillance activities and decision-making. | [https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html](https://www.cdc.gov/cfa-behind-the-model/php/data-research/nowcasting.html)
 
 : Training courses {.striped .hover}

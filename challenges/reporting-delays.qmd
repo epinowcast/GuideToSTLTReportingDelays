@@ -23,8 +23,9 @@ Right truncation of epidemiological events caused by reporting delays can ultima
 
 ## How to identify it
 To assess reporting delays in surveillance data, consider: 
+
 - How to track these delays in the data source, like keeping data snapshots or maintaining timestamps of updates to key variables
 - Whether the case definition for the disease or condition of interest requires laboratory work-up or diagnosis coding, and what the typical turnaround time is for relevant tests
-- What dates are most informative (encounter date, diagnosis date, specimen collection date, symptom onset date), what methodology is used by the public health jurisdiction to determine a system event date, and whether the  report date is a *functional* date (when did the data first became actionable to public health?)
+- What dates are most informative (encounter date, diagnosis date, specimen collection date, symptom onset date), what methodology is used by the public health jurisdiction to determine a system event date, and whether the report date is a *functional* date (when did the data first became actionable to public health?)
 - Review reporting delays over time, including by day, week, season, facility, and overall volume
 - Changes to testing or hospital coding practices that may differ over time

@@ -8,13 +8,15 @@ This page is under development.
 
 ## What it is
 
-## Why it happens
+Facility or site participation in regular reporting to surveillance systems can change over time, due to technical or operational issues, impacting the amount and type of data available at a given time. 
 
-- System-to-system delays
-- Hospital/facility intermittent reporting
-- Urban vs rural reporting capabilities
-- EHR integration disparities
+| Why it happens | Examples and considerations |
+|---|---|
+| **Site/facility intermittent reporting:** healthcare facilities or laboratories may not consistently send surveillance data to the system. | Technical issues may cause lapses along existing data pipelines or processing between facilities and the surveillance system. Sites may choose to only intermittently report data, at different cadences than expected. |
 
 ## How it affects analysis
+Total volume of data is impacted, obscuring true trend.
 
 ## How to identify it
+
+- Monitor total volume of events for anomalies, and review expected volume by facility or geography to identify lapses or changes in reporting.

@@ -38,7 +38,7 @@ _ Decide on a temporal granularity. We recommend [nowcasting](../resources/gloss
 - Obtain a count of cases by primary event and date of report. If using time stamped snapshots of total cases, the additional or loss of cases at each date will need to be recorded and assigned to that [report date](../resources/glossary.qmd#report-date). 
 
 ## Implementation
-1. Choose a nowcasting model. Things to consider:
+1. Choose a [nowcasting](../resources/glossary.qmd#nowcasting) model. Things to consider:
 - How sparse is your data?
 - How much training data do you have to learn a delay distribution?
 - Do you want to be able to share information across strata within the strata you are nowcasting? 

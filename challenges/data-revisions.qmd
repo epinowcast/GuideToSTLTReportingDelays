@@ -8,12 +8,20 @@ This page is under development.
 
 ## What it is
 
-## Why it happens
+Data revisions are common in public health surveillance data, as an epidemiological event is typically revised overtime as more reports come in from varied sources, including but not limited to multiple case and laboratory reports,  as well as case and contact interviews. 
 
-- Duplicate removal
-- Case reclassifications
-- Date corrections
+| Why it happens | Examples and considerations |
+|---|---|
+| **Duplicate record removal:** records for a single patient or event reported through multiple sources are reviewed and merged by public health staff. | Duplicates can be particularly prevalent during initial public health emergencies, when varying reports may be received through manual entry, electronic case reporting, as well as lab reports. During times of strain, duplicate removal may face further delays due to staffing constraints. De-duplication may also be done in batches, causing intermittent downward revisions of counts. |
+| **Case reclassifications:** as additional epidemiological information is received, case statuses may change, impacting counts. | Case reclassifications are not uncommon, particularly when more information is received about a case's jurisdiction of residence, and probable or suspect cases may be confirmed or ruled out as more information arrives. |
+| **Date corrections:** event dates shift as errors are corrected or more information is received. | Review of cases and events often results in correction of initial erroneous information, or more information about things like symptom onset is received during record review or case interview. |
 
 ## How it affects analysis
 
+Data revisions can cause unpredictable retrospective changes to case or event counts.
+
 ## How to identify it
+
+- Consider whether the surveillance data is reflecting confirmed cases, or includes probable or suspect cases.
+- Review snapshots of data over time to compare how data revisions impact counts at different timescales, and if revisions appear to be done on a batched basis.
+- Consider if the event date of interest is static in the surveillance system, and if not, determine the hierarchical methodology used for surveillance system event dates. Typically, Symptom Onset Date is the gold standard, but may not be immediately available. In the interim, Earliest Specimen Date, Diagnosis Date, Create Date (in descending priority) are often used until more information arrives in the system. 

@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accounting for Reporting Delays in Public Health Surveillance</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #ffffff;
+      --foreground: #343a40;
+      --muted-foreground: #66707a;
+      --border: #d9dee2;
+      --grid: #e7eaed;
+      --brand: #6f9f3d;
+      --brand-dark: #426126;
+      --finalized: #173f5f;
+      --reported: #d95f59;
+      --tooltip: #22272b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--foreground);
+      background: var(--background);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #f6f7f4;
+    }
+
+    .navbar {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 0.9rem 0;
+      font-weight: 650;
+    }
+
+    .navbar a {
+      color: var(--brand-dark);
+      text-decoration: none;
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 230px;
+      gap: 3rem;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3rem 0 5rem;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    h1,
+    h2 {
+      color: #2f3438;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0 0 1.6rem;
+      font-size: clamp(2.25rem, 5vw, 3.7rem);
+      letter-spacing: -0.035em;
+    }
+
+    h2 {
+      margin: 3.4rem 0 1.1rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--border);
+      font-size: clamp(1.7rem, 3.4vw, 2.45rem);
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 1.3rem;
+    }
+
+    ul {
+      padding-left: 1.6rem;
+    }
+
+    li {
+      margin: 0.55rem 0;
+    }
+
+    a {
+      color: var(--brand-dark);
+    }
+
+    aside {
+      align-self: start;
+      position: sticky;
+      top: 1.5rem;
+      border-left: 2px solid var(--border);
+      padding-left: 1rem;
+    }
+
+    aside strong {
+      display: block;
+      margin-bottom: 0.55rem;
+    }
+
+    aside a {
+      display: block;
+      padding: 0.3rem 0;
+      color: var(--foreground);
+      text-decoration: none;
+    }
+
+    aside a:hover,
+    aside a:focus-visible {
+      color: var(--brand-dark);
+      text-decoration: underline;
+    }
+
+    figure {
+      margin: 2.4rem 0 2rem;
+    }
+
+    .control {
+      max-width: 760px;
+      margin-bottom: 0.55rem;
+    }
+
+    .control-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 650;
+    }
+
+    output {
+      white-space: nowrap;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      min-height: 32px;
+      accent-color: var(--brand);
+    }
+
+    .nowcast-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      width: fit-content;
+      margin-left: 0.9rem;
+      font-weight: 600;
+    }
+
+    .nowcast-control input {
+      width: 1rem;
+      height: 1rem;
+      accent-color: #7b3294;
+    }
+
+    .nowcast-swatch {
+      display: inline-block;
+      width: 1.3rem;
+      border-top: 3px dashed #7b3294;
+    }
+
+    .chart-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 430px;
+    }
+
+    #reporting-chart {
+      display: block;
+      width: 100%;
+      height: 430px;
+      overflow: visible;
+    }
+
+    .tooltip {
+      position: absolute;
+      z-index: 2;
+      max-width: 210px;
+      padding: 0.4rem 0.55rem;
+      border-radius: 0.25rem;
+      color: #ffffff;
+      background: var(--tooltip);
+      font-size: 0.82rem;
+      line-height: 1.3;
+      pointer-events: none;
+      transform: translate(-50%, calc(-100% - 10px));
+    }
+
+    .tooltip[hidden] {
+      display: none;
+    }
+
+    figcaption {
+      margin-top: 0.65rem;
+      color: var(--muted-foreground);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .axis,
+    .axis-title,
+    .legend-label {
+      fill: var(--foreground);
+      font-size: 13px;
+    }
+
+    .axis-title {
+      font-weight: 500;
+    }
+
+    .grid-line {
+      stroke: var(--grid);
+      stroke-width: 1;
+    }
+
+    .axis-line {
+      stroke: var(--foreground);
+      stroke-width: 1;
+    }
+
+    .as-of-line {
+      stroke: #555b60;
+      stroke-width: 1.5;
+      stroke-dasharray: 5 4;
+    }
+
+    .series-line {
+      fill: none;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.5;
+    }
+
+    .reported-point {
+      stroke: var(--background);
+      stroke-width: 1;
+    }
+
+    .reported-point:focus {
+      outline: none;
+      stroke: var(--foreground);
+      stroke-width: 2;
+    }
+
+    .nowcast-point {
+      stroke: var(--background);
+      stroke-width: 1;
+    }
+
+    .nowcast-point:focus {
+      outline: none;
+      stroke: var(--foreground);
+      stroke-width: 2;
+    }
+
+    @media (max-width: 850px) {
+      .page {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding-top: 2rem;
+      }
+
+      aside {
+        display: none;
+      }
+
+      .chart-wrap,
+      #reporting-chart {
+        min-height: 390px;
+        height: 390px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Site">
+      <a href="#top">STLT Delays Guide</a>
+    </nav>
+  </header>
+
+  <div class="page" id="top">
+    <main>
+      <h1>Accounting for Reporting Delays in Public Health Surveillance</h1>
+
+      <p>
+        Public health surveillance data are rarely complete when first
+        reported. Cases, hospitalisations, and other events take time to be
+        confirmed, entered into databases, and reported to central systems.
+        These <strong>reporting delays</strong> mean that the most recent data
+        systematically undercount the true number of events, complicating
+        real-time analysis.
+      </p>
+
+      <figure aria-labelledby="figure-caption">
+        <div class="control">
+          <div class="control-heading">
+            <label for="reporting-week">Data reported as of:</label>
+            <output id="week-output" for="reporting-week" aria-live="polite">
+              Week 55
+            </output>
+            <label class="nowcast-control">
+              <input id="show-nowcast" type="checkbox">
+              <span class="nowcast-swatch" aria-hidden="true"></span>
+              Show nowcasts
+            </label>
+          </div>
+          <input
+            id="reporting-week"
+            type="range"
+            min="0"
+            max="73"
+            step="1"
+            value="54"
+            aria-label="Data reported as of"
+          >
+        </div>
+
+        <div class="chart-wrap" id="chart-wrap">
+          <svg
+            id="reporting-chart"
+            role="img"
+            aria-labelledby="chart-title chart-description"
+          >
+            <title id="chart-title">Synthetic reporting delay example</title>
+            <desc id="chart-description">
+              A fixed finalized curve and a reported curve that approaches it
+              as the selected reporting week moves forward.
+            </desc>
+          </svg>
+          <div class="tooltip" id="chart-tooltip" role="tooltip" hidden></div>
+        </div>
+
+        <figcaption id="figure-caption">
+          Illustrative synthetic data showing how provisional values available
+          at a selected reporting date can differ from finalized values, and how
+          nowcasts can estimate the most recent incomplete values. Move the
+          weekly control to change the reporting date and select “Show nowcasts”
+          to display estimates for the six most recent weeks. This example does
+          not represent a typical revision pattern. The time required for
+          values to become complete varies by pathogen or health event, data
+          source, jurisdiction, and reporting process. Revisions may take days,
+          weeks, or months, and some values may continue to be revised for more
+          than a year.
+        </figcaption>
+      </figure>
+
+      <p>
+        Recent reported values can therefore give a misleading picture of what
+        is happening now, especially when reporting is severely incomplete.
+        Our goal is to help public health teams estimate the values that recent
+        data are likely to reach once more reports arrive and understand how
+        uncertain those estimates are. This can help teams avoid mistaking
+        reporting delays for real changes in disease activity and support
+        better situational awareness.
+      </p>
+
+      <p>
+        Several approaches can help public health teams work towards this goal.
+        This guide introduces the available options and focuses on practical
+        guidance for choosing and implementing methods in STLT settings, with
+        emphasis on adoption, communication, and real-world case studies. It is
+        intended as a companion to a technical overview of nowcasting methods
+        that covers mathematical formulation and computational properties in
+        detail.
+      </p>
+
+      <section id="who-is-this-for">
+        <h2>Who is this for?</h2>
+        <ul>
+          <li>
+            <strong>Epidemiologists and other state, tribal, local, and
+            territorial (STLT) public health practitioners in the United
+            States</strong> working with delayed surveillance data and other
+            real-time data issues.
+          </li>
+          <li>
+            <strong>Modellers and analysts</strong> expanding their
+            understanding of reporting delays and the methods available to
+            address them.
+          </li>
+          <li>
+            <strong>Staff in healthcare facilities, laboratories, and other
+            reporting organisations</strong> seeking to understand how
+            reporting processes affect downstream surveillance analyses.
+          </li>
+        </ul>
+      </section>
+
+      <section id="what-this-guide-covers">
+        <h2>What this guide covers</h2>
+        <ul>
+          <li>
+            <strong>Challenges</strong> that arise when using surveillance data
+            in real time, including reporting delays, data revisions, and site
+            drop-in and drop-out.
+          </li>
+          <li>
+            <strong>Modelling approaches</strong> that can adjust for reporting
+            delays, from chain-ladder approaches to Bayesian hierarchical
+            models.
+          </li>
+          <li>
+            <strong>A decision tree</strong> to help select an appropriate
+            method based on your data characteristics and use case.
+          </li>
+          <li>
+            <strong>A how-to guide</strong> covering the common steps from
+            assessing data through to communicating results.
+          </li>
+          <li>
+            <strong>Case studies</strong> demonstrating practical
+            implementations in surveillance settings.
+          </li>
+        </ul>
+      </section>
+
+      <section id="get-involved">
+        <h2>Get involved</h2>
+        <p>
+          This is a collaborative effort. We welcome contributions of code
+          examples, case studies, and feedback. See the
+          <a href="https://github.com/epinowcast/GuideToSTLTReportingDelays/blob/main/contributing.qmd">
+            contributing guide
+          </a>
+          for details.
+        </p>
+      </section>
+    </main>
+
+    <aside aria-label="On this page">
+      <strong>On this page</strong>
+      <a href="#who-is-this-for">Who is this for?</a>
+      <a href="#what-this-guide-covers">What this guide covers</a>
+      <a href="#get-involved">Get involved</a>
+    </aside>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const svg = document.getElementById("reporting-chart");
+      const wrap = document.getElementById("chart-wrap");
+      const slider = document.getElementById("reporting-week");
+      const nowcastToggle = document.getElementById("show-nowcast");
+      const output = document.getElementById("week-output");
+      const tooltip = document.getElementById("chart-tooltip");
+      const namespace = "http://www.w3.org/2000/svg";
+      const weeks = Array.from({ length: 74 }, (_, index) => index + 1);
+      const gaussian = (x, centre, spread, height) =>
+        height * Math.exp(-0.5 * ((x - centre) / spread) ** 2);
+      const syntheticRandom = seed => {
+        const value = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+        return value - Math.floor(value);
+      };
+      const settlementWindow = index => {
+        const group = syntheticRandom(index + 1);
+        const draw = syntheticRandom(index + 101);
+        if (group < 0.78) return 2 + Math.floor(draw * 7);
+        if (group < 0.95) return 9 + Math.floor(draw * 18);
+        return 27 + Math.floor(draw * 26);
+      };
+      const finalData = weeks.map((week, index) => {
+        const secondWave = gaussian(index, 43, 7.5, 1);
+        const sampledEnd = settlementWindow(index);
+        const revisionEndWeeks = secondWave > 0.25
+          ? Math.max(10, Math.min(sampledEnd, 12))
+          : Math.max(5, sampledEnd);
+        return {
+          week,
+          secondWave,
+          revisionEndWeeks,
+          tailWeight:
+            0.025 +
+            0.055 * secondWave +
+            0.005 * syntheticRandom(index + 201),
+          value: Math.round(
+            34 +
+            gaussian(index, 19, 5.5, 82) +
+            gaussian(index, 43, 4.2, 205) +
+            4 * Math.sin(index * 0.75) +
+            2 * Math.cos(index * 0.27)
+          )
+        };
+      });
+
+      const make = (name, attributes = {}) => {
+        const element = document.createElementNS(namespace, name);
+        Object.entries(attributes).forEach(([key, value]) =>
+          element.setAttribute(key, value)
+        );
+        return element;
+      };
+
+      const addText = (parent, text, attributes) => {
+        const element = make("text", attributes);
+        element.textContent = text;
+        parent.appendChild(element);
+        return element;
+      };
+
+      const pathFor = (data, xScale, yScale, valueKey = "value") =>
+        data
+          .map((point, index) =>
+            `${index === 0 ? "M" : "L"}${xScale(point.week).toFixed(2)},` +
+            yScale(point[valueKey]).toFixed(2)
+          )
+          .join(" ");
+
+      const areaPathFor = (data, xScale, yScale) => {
+        const upper = data.map((point, index) =>
+          `${index === 0 ? "M" : "L"}${xScale(point.week).toFixed(2)},` +
+          yScale(point.upper).toFixed(2)
+        );
+        const lower = [...data].reverse().map(point =>
+          `L${xScale(point.week).toFixed(2)},${yScale(point.lower).toFixed(2)}`
+        );
+        return `${upper.join(" ")} ${lower.join(" ")} Z`;
+      };
+
+      const showTooltip = (event, text) => {
+        const bounds = wrap.getBoundingClientRect();
+        const targetBounds = event.currentTarget.getBoundingClientRect();
+        tooltip.textContent = text;
+        const targetX = targetBounds.left - bounds.left + targetBounds.width / 2;
+        tooltip.style.top = `${targetBounds.top - bounds.top}px`;
+        tooltip.hidden = false;
+        const halfWidth = tooltip.offsetWidth / 2;
+        const tooltipX = Math.max(
+          halfWidth + 4,
+          Math.min(bounds.width - halfWidth - 4, targetX)
+        );
+        tooltip.style.left = `${tooltipX}px`;
+      };
+
+      const hideTooltip = () => {
+        tooltip.hidden = true;
+      };
+
+      const draw = () => {
+        const asOf = Number(slider.value);
+        const showNowcast = nowcastToggle.checked;
+        const width = Math.max(320, Math.round(wrap.clientWidth));
+        const height = width < 600 ? 390 : 430;
+        const margin = {
+          top: 65,
+          right: 22,
+          bottom: 60,
+          left: width < 440 ? 58 : 72
+        };
+        const plotWidth = width - margin.left - margin.right;
+        const plotHeight = height - margin.top - margin.bottom;
+        const xScale = week =>
+          margin.left + ((week - 1) / (weeks.length - 1)) * plotWidth;
+        const yMaximum = 420;
+        const yScale = value =>
+          margin.top + plotHeight - (value / yMaximum) * plotHeight;
+        const reportedData = finalData.slice(0, asOf + 1).map((point, index) => {
+          const reportingAge = asOf - index + 1;
+          const fastProgress = (
+            1 - Math.exp(-0.65 * Math.min(reportingAge, 5))
+          ) / (1 - Math.exp(-0.65 * 5));
+          let fraction = (1 - point.tailWeight) * fastProgress;
+          if (reportingAge >= point.revisionEndWeeks) {
+            fraction = 1;
+          } else if (reportingAge > 5) {
+            const tailProgress =
+              (reportingAge - 5) / (point.revisionEndWeeks - 5);
+            fraction = 1 - point.tailWeight *
+              (1 - Math.pow(tailProgress, 0.8));
+          }
+          return {
+            week: point.week,
+            value: Math.round(point.value * fraction)
+          };
+        });
+        const nowcastData = reportedData.slice(-6).map(point => {
+          const index = point.week - 1;
+          const reportingAge = asOf - index + 1;
+          const finalValue = finalData[index].value;
+          const laggedValue = (
+            finalData[Math.max(0, index - 1)].value +
+            finalData[Math.max(0, index - 2)].value +
+            finalData[Math.max(0, index - 3)].value
+          ) / 3;
+          const previousValue = finalData[Math.max(0, index - 1)].value;
+          const previousPreviousValue =
+            finalData[Math.max(0, index - 2)].value;
+          const currentChange = finalValue - previousValue;
+          const previousChange = previousValue - previousPreviousValue;
+          const turningPoint = Math.min(
+            1,
+            Math.abs(currentChange - previousChange) / 12
+          );
+          const recency = (6 - reportingAge) / 5;
+          const firstWaveDifficulty = gaussian(index, 19, 5.5, 1);
+          const difficulty = finalData[index].secondWave;
+          const lagWeight = Math.min(
+            0.92,
+            (0.18 + 0.52 * firstWaveDifficulty +
+              0.68 * difficulty + 0.10 * turningPoint +
+              0.28 * difficulty * turningPoint) *
+              (0.35 + 0.65 * recency)
+          );
+          const errorScale =
+            0.015 +
+            0.035 * recency +
+            0.025 * firstWaveDifficulty * recency +
+            0.06 * difficulty * recency +
+            0.04 * turningPoint *
+              (0.35 + 0.65 * difficulty) * recency;
+          const error =
+            (syntheticRandom(index + 301) - 0.5) * 2 * errorScale;
+          const laggedEstimate = (
+            (1 - lagWeight) * finalValue + lagWeight * laggedValue
+          ) * (1 + error);
+          const estimate = Math.max(
+            point.value,
+            Math.round(laggedEstimate)
+          );
+          const uncertainty =
+            0.08 +
+            0.38 * Math.pow(recency, 1.2) +
+            0.12 * difficulty * recency;
+          return {
+            week: point.week,
+            estimate,
+            lower: Math.max(
+              point.value,
+              Math.round(estimate * (1 - uncertainty))
+            ),
+            upper: Math.round(estimate * (1 + uncertainty))
+          };
+        });
+
+        output.value = `Week ${asOf + 1}`;
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        svg.replaceChildren();
+
+        const title = make("title", { id: "chart-title" });
+        title.textContent = "Synthetic reporting delay example";
+        const description = make("desc", { id: "chart-description" });
+        description.textContent =
+          `Finalized and reported values through week ${asOf + 1}` +
+          (showNowcast ? ", with nowcasts for the six most recent weeks." : ".");
+        svg.append(title, description);
+
+        const legendY = 18;
+        const legendItems = [
+          ["var(--finalized)", "Finalized values"],
+          ["var(--reported)", "Values reported by selected date"]
+        ];
+        legendItems.forEach((item, index) => {
+          const x = margin.left + (index === 0 ? 0 : Math.min(215, plotWidth * 0.43));
+          const y = width < 570 ? legendY + index * 22 : legendY;
+          svg.appendChild(make("line", {
+            x1: x,
+            x2: x + 26,
+            y1: y,
+            y2: y,
+            stroke: item[0],
+            "stroke-width": 3
+          }));
+          addText(svg, item[1], {
+            x: x + 34,
+            y: y + 4,
+            class: "legend-label"
+          });
+        });
+
+        [0, 100, 200, 300, 400].forEach(value => {
+          const y = yScale(value);
+          svg.appendChild(make("line", {
+            x1: margin.left,
+            x2: width - margin.right,
+            y1: y,
+            y2: y,
+            class: "grid-line"
+          }));
+          addText(svg, String(value), {
+            x: margin.left - 10,
+            y: y + 4,
+            "text-anchor": "end",
+            class: "axis"
+          });
+        });
+
+        const xTicks = width < 520 ? [1, 25, 49, 74] : [1, 13, 25, 37, 49, 61, 74];
+        xTicks.forEach(week => {
+          const x = xScale(week);
+          svg.appendChild(make("line", {
+            x1: x,
+            x2: x,
+            y1: margin.top + plotHeight,
+            y2: margin.top + plotHeight + 5,
+            class: "axis-line"
+          }));
+          addText(svg, `Week ${week}`, {
+            x,
+            y: margin.top + plotHeight + 22,
+            "text-anchor": week === 1 ? "start" : week === 74 ? "end" : "middle",
+            class: "axis"
+          });
+        });
+
+        svg.appendChild(make("line", {
+          x1: margin.left,
+          x2: margin.left,
+          y1: margin.top,
+          y2: margin.top + plotHeight,
+          class: "axis-line"
+        }));
+        svg.appendChild(make("line", {
+          x1: margin.left,
+          x2: width - margin.right,
+          y1: margin.top + plotHeight,
+          y2: margin.top + plotHeight,
+          class: "axis-line"
+        }));
+
+        addText(svg, "Reference week", {
+          x: margin.left + plotWidth / 2,
+          y: height - 10,
+          "text-anchor": "middle",
+          class: "axis-title"
+        });
+        addText(svg, "Reported value", {
+          x: 16,
+          y: margin.top + plotHeight / 2,
+          transform: `rotate(-90 16 ${margin.top + plotHeight / 2})`,
+          "text-anchor": "middle",
+          class: "axis-title"
+        });
+
+        svg.appendChild(make("line", {
+          x1: xScale(asOf + 1),
+          x2: xScale(asOf + 1),
+          y1: margin.top,
+          y2: margin.top + plotHeight,
+          class: "as-of-line"
+        }));
+
+        if (showNowcast) {
+          svg.appendChild(make("path", {
+            d: areaPathFor(nowcastData, xScale, yScale),
+            fill: "#7b3294",
+            "fill-opacity": 0.18,
+            stroke: "none",
+            "pointer-events": "none"
+          }));
+        }
+
+        svg.appendChild(make("path", {
+          d: pathFor(finalData, xScale, yScale),
+          stroke: "var(--finalized)",
+          class: "series-line"
+        }));
+        svg.appendChild(make("path", {
+          d: pathFor(reportedData, xScale, yScale),
+          stroke: "var(--reported)",
+          class: "series-line"
+        }));
+
+        reportedData.forEach(point => {
+          const circle = make("circle", {
+            cx: xScale(point.week),
+            cy: yScale(point.value),
+            r: 3,
+            fill: "var(--reported)",
+            class: "reported-point",
+            tabindex: 0,
+            "aria-label": `Week ${point.week}, reported value ${point.value}`
+          });
+          circle.addEventListener("pointerenter", event =>
+            showTooltip(
+              event,
+              `Week ${point.week}: reported value ${point.value}`
+            )
+          );
+          circle.addEventListener("pointerleave", hideTooltip);
+          circle.addEventListener("focus", event =>
+            showTooltip(
+              event,
+              `Week ${point.week}: reported value ${point.value}`
+            )
+          );
+          circle.addEventListener("blur", hideTooltip);
+          svg.appendChild(circle);
+        });
+
+        if (showNowcast) {
+          svg.appendChild(make("path", {
+            d: pathFor(nowcastData, xScale, yScale, "estimate"),
+            stroke: "#7b3294",
+            "stroke-dasharray": "6 4",
+            class: "series-line"
+          }));
+
+          nowcastData.forEach(point => {
+            const circle = make("circle", {
+              cx: xScale(point.week),
+              cy: yScale(point.estimate),
+              r: 4,
+              fill: "#7b3294",
+              class: "nowcast-point",
+              tabindex: 0,
+              "aria-label":
+                `Week ${point.week}, nowcast ${point.estimate}, ` +
+                `interval ${point.lower} to ${point.upper}`
+            });
+            const text =
+              `Week ${point.week}: nowcast ${point.estimate} ` +
+              `(${point.lower}–${point.upper})`;
+            circle.addEventListener("pointerenter", event =>
+              showTooltip(event, text)
+            );
+            circle.addEventListener("pointerleave", hideTooltip);
+            circle.addEventListener("focus", event =>
+              showTooltip(event, text)
+            );
+            circle.addEventListener("blur", hideTooltip);
+            svg.appendChild(circle);
+          });
+        }
+      };
+
+      slider.addEventListener("input", draw);
+      nowcastToggle.addEventListener("change", draw);
+      new ResizeObserver(draw).observe(wrap);
+      draw();
+    })();
+  </script>
+</body>
+</html>

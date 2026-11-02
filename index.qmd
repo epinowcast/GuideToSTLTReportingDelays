@@ -162,13 +162,23 @@ nowcastData = reportedData
     const laggedEstimate = (
       (1 - lagWeight) * finalValue + lagWeight * laggedValue
     ) * (1 + error)
+    const reportedError = Math.abs(finalValue - d.value)
+    const maximumErrorFraction = 0.18 +
+      0.03 * difficulty - 0.09 * difficulty * turningPoint
+    const maximumNowcastError = Math.floor(
+      reportedError * maximumErrorFraction
+    )
+    const boundedEstimate = Math.max(
+      finalValue - maximumNowcastError,
+      Math.min(finalValue + maximumNowcastError, laggedEstimate)
+    )
     const estimate = Math.max(
       d.value,
-      Math.round(laggedEstimate)
+      Math.round(boundedEstimate)
     )
-    const uncertainty = 0.08 +
-      0.38 * Math.pow(recency, 1.2) +
-      0.12 * difficulty * recency
+    const uncertainty = 0.05 +
+      0.18 * Math.pow(recency, 1.2) +
+      0.07 * difficulty * recency
     return {
       week: d.week,
       estimate,

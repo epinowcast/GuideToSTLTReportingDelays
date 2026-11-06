@@ -16,6 +16,425 @@ constraints around capacity and infrastructure.
 
 Interactive decision tree guiding users through method selection (under development).
 
+## Comparing R packages
+
+The table below compares R packages for working with delayed surveillance data.
+Hover over a feature name or a 🟡 for more detail.
+
+✅ Supported.
+🟡 Partly supported.
+❌ Not supported.
+⚙️ Depends on the modelling engine used.
+
+::: {.callout-caution}
+Table is still in progress. Do not trust it. 
+:::
+
+```{r}
+#| echo: false
+#| label: package-comparison
+#| column: page
+library(htmltools)
+
+cran <- "https://cran.r-project.org/package="
+github <- "https://github.com/"
+
+# Column order and the link for each package header.
+packages <- c(
+  EpiNow2 = paste0(cran, "EpiNow2"),
+  surveillance = paste0(cran, "surveillance"),
+  epidist = paste0(cran, "epidist"),
+  nowcaster = paste0(cran, "nowcaster"),
+  baselinenowcast = paste0(cran, "baselinenowcast"),
+  NobBS = paste0(cran, "NobBS"),
+  epinowcast = paste0(github, "epinowcast/epinowcast"),
+  diseasenowcasting = paste0(github, "RodrigoZepeda/diseasenowcasting"),
+  tbl.now = paste0(cran, "tbl.now")
+)
+
+# HTML entities, as emoji in R strings break in non-UTF-8 locales.
+symbols <- list(
+  yes = HTML("&#x2705;"),
+  partial = HTML("&#x1F7E1;"),
+  no = HTML("&#x274C;"),
+  engine = HTML("&#x2699;&#xFE0F;")
+)
+
+via_tbl_now <- "Through tbl.now, which loads with the package."
+engine_note <- paste(
+  "tbl.now fits no models itself.",
+  "This depends on the engine used with run_nowcast()."
+)
+
+# A package not named in `yes`, `partial` or `engine` is shown as not supported.
+feature <- function(label, hint, yes = character(), partial = character(),
+                    engine = FALSE, notes = character(), indent = FALSE) {
+  stopifnot(
+    c(yes, partial) %in% names(packages),
+    names(notes) %in% names(packages),
+    partial %in% names(notes)
+  )
+  cells <- lapply(names(packages), function(package) {
+    note <- if (package %in% names(notes)) notes[[package]]
+    if (package %in% partial) {
+      list(text = symbols$partial, label = "Partly supported", note = note)
+    } else if (package %in% yes) {
+      list(text = symbols$yes, label = "Supported", note = note)
+    } else if (engine && package == "tbl.now") {
+      list(
+        text = symbols$engine, label = "Depends on engine", note = engine_note
+      )
+    } else {
+      list(text = symbols$no, label = "Not supported", note = note)
+    }
+  })
+  list(label = label, hint = hint, cells = cells, indent = indent)
+}
+
+# A row of short text values, one for every package.
+text_feature <- function(label, hint, values, notes = character()) {
+  stopifnot(setequal(names(values), names(packages)))
+  cells <- lapply(names(packages), function(package) {
+    note <- if (package %in% names(notes)) notes[[package]]
+    list(text = values[[package]], label = NULL, note = note)
+  })
+  list(label = label, hint = hint, cells = cells, indent = FALSE)
+}
+
+sections <- list(
+  Data = list(
+    "Data type",
+    feature(
+      "Line list",
+      "Each row is one case, with its own event date and report date.",
+      yes = c(
+        "surveillance", "epidist", "nowcaster", "NobBS", "epinowcast",
+        "diseasenowcasting", "tbl.now", "baselinenowcast"
+      ),
+      partial = "EpiNow2",
+      notes = c(EpiNow2 = "Only estimate_dist(), which fits a delay."),
+      indent = TRUE
+    ),
+    feature(
+      "Count-incidence",
+      paste(
+        "Each row is the number of new cases for one event date",
+        "and one report date."
+      ),
+      yes = c(
+        "epidist", "baselinenowcast", "epinowcast", "diseasenowcasting",
+        "tbl.now"
+      ),
+      partial = "EpiNow2",
+      notes = c(EpiNow2 = "Only estimate_dist(), through its n column."),
+      indent = TRUE
+    ),
+    feature(
+      "Count-cumulative",
+      paste(
+        "Each row is the running total of cases for one event date,",
+        "as known on one report date."
+      ),
+      yes = c(
+        "EpiNow2", "baselinenowcast", "epinowcast", "diseasenowcasting",
+        "tbl.now"
+      ),
+      notes = c(
+        EpiNow2 = "As a list of data snapshots in estimate_truncation().",
+        baselinenowcast = "From reviser vintages."
+      ),
+      indent = TRUE
+    )
+  ),
+  Description = list(
+    feature(
+      "Plots delay distributions",
+      "Has a built-in plot of the delay distribution.",
+      yes = c(
+        "surveillance", "epidist", "epinowcast", "diseasenowcasting",
+        "tbl.now"
+      ),
+      partial = "EpiNow2",
+      notes = c(
+        EpiNow2 = paste(
+          "plot() draws a delay specification.",
+          "Extract a fitted delay first with get_parameters()."
+        )
+      )
+    ),
+    feature(
+      "Plots calendar effects",
+      "Has built-in plots of patterns by weekday, holiday or season.",
+      yes = c("diseasenowcasting", "tbl.now"),
+      notes = c(diseasenowcasting = via_tbl_now)
+    ),
+    feature(
+      "Identifies changes in the delay distribution",
+      "Detects when the delay distribution shifts over time.",
+      yes = c("diseasenowcasting", "tbl.now"),
+      partial = c("surveillance", "epidist", "baselinenowcast", "epinowcast"),
+      notes = c(
+        surveillance = "Models changes at change points that you specify.",
+        epidist = "Models time-varying delays. Detection is not automatic.",
+        baselinenowcast = paste(
+          "get_mean_delay() and get_quantile_delay() give delays",
+          "by reference date for you to inspect."
+        ),
+        epinowcast = "Models time-varying delays. Detection is not automatic.",
+        diseasenowcasting = via_tbl_now
+      )
+    ),
+    feature(
+      "Diagnoses missing data",
+      "Reports where values are missing from the data.",
+      yes = c("diseasenowcasting", "tbl.now"),
+      partial = "baselinenowcast",
+      notes = c(
+        baselinenowcast = paste(
+          "Flags gaps in the reporting triangle",
+          "that do not follow the expected pattern."
+        ),
+        diseasenowcasting = via_tbl_now
+      )
+    ),
+    feature(
+      "Automatic summaries",
+      "Summarises the input data with a single function call.",
+      yes = c("baselinenowcast", "epinowcast", "diseasenowcasting", "tbl.now"),
+      notes = c(diseasenowcasting = via_tbl_now)
+    )
+  ),
+  Model = list(
+    feature(
+      "Fits delay distributions",
+      "Estimates the reporting delay distribution from the data.",
+      yes = c(
+        "EpiNow2", "surveillance", "epidist", "baselinenowcast", "NobBS",
+        "epinowcast", "diseasenowcasting"
+      ),
+      partial = "nowcaster",
+      engine = TRUE,
+      notes = c(
+        nowcaster = "Delay effects are only available in the raw model output."
+      )
+    ),
+    feature(
+      "Covariates",
+      "Variables other than time and strata can inform the model.",
+      yes = c("epidist", "epinowcast", "diseasenowcasting"),
+      partial = "surveillance",
+      engine = TRUE,
+      notes = c(surveillance = "Only method bayes.trunc.ddcp, through Wextra.")
+    ),
+    feature(
+      "Calendar effects",
+      "The model can include weekday, holiday or seasonal patterns.",
+      yes = c("EpiNow2", "NobBS", "epinowcast", "diseasenowcasting"),
+      partial = c("surveillance", "epidist", "baselinenowcast"),
+      engine = TRUE,
+      notes = c(
+        surveillance = "Only method bayes.trunc.ddcp, through Wextra.",
+        epidist = "No built-in option. Add them as covariates in the formula.",
+        baselinenowcast = "By fitting a separate model for each weekday.",
+        NobBS = "Day of week only, through add_dow_cov."
+      )
+    ),
+    feature(
+      "Strata",
+      "Fits the model by group, such as age group or region.",
+      yes = c(
+        "EpiNow2", "epidist", "baselinenowcast", "NobBS", "epinowcast",
+        "diseasenowcasting"
+      ),
+      partial = "nowcaster",
+      engine = TRUE,
+      notes = c(
+        EpiNow2 = "regional_epinow() fits each region separately.",
+        nowcaster = "Age groups only.",
+        NobBS = "One stratifying column, through NobBS.strat()."
+      )
+    ),
+    feature(
+      "Effective reproduction number",
+      "Estimates the effective reproduction number.",
+      yes = c("EpiNow2", "epinowcast"),
+      engine = TRUE
+    ),
+    feature(
+      "Missing report dates",
+      paste(
+        "Report dates with no data, such as a skipped batch, are treated as",
+        "unobserved rather than as zero cases."
+      ),
+      yes = c("EpiNow2", "epinowcast", "diseasenowcasting"),
+      partial = c("baselinenowcast"),
+      engine = TRUE,
+      notes = c(
+        EpiNow2 = "Through fill_missing().",
+        baselinenowcast = paste(
+          "Gaps in the reporting triangle are flagged",
+          "and filled when estimating the delay."
+        ),
+        epinowcast = "Through an observation indicator in enw_obs().",
+        diseasenowcasting = "Count-cumulative data only."
+      )
+    ),
+    feature(
+      "Missing event dates",
+      "Cases with a report date but no event date are kept in the model.",
+      yes = "epinowcast",
+      engine = TRUE,
+      notes = c(epinowcast = "Through enw_missing().")
+    ),
+    feature(
+      "Missing strata",
+      "Cases with no recorded stratum are kept in the model.",
+      yes = "diseasenowcasting",
+      engine = TRUE,
+      notes = c(
+        diseasenowcasting = "They form their own \"missing\" category."
+      )
+    )
+  ),
+  Software = list(
+    text_feature(
+      "Additional software",
+      "Software needed beyond R and packages that install with the package.",
+      values = c(
+        EpiNow2 = "Stan", surveillance = "JAGS (partly)", epidist = "Stan",
+        nowcaster = "INLA (optional)", baselinenowcast = "None", NobBS = "JAGS",
+        epinowcast = "Stan", diseasenowcasting = "None", tbl.now = "None"
+      ),
+      notes = c(
+        EpiNow2 = "Through rstan, which is on CRAN.",
+        surveillance = "Only for method bayes.trunc.ddcp.",
+        epidist = "Through brms, which compiles each model.",
+        nowcaster = "nowcasting_mgcv() is an alternative that avoids INLA.",
+        epinowcast = "Needs CmdStan and a C++ toolchain.",
+        tbl.now = "Each modelling engine brings its own requirements."
+      )
+    ),
+    text_feature(
+      "Source",
+      "Where to install the package from.",
+      values = c(
+        EpiNow2 = "CRAN", surveillance = "CRAN", epidist = "CRAN",
+        nowcaster = "CRAN", baselinenowcast = "CRAN", NobBS = "CRAN",
+        epinowcast = "GitHub", diseasenowcasting = "GitHub", tbl.now = "CRAN"
+      )
+    ),
+    text_feature(
+      "Status",
+      paste(
+        "Based on each package's lifecycle badge.",
+        "surveillance and NobBS have no badge and are long-standing",
+        "CRAN releases."
+      ),
+      values = c(
+        EpiNow2 = "Maturing", surveillance = "Finished", epidist = "Maturing",
+        nowcaster = "Finished", baselinenowcast = "Finished",
+        NobBS = "Finished", epinowcast = "Finished",
+        diseasenowcasting = "In progress", tbl.now = "Finished"
+      )
+    )
+  )
+)
+
+# `title` keeps the text available if the tooltip script does not run.
+with_tooltip <- function(content, text, class = NULL) {
+  tags$span(
+    content,
+    class = class, title = text, tabindex = "0",
+    `data-bs-toggle` = "tooltip"
+  )
+}
+
+feature_cell <- function(cell) {
+  content <- cell$text
+  if (!is.null(cell$label)) {
+    content <- tags$span(
+      cell$text, role = "img", `aria-label` = cell$label
+    )
+  }
+  tags$td(
+    if (is.null(cell$note)) {
+      content
+    } else {
+      with_tooltip(content, cell$note, class = "has-note")
+    }
+  )
+}
+
+feature_row <- function(row) {
+  # A plain string is a subsection heading rather than a feature.
+  if (is.character(row)) {
+    return(tags$tr(
+      class = "subsection",
+      tags$th(
+        tags$span(row),
+        scope = "colgroup", colspan = length(packages) + 1
+      )
+    ))
+  }
+  tags$tr(
+    tags$th(
+      with_tooltip(row$label, row$hint, class = "has-hint"),
+      scope = "row", class = if (row$indent) "indented"
+    ),
+    lapply(row$cells, feature_cell)
+  )
+}
+
+section_rows <- function(name) {
+  tagList(
+    tags$tr(
+      class = "section",
+      tags$th(
+        tags$span(name),
+        scope = "colgroup", colspan = length(packages) + 1
+      )
+    ),
+    lapply(sections[[name]], feature_row)
+  )
+}
+
+tagList(
+  tags$div(
+    class = "package-comparison",
+    tags$table(
+      class = "table",
+      tags$thead(tags$tr(
+        tags$th("Feature", scope = "col"),
+        lapply(names(packages), function(package) {
+          tags$th(
+            tags$a(tags$code(package), href = packages[[package]]),
+            scope = "col"
+          )
+        })
+      )),
+      tags$tbody(lapply(names(sections), section_rows))
+    )
+  ),
+  tags$script(HTML(
+    "document.addEventListener('DOMContentLoaded', function () {
+      document
+        .querySelectorAll('.package-comparison [data-bs-toggle=\"tooltip\"]')
+        .forEach(function (element) {
+          new bootstrap.Tooltip(element, { customClass: 'package-tooltip' });
+        });
+    });"
+  ))
+)
+```
+
+::: {.callout-tip}
+`epidist` estimates delay distributions and does not produce nowcasts.
+`tbl.now` prepares and diagnoses data, then passes it to another package.
+It can pass data to all the packages listed except `epidist` and `nowcaster`.
+::: 
+
+> Features were checked against each package's source code on November 2026.
+
 ## Detailed guidance
 
 - [Adoption and sustainability](adoption.qmd)

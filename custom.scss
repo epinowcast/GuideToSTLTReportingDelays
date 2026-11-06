@@ -4,3 +4,84 @@
 .quarto-title h1.title {
   font-size: 1.75rem;
 }
+
+.package-comparison {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+
+  table {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  th,
+  td {
+    padding: 0.3rem 0.4rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  thead code {
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  // Keep feature names in view when the table scrolls sideways.
+  th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 7rem;
+    background-color: $body-bg;
+    text-align: left;
+    font-weight: normal;
+
+    @include media-breakpoint-up(md) {
+      min-width: 11rem;
+    }
+  }
+
+  thead th:first-child {
+    font-weight: bold;
+  }
+
+  .section th {
+    background-color: $gray-200;
+    box-shadow: none;
+    font-weight: bold;
+  }
+
+  .subsection th {
+    font-style: italic;
+  }
+
+  // These cells span the table, so only their labels can stay in view.
+  .section th,
+  .subsection th {
+    position: static;
+  }
+
+  .section span,
+  .subsection span {
+    position: sticky;
+    left: 0.4rem;
+  }
+
+  th.indented {
+    padding-left: 1.2rem;
+  }
+
+  .has-hint,
+  .has-note {
+    cursor: help;
+  }
+
+  .has-hint {
+    text-decoration: underline dotted;
+  }
+}
+
+// The theme capitalises tooltips, which would misstate R function names.
+.package-tooltip {
+  text-transform: none;
+}

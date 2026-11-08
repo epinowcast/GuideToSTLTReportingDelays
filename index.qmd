@@ -11,14 +11,307 @@ These **reporting delays** mean that the most recent data
 systematically undercount the true number of events,
 complicating real-time analysis.
 
-This guide is designed with and for state, tribal, local, and territorial (STLT) public health practitioners and modellers in the United States working with delayed surveillance data.
+```{ojs}
+//| echo: false
 
-Simple approaches such as discarding recent data, using frozen values, or aggregating by report date are often the first and most accessible options.
-When delays are long or variable, or when uncertainty quantification is needed, statistical methods can improve estimates by learning from historical reporting patterns.
-This guide helps determine when simple approaches are sufficient and when statistical methods would be worthwhile.
+weeks = Array.from({length: 74}, (_, i) => i + 1)
 
-This guide is intended as a companion to a technical overview of nowcasting methods that covers mathematical formulation and computational properties in detail.
-Here we focus on practical guidance for choosing and implementing these methods in STLT settings, with emphasis on adoption, communication, and real-world case studies.
+gaussian = (x, centre, spread, height) =>
+  height * Math.exp(-0.5 * ((x - centre) / spread) ** 2)
+
+syntheticRandom = seed => {
+  const value = Math.sin(seed * 12.9898 + 78.233) * 43758.5453
+  return value - Math.floor(value)
+}
+
+settlementWindow = i => {
+  const group = syntheticRandom(i + 1)
+  const draw = syntheticRandom(i + 101)
+  if (group < 0.78) return 2 + Math.floor(draw * 7)
+  if (group < 0.95) return 9 + Math.floor(draw * 18)
+  return 27 + Math.floor(draw * 26)
+}
+
+finalData = weeks.map((week, i) => {
+  const secondWave = gaussian(i, 43, 7.5, 1)
+  const sampledEnd = settlementWindow(i)
+  const revisionEndWeeks = secondWave > 0.25
+    ? Math.max(10, Math.min(sampledEnd, 12))
+    : Math.max(5, sampledEnd)
+  return {
+    week,
+    series: "Finalized values",
+    secondWave,
+    revisionEndWeeks,
+    tailWeight: 0.025 + 0.055 * secondWave +
+      0.005 * syntheticRandom(i + 201),
+    value: Math.round(
+      34 +
+      gaussian(i, 19, 5.5, 82) +
+      gaussian(i, 43, 4.2, 205) +
+      4 * Math.sin(i * 0.75) +
+      2 * Math.cos(i * 0.27)
+    )
+  }
+})
+
+viewof figureControls = {
+  const form = html`<form style="max-width: 760px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; font-weight: 600;">
+      <label for="reporting-week">Data reported as of:</label>
+      <output style="white-space: nowrap;"></output>
+      <label style="display: inline-flex; align-items: center; gap: 0.35rem; margin-left: 0.9rem;">
+        <input class="nowcast-toggle" type="checkbox" aria-label="Show nowcasts">
+        <span style="display: inline-block; width: 1.3rem; border-top: 3px dashed #7b3294;"></span>
+        Show nowcasts
+      </label>
+    </div>
+    <input
+      id="reporting-week"
+      type="range"
+      min="0"
+      max="${weeks.length - 1}"
+      step="1"
+      value="54"
+      aria-label="Data reported as of"
+      style="width: 100%;"
+    >
+  </form>`
+  const input = form.querySelector("input[type='range']")
+  const nowcast = form.querySelector(".nowcast-toggle")
+  const output = form.querySelector("output")
+  const update = () => {
+    form.value = {
+      asOf: Number(input.value),
+      showNowcast: nowcast.checked
+    }
+    output.value = `Week ${form.value.asOf + 1}`
+    form.dispatchEvent(new Event("input", {bubbles: true}))
+  }
+  input.addEventListener("input", update)
+  nowcast.addEventListener("input", update)
+  update()
+  return form
+}
+
+asOf = figureControls.asOf
+
+showNowcast = figureControls.showNowcast
+```
+
+```{ojs}
+//| echo: false
+
+reportedData = finalData
+  .slice(0, asOf + 1)
+  .map((d, i) => {
+    const reportingAge = asOf - i + 1
+    const fastProgress = (
+      1 - Math.exp(-0.65 * Math.min(reportingAge, 5))
+    ) / (1 - Math.exp(-0.65 * 5))
+    let fraction = (1 - d.tailWeight) * fastProgress
+    if (reportingAge >= d.revisionEndWeeks) {
+      fraction = 1
+    } else if (reportingAge > 5) {
+      const tailProgress = (reportingAge - 5) /
+        (d.revisionEndWeeks - 5)
+      fraction = 1 - d.tailWeight *
+        (1 - Math.pow(tailProgress, 0.8))
+    }
+    return {
+      week: d.week,
+      series: "Values reported by selected date",
+      value: Math.round(d.value * fraction)
+    }
+  })
+
+nowcastData = reportedData
+  .slice(-6)
+  .map(d => {
+    const i = d.week - 1
+    const reportingAge = asOf - i + 1
+    const finalValue = finalData[i].value
+    const laggedValue = (
+      finalData[Math.max(0, i - 1)].value +
+      finalData[Math.max(0, i - 2)].value +
+      finalData[Math.max(0, i - 3)].value
+    ) / 3
+    const previousValue = finalData[Math.max(0, i - 1)].value
+    const previousPreviousValue = finalData[Math.max(0, i - 2)].value
+    const currentChange = finalValue - previousValue
+    const previousChange = previousValue - previousPreviousValue
+    const turningPoint = Math.min(
+      1,
+      Math.abs(currentChange - previousChange) / 12
+    )
+    const recency = (6 - reportingAge) / 5
+    const firstWaveDifficulty = gaussian(i, 19, 5.5, 1)
+    const difficulty = finalData[i].secondWave
+    const lagWeight = Math.min(
+      0.92,
+      (0.18 + 0.52 * firstWaveDifficulty + 0.68 * difficulty +
+        0.10 * turningPoint +
+        0.28 * difficulty * turningPoint) *
+        (0.35 + 0.65 * recency)
+    )
+    const errorScale = 0.015 + 0.035 * recency +
+      0.025 * firstWaveDifficulty * recency +
+      0.06 * difficulty * recency +
+      0.04 * turningPoint * (0.35 + 0.65 * difficulty) * recency
+    const error = (syntheticRandom(i + 301) - 0.5) * 2 * errorScale
+    const laggedEstimate = (
+      (1 - lagWeight) * finalValue + lagWeight * laggedValue
+    ) * (1 + error)
+    const reportedError = Math.abs(finalValue - d.value)
+    const maximumErrorFraction = 0.35 +
+      0.06 * difficulty - 0.08 * difficulty * turningPoint
+    const maximumNowcastError = Math.floor(
+      reportedError * maximumErrorFraction
+    )
+    const boundedEstimate = Math.max(
+      finalValue - maximumNowcastError,
+      Math.min(finalValue + maximumNowcastError, laggedEstimate)
+    )
+    const estimate = Math.max(
+      d.value,
+      Math.round(boundedEstimate)
+    )
+    const uncertainty = 0.05 +
+      0.18 * Math.pow(recency, 1.2) +
+      0.07 * difficulty * recency
+    return {
+      week: d.week,
+      estimate,
+      lower: Math.max(d.value, Math.round(estimate * (1 - uncertainty))),
+      upper: Math.round(estimate * (1 + uncertainty))
+    }
+  })
+```
+
+```{ojs}
+//| echo: false
+//| label: fig-reporting-delay-example
+//| fig-cap: >-
+//|   Illustrative synthetic data showing how provisional values available at
+//|   a selected reporting date can differ from finalized values, and how
+//|   nowcasts can estimate the most recent incomplete values.
+//|   Move the weekly control to change the reporting date and select
+//|   "Show nowcasts" to display estimates for the six most recent weeks.
+//|   This example does not represent a typical revision pattern.
+//|   The time required for values to become complete varies by pathogen or
+//|   health event, data source, jurisdiction, and reporting process.
+//|   Revisions may take days, weeks, or months, and some values may continue
+//|   to be revised for more than a year.
+
+Plot.plot({
+  width,
+  height: 430,
+  marginLeft: 72,
+  marginBottom: 60,
+  style: {
+    fontSize: "13px"
+  },
+  x: {
+    label: "Reference week",
+    labelAnchor: "center",
+    labelArrow: "none",
+    ticks: 7,
+    tickFormat: d => `Week ${d}`
+  },
+  y: {
+    label: "Reported value",
+    labelAnchor: "center",
+    labelArrow: "none",
+    grid: true,
+    domain: [0, 420]
+  },
+  color: {
+    domain: [
+      "Finalized values",
+      "Values reported by selected date"
+    ],
+    range: ["#173f5f", "#d95f59"],
+    legend: true
+  },
+  marks: [
+    ...(showNowcast ? [
+      Plot.areaY(nowcastData, {
+        x: "week",
+        y1: "lower",
+        y2: "upper",
+        fill: "#7b3294",
+        fillOpacity: 0.18
+      })
+    ] : []),
+    Plot.lineY(finalData, {
+      x: "week",
+      y: "value",
+      stroke: "series",
+      strokeWidth: 2.5
+    }),
+    Plot.lineY(reportedData, {
+      x: "week",
+      y: "value",
+      stroke: "series",
+      strokeWidth: 2.5
+    }),
+    Plot.dot(reportedData, {
+      x: "week",
+      y: "value",
+      fill: "series",
+      r: 2.5,
+      tip: true
+    }),
+    ...(showNowcast ? [
+      Plot.lineY(nowcastData, {
+        x: "week",
+        y: "estimate",
+        stroke: "#7b3294",
+        strokeDasharray: "6,4",
+        strokeWidth: 2.5
+      }),
+      Plot.dot(nowcastData, {
+        x: "week",
+        y: "estimate",
+        fill: "#7b3294",
+        r: 3.5,
+        tip: true
+      })
+    ] : []),
+    Plot.ruleX([weeks[asOf]], {
+      stroke: "#555",
+      strokeDasharray: "5,4",
+      strokeWidth: 1.5
+    })
+  ]
+})
+```
+
+Recent reported values can therefore give a misleading picture of what is
+happening now, especially when reporting is severely incomplete.
+Our goal is to help public health teams estimate the values that recent data
+are likely to reach once more reports arrive and understand how uncertain
+those estimates are.
+This can help teams avoid mistaking reporting delays for real changes in
+disease activity and support better situational awareness.
+
+Several approaches can help public health teams work towards this goal.
+This guide introduces the available options and focuses on practical guidance
+for choosing and implementing methods in STLT settings, with emphasis on
+adoption, communication, and real-world case studies.
+It is intended as a companion to a technical overview of nowcasting methods
+that covers mathematical formulation and computational properties in detail.
+
+## Who is this for?
+
+- **Epidemiologists and other state, tribal, local, and territorial (STLT)
+  public health practitioners in the United States** working with delayed
+  surveillance data and other real-time data issues.
+- **Modellers and analysts** expanding their understanding of reporting delays
+  and the methods available to address them.
+- **Staff in healthcare facilities, laboratories, and other reporting
+  organisations** seeking to understand how reporting processes affect
+  downstream surveillance analyses.
 
 ## What this guide covers
 
@@ -34,17 +327,6 @@ Here we focus on practical guidance for choosing and implementing these methods 
   assessing data through to communicating results.
 - **Case studies** demonstrating practical implementations
   in surveillance settings.
-
-## Who is this for?
-
-This guide is written for two audiences.
-
-**Epidemiologists and public health practitioners**
-interested in accounting for reporting delays and other
-real-time data issues.
-
-**Modellers** expanding their understanding of reporting
-delays and the methods available to address them.
 
 ## Get involved
 

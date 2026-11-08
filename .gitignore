@@ -3,3 +3,4 @@ _site/
 /.quarto/
 **/*.quarto_ipynb
 .task/
+/demo/intro-demo.html
